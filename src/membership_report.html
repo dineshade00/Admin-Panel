@@ -26,7 +26,7 @@
   <!-- Include Chart.js CDN -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
-  <style>
+ <style>
     .bg-purple {
       background-color: #4b0082;
       /* dark purple */
@@ -73,7 +73,6 @@
       cursor: pointer;
     }
   </style>
-
 
 
 </head>
@@ -141,7 +140,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="index.html">
-              <span class="menu-title" style="color:#301934;font-weight:bold">Dashboard</span>
+              <span class="menu-title" style="color:#301934;font-weight:bold">Membership Report</span>
               <i class="mdi mdi-home menu-icon" style="color:#301934"></i>
             </a>
           </li>
@@ -216,176 +215,171 @@
         </ul>
       </nav>
       <!-- partial -->
-      <!-- partial -->
       <div class="main-panel">
-        <div class="page-header" style="padding-top: 55px;">
-          <h3 class="page-title" style="padding-left: 10px; font-weight: 300;">
-            <span class="page-title-icon bg-gradient-primary text-white me-2">
-              <i class="mdi mdi-home" style="margin-left:-20px"></i>
-            </span>Membership Report
-          </h3>
-          <nav aria-label="breadcrumb">
-            <ul class="breadcrumb">
-              <li class="breadcrumb-item">
-                <a href="index.html" style="color: #5a189a; text-decoration: none;">Home</a>
-              </li>
-              <li class="breadcrumb-item active" aria-current="page" style="color:#5a189a ;">
-                Membership Report
-              </li>
-            </ul>
-          </nav>
-        </div>
-        <div class="container">
-          <div class="row text-white" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">
+              <span class="page-title-icon text-white me-2" style="background-color:#4b0082">
+                <i class="mdi mdi-home"></i>
+              </span> Membership Plans
+            </h3>
+
+            <nav aria-label="breadcrumb">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="index.html" style="color : #4b0082">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Membership Report
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="container">
+            <div class="row text-white" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
 
-            <!-- ##############################################################################  -->
+              <!-- ##############################################################################  -->
 
 
 
-            <div class="container" style="padding-bottom:40px">
-              <div class="card shadow rounded-4 overflow-hidden" style="padding-top: 20px;">
-                <div class="card-header bg-purple text-white">
-                  <i class="bi bi-people-fill"></i> Membership Report
+              <div class="container">
+                <div class="card shadow rounded-4 overflow-hidden" style="padding-top: 20px;">
+                  <div class="card-header bg-purple text-white">
+                    <i class="bi bi-people-fill"></i> Membership Report
+                  </div>
+                  <div class="card-body">
+                    <form id="reportForm">
+                      <div class="mb-3">
+                        <label for="fromDateRevenue" class="form-label fw-bold">From Date:</label>
+                        <input type="date" class="form-control" id="fromDateRevenue" name="from_date" required>
+                      </div>
+                      <div class="mb-3">
+                        <label for="toDateRevenue" class="form-label fw-bold">To Date:</label>
+                        <input type="date" class="form-control" id="toDateRevenue" name="to_date" required>
+                      </div>
+                      <button type="submit" class="btn btn-purple w-100 fw-bold">Generate Report</button>
+                    </form>
+                    <div id="successMsg" class="alert alert-success mt-3 d-none">
+                      Report successfully generated!
+                      <button id="showTableBtn" class="btn btn-purple mt-2">Show Table</button>
+
+                      <button id="hideTableBtn" class="btn btn-purple mt-2 d-none">Hide Table</button>
+                    </div>
+                  </div>
                 </div>
-                <div class="card-body">
-                  <form id="reportForm">
-                    <div class="mb-3">
-                      <label for="fromDateRevenue" class="form-label fw-bold">From Date:</label>
-                      <input type="date" class="form-control" id="fromDateRevenue" name="from_date" required>
-                    </div>
-                    <div class="mb-3">
-                      <label for="toDateRevenue" class="form-label fw-bold">To Date:</label>
-                      <input type="date" class="form-control" id="toDateRevenue" name="to_date" required>
-                    </div>
-                    <button type="submit" class="btn btn-purple w-100 fw-bold">Generate Report</button>
-                  </form>
-                  <div id="successMsg" class="alert alert-success mt-3 d-none">
-                    Report successfully generated!
-                    <button id="showTableBtn" class="btn btn-purple mt-2">Show Table</button>
 
-                    <button id="hideTableBtn" class="btn btn-purple mt-2 d-none">Hide Table</button>
+                <!-- TABLE -->
+                <div id="dataTableContainer" class="mt-4 d-none">
+                  <div class="table-responsive rounded shadow">
+                    <table class="table table-bordered text-center align-middle">
+                      <thead class="bg-purple text-white">
+                        <tr>
+                          <th>Profile ID</th>
+                          <th>Profile Photo</th>
+                          <th>Name</th>
+                          <th>Contact</th>
+                          <th>Email</th>
+                          <th>Age</th>
+                          <th>Status</th>
+                          <th>View</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <!-- static data sample -->
+                        <tr>
+                          <td>U001</td>
+                          <td>
+                            <img
+                              src="https://media.istockphoto.com/id/2089628374/photo/teenage-boy-exercising-in-a-gym.webp?a=1&b=1&s=612x612&w=0&k=20&c=X49Ed1TXCY5KrrDerhHGP92WsB7OSmutMPE-X_tKveU="
+                              class="rounded-circle profile-img" style="cursor:pointer;" />
+                          </td>
+                          <td>John Doe</td>
+                          <td>9876543210</td>
+                          <td>john@example.com</td>
+                          <td>28</td>
+                          <td>
+                            <span class="badge bg-success">Active</span>
+                          </td>
+                          <td>
+                            <button class="btn btn-sm btn-purple view-btn">View</button>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>U002</td>
+                          <td>
+                            <img
+                              src="https://media.istockphoto.com/id/875355756/photo/teenager-boy.webp?a=1&b=1&s=612x612&w=0&k=20&c=YbsCKewx9FMFdon4ZSTtT1tVWb48tNz55ipaNijdueI="
+                              class="rounded-circle profile-img" style="cursor:pointer;" />
+                          </td>
+                          <td>Priya Sharma</td>
+                          <td>9123456789</td>
+                          <td>priya@example.com</td>
+                          <td>24</td>
+                          <td>
+                            <span class="badge bg-danger">Expired</span>
+                          </td>
+                          <td>
+                            <button class="btn btn-sm btn-purple view-btn">View</button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- USER DETAILS POPUP -->
+              <div class="popup-card" id="popupCard">
+                <div class="close-btn">&times;</div>
+                <div class="card shadow rounded-4 p-3" style="width:400px;">
+                  <div class="card-header bg-purple text-white">User Details</div>
+                  <div class="card-body" id="userDetailsContent">
+                    <!-- user details dynamic fill here -->
                   </div>
                 </div>
               </div>
 
-              <!-- TABLE -->
+              <!-- PROFILE IMAGE POPUP -->
+              <div class="popup-image" id="popupImage">
+                <div class="close-btn">&times;</div>
+                <img src="" alt="Profile" id="popupProfileImage" class="rounded shadow">
+              </div>
+
+              <!-- ye aapke success message ke andar button ko update karo -->
+              <div id="successMsg" class="alert alert-success mt-3 d-none">
+                Report successfully generated!
+                <button id="toggleTableBtn" class="btn btn-purple mt-2">Show Table</button>
+              </div>
+
+              <!-- aapka table same rahega -->
               <div id="dataTableContainer" class="mt-4 d-none">
-                <div class="table-responsive rounded shadow">
-                  <table class="table table-bordered text-center align-middle">
-                    <thead class="bg-purple text-white">
-                      <tr>
-                        <th>Profile ID</th>
-                        <th>Profile Photo</th>
-                        <th>Name</th>
-                        <th>Contact</th>
-                        <th>Email</th>
-                        <th>Age</th>
-                        <th>Status</th>
-                        <th>View</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <!-- static data sample -->
-                      <tr>
-                        <td>U001</td>
-                        <td>
-                          <img
-                            src="https://media.istockphoto.com/id/2089628374/photo/teenage-boy-exercising-in-a-gym.webp?a=1&b=1&s=612x612&w=0&k=20&c=X49Ed1TXCY5KrrDerhHGP92WsB7OSmutMPE-X_tKveU="
-                            class="rounded-circle profile-img" style="cursor:pointer;" />
-                        </td>
-                        <td>John Doe</td>
-                        <td>9876543210</td>
-                        <td>john@example.com</td>
-                        <td>28</td>
-                        <td>
-                          <span class="badge bg-success">Active</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-sm btn-purple view-btn">View</button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>U002</td>
-                        <td>
-                          <img
-                            src="https://media.istockphoto.com/id/875355756/photo/teenager-boy.webp?a=1&b=1&s=612x612&w=0&k=20&c=YbsCKewx9FMFdon4ZSTtT1tVWb48tNz55ipaNijdueI="
-                            class="rounded-circle profile-img" style="cursor:pointer;" />
-                        </td>
-                        <td>Priya Sharma</td>
-                        <td>9123456789</td>
-                        <td>priya@example.com</td>
-                        <td>24</td>
-                        <td>
-                          <span class="badge bg-danger">Expired</span>
-                        </td>
-                        <td>
-                          <button class="btn btn-sm btn-purple view-btn">View</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+                <!-- yahan aap apna table likhoge jaise pehle diya -->
               </div>
 
-            </div>
+              <!-- ##############################################################################  -->
 
-            <!-- USER DETAILS POPUP -->
-            <div class="popup-card" id="popupCard">
-              <div class="close-btn">&times;</div>
-              <div class="card shadow rounded-4 p-3" style="width:400px;">
-                <div class="card-header bg-purple text-white">User Details</div>
-                <div class="card-body" id="userDetailsContent">
-                  <!-- user details dynamic fill here -->
-                </div>
+
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+              <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">&copy; 2025 Olympus Gym -
+                  All
+                  rights reserved.</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Software Developed & Managed By
+                  <a href="https://kavyainfoweb.com/" target="_blank">Kavya Infoweb Pvt. Ltd.</a></span>
               </div>
-            </div>
-
-            <!-- PROFILE IMAGE POPUP -->
-            <div class="popup-image" id="popupImage">
-              <div class="close-btn">&times;</div>
-              <img src="" alt="Profile" id="popupProfileImage" class="rounded shadow">
-            </div>
-
-            <!-- ye aapke success message ke andar button ko update karo -->
-            <div id="successMsg" class="alert alert-success mt-3 d-none">
-              Report successfully generated!
-              <button id="toggleTableBtn" class="btn btn-purple mt-2">Show Table</button>
-            </div>
-
-            <!-- aapka table same rahega -->
-            <div id="dataTableContainer" class="mt-4 d-none">
-              <!-- yahan aap apna table likhoge jaise pehle diya -->
-            </div>
-
-
-
-
-
-
-            <!-- ##############################################################################  -->
-
-
+            </footer>
+            <!-- partial -->
           </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-          <footer class="footer">
-            <div class="d-sm-flex justify-content-center justify-content-sm-between">
-              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">&copy; 2025 Olympus Gym -
-                All
-                rights reserved.</span>
-              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Software Developed & Managed By
-                <a href="https://kavyainfoweb.com/" target="_blank">Kavya Infoweb Pvt. Ltd.</a></span>
-            </div>
-          </footer>
-          <!-- partial -->
+          <!-- main-panel ends -->
         </div>
-        <!-- main-panel ends -->
+        <!-- page-body-wrapper ends -->
       </div>
       <!-- container-scroller -->
-
-
-
 
 
       <script>
@@ -476,10 +470,6 @@
 
       </script>
 
-
-
-
-
       <!-- plugins:js -->
       <script src="assets/vendors/js/vendor.bundle.base.js"></script>
       <!-- endinject -->
@@ -495,7 +485,8 @@
       <script src="assets/js/jquery.cookie.js"></script>
       <!-- endinject -->
       <!-- Custom js for this page -->
-      <script src="assets/js/dashboard.js"></script>
+
+
 
 
 </body>
