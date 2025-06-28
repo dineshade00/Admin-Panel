@@ -406,59 +406,59 @@
     <script src="assets/js/jquery.cookie.js"></script>
     <script src="assets/js/dashboard.js"></script>
 
-    <!-- Script: Form Logic with URL Sync -->
-    <script>
-      const typeInput = document.getElementById("membershipType");
-      const amountInput = document.getElementById("amount");
-      const form = document.getElementById("membershipForm");
-      const successMessage = document.getElementById("successMessage");
+   <script>
+  const typeInput = document.getElementById("membershipType");
+  const amountInput = document.getElementById("amount");
+  const form = document.getElementById("membershipForm");
+  const successMessage = document.getElementById("successMessage");
 
-      const planPrices = {
-        "1 Month Plan": 500,
-        "2 Month Plan": 1000,
-        "3 Month Plan": 1300,
-        "6 Month Plan": 2000,
-        "1 Year Plan": 4000,
-        "Gym + Cardio 1 Month Plan": 800,
-        "Gym + Cardio 3 Month Plan": 2300,
-        "Gym + Cardio 6 Month Plan": 3800,
-        "Gym + Cardio 1 Year Plan": 7500,
-      };
+  const planPrices = {
+    "1 Month Plan": 500,
+    "2 Month Plan": 1000,
+    "3 Month Plan": 1300,
+    "6 Month Plan": 2000,
+    "1 Year Plan": 4000,
+    "Gym + Cardio 1 Month Plan": 800,
+    "Gym + Cardio 3 Month Plan": 2300,
+    "Gym + Cardio 6 Month Plan": 3800,
+    "Gym + Cardio 1 Year Plan": 7500,
+  };
 
-      typeInput.addEventListener("input", () => {
-        const selected = typeInput.value.trim();
-        amountInput.value = planPrices[selected] || "";
-        updateURL();
-      });
+  typeInput.addEventListener("input", () => {
+    const selected = typeInput.value.trim();
+    amountInput.value = planPrices[selected] || "";
+    updateURL();
+  });
 
-      amountInput.addEventListener("input", updateURL);
+  amountInput.addEventListener("input", updateURL);
 
-      function updateURL() {
-        const typeVal = encodeURIComponent(typeInput.value.trim());
-        const amountVal = encodeURIComponent(amountInput.value.trim());
-        const newURL = ${window.location.pathname}?type=${typeVal}&amount=${amountVal};
-        history.replaceState(null, "", newURL);
-      }
+  function updateURL() {
+    const typeVal = encodeURIComponent(typeInput.value.trim());
+    const amountVal = encodeURIComponent(amountInput.value.trim());
+    const newURL = `${window.location.pathname}?type=${typeVal}&amount=${amountVal}`;
+    history.replaceState(null, "", newURL);
+  }
 
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        successMessage.style.display = "block";
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    successMessage.style.display = "block";
 
-        setTimeout(() => {
-          form.reset();
-          successMessage.style.display = "none";
-          history.replaceState(null, "", window.location.pathname);
-        }, 2000);
-      });
+    setTimeout(() => {
+      form.reset();
+      successMessage.style.display = "none";
+      history.replaceState(null, "", window.location.pathname);
+    }, 2000);
+  });
 
-      window.addEventListener("DOMContentLoaded", () => {
-        const params = new URLSearchParams(window.location.search);
-        const type = params.get("type");
-        const amount = params.get("amount");
+  window.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get("type");
+    const amount = params.get("amount");
 
-        if (type) typeInput.value = decodeURIComponent(type);
-        if (amount) amountInput.value = decodeURIComponent(amount);
-      });
-    </script>
+    if (type) typeInput.value = decodeURIComponent(type);
+    if (amount) amountInput.value = decodeURIComponent(amount);
+  });
+</script>
+
   </body>
 </html>
