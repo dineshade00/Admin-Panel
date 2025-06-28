@@ -69,7 +69,7 @@
       background-color: #bb2d3b;
     }
     .card-header {
-      background-color: #9856f0 !important;
+      background-color: #4b0082 !important;
       color: white;
     }
     .breadcrumb-item.active {
@@ -371,8 +371,8 @@
       paginationControls.innerHTML = "";
 
       const prev = document.createElement("li");
-      prev.className = `page-item ${currentPage === 1 ? "disabled" : ""}`;
-      prev.innerHTML = `<a class="page-link">Previous</a>`;
+      prev.className = `page-item ${currentPage === 1 ? "active" : ""}`;
+      prev.innerHTML = `<a class="page-link" style="background-color:#4b0082;color:white;">Previous</a>`;
       prev.onclick = () => {
         if (currentPage > 1) { currentPage--; renderTable(); }
       };
@@ -387,8 +387,8 @@
       }
 
       const next = document.createElement("li");
-      next.className = `page-item ${currentPage === totalPages ? "disabled" : ""}`;
-      next.innerHTML = `<a class="page-link">Next</a>`;
+      next.className = `page-item ${currentPage === totalPages ? "active" : ""}`;
+      next.innerHTML = `<a class="page-link"  style="background-color:#4b0082;color:white;">Next</a>`;
       next.onclick = () => {
         if (currentPage < totalPages) { currentPage++; renderTable(); }
       };
