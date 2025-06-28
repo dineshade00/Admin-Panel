@@ -28,73 +28,67 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 
 
- <style>
-      .pagination .page-link {
-        cursor: pointer;
-        color: #a666fa !important;
+<style>
+    .pagination .page-link {
+      cursor: pointer;
+      color: #a666fa !important;
+    }
+    .pagination .page-item.active .page-link {
+      background-color: #a666fa !important;
+      border-color: #a666fa !important;
+      color: white !important;
+    }
+    .btn-edit-custom,
+    .btn-delete-custom,
+    .btn-view-custom {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.875rem;
+      padding: 6px 12px;
+    }
+    .btn-view-custom {
+      background-color: #0d6efd;
+      color: white;
+    }
+    .btn-view-custom:hover {
+      background-color: #0b5ed7;
+    }
+    .btn-edit-custom {
+      background-color: #b67eff;
+      color: white;
+    }
+    .btn-edit-custom:hover {
+      background-color: #9856f0;
+    }
+    .btn-delete-custom {
+      background-color: #dc3545;
+      color: white;
+    }
+    .btn-delete-custom:hover {
+      background-color: #bb2d3b;
+    }
+    .card-header {
+      background-color: #9856f0 !important;
+      color: white;
+    }
+    .breadcrumb-item.active {
+      color: #b67eff;
+    }
+    .breadcrumb-item a {
+      color: #b67eff;
+      text-decoration: none;
+    }
+    .breadcrumb-item a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .control-row > div {
+        width: 100% !important;
+        margin-bottom: 10px;
       }
-
-      .pagination .page-item.active .page-link {
-        background-color: #a666fa !important;
-        border-color: #a666fa !important;
-        color: white !important;
-      }
-
-      .btn-edit-custom,
-      .btn-delete-custom {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.875rem;
-        padding: 6px 12px;
-      }
-
-      .btn-edit-custom {
-        background-color: #b67eff;
-        color: white;
-      }
-
-      .btn-edit-custom:hover {
-        background-color: #9856f0;
-        color: white;
-      }
-
-      .btn-delete-custom {
-        background-color: #dc3545;
-        color: white;
-      }
-
-      .btn-delete-custom:hover {
-        background-color: #bb2d3b;
-        color: white;
-      }
-
-      .card-header {
-        background-color: #9856f0 !important;
-        color: white;
-      }
-
-      .breadcrumb-item.active {
-        color: #b67eff;
-      }
-
-      .breadcrumb-item a {
-        color: #b67eff;
-        text-decoration: none;
-      }
-
-      .breadcrumb-item a:hover {
-        text-decoration: underline;
-      }
-
-      @media (max-width: 768px) {
-        .control-row > div {
-          width: 100% !important;
-          margin-bottom: 10px;
-        }
-      }
-    </style>
-  
+    }
+  </style>  
 </head>
 
 <body>
@@ -261,72 +255,37 @@
             <!-- ##############################################################################  -->
              
 
-                     <div class="container mt-4">
-     
-
-      <div class="card">
-        <div class="card-header fw-bold">Membership Plans DataTable</div>
-        <div class="card-body">
-          <div
-            class="d-flex flex-wrap justify-content-between mb-3 align-items-center control-row gap-2"
-          >
-            <div class="px-1">
-              Show
-              <select
-                id="entriesSelect"
-                class="form-select d-inline-block w-auto mx-2"
-                style="min-width: 70px"
-              >
-                <option selected>5</option>
-                <option>10</option>
-                <option>20</option>
-              </select>
-              entries
+               <div class="page-header">
+            <h3 class="page-title"><span class="page-title-icon bg-gradient-primary text-white me-2"><i class="mdi mdi-home"></i></span> Membership Plans</h3>
+          </div>
+          <div class="container mt-4">
+            <div class="card">
+              <div class="card-header fw-bold">Membership Plans DataTable</div>
+              <div class="card-body">
+                <div class="d-flex flex-wrap justify-content-between mb-3 align-items-center control-row gap-2">
+                  <div>Show <select id="entriesSelect" class="form-select d-inline-block w-auto mx-2"><option>5</option><option>10</option><option>20</option></select> entries</div>
+                  <div><label class="me-2">Search:</label><input type="search" id="searchInput" class="form-control d-inline-block w-auto" /></div>
+                </div>
+                <div class="table-responsive">
+                  <table class="table table-bordered align-middle text-center" id="membershipTable">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Id</th>
+                        <th>Type</th>
+                        <th>Amount</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                  </table>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-3">
+                  <div id="entriesInfo">Showing entries</div>
+                  <nav><ul class="pagination mb-0 flex-wrap" id="paginationControls"></ul></nav>
+                </div>
+              </div>
             </div>
-            <div class="px-1">
-              <label class="me-2">Search:</label>
-              <input
-                type="search"
-                id="searchInput"
-                class="form-control d-inline-block w-auto"
-                placeholder=""
-              />
-            </div>
           </div>
-
-          <div class="table-responsive">
-            <table
-              class="table table-bordered align-middle text-center"
-              id="membershipTable"
-            >
-              <thead class="table-light">
-                <tr>
-                  <th>Id</th>
-                  <th>Type</th>
-                  <th>Amount</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody id="tableBody"></tbody>
-            </table>
-          </div>
-
-          <div
-            class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-3"
-          >
-            <div class="mb-2 mb-md-0" id="entriesInfo">Showing entries</div>
-            <nav>
-              <ul
-                class="pagination mb-0 flex-wrap"
-                id="paginationControls"
-              ></ul>
-            </nav>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
             <!-- ##############################################################################  -->
               
          
@@ -364,146 +323,113 @@
     <script src="assets/js/jquery.cookie.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="assets/js/dashboard.js"></script>
-       <script>
-      let data = [
-        ["1", "1 Month Plan", "Rupees 500"],
-        ["2", "3 Month Plan", "Rupees 1300"],
-        ["3", "6 Month Plan", "Rupees 2000"],
-        ["4", "1 Year plan", "Rupees 4000"],
-        ["5", "2 Month Plan", "Rupees 1000"],
-        ["6", "Gym + Cardio 6 Month Plan", "Rupees 3800"],
-        ["7", "Gym + Cardio 1 Month Plan", "Rupees 800"],
-        ["8", "Gym + Cardio 3 Month Plan", "Rupees 2300"],
-        ["9", "Gym + Cardio 1 Year plan", "Rupees 7500"],
-        ["10", "Gym+ Cardio 2 Months Plan", "Rupees 1600"],
-        ["11", "1 Month Plan (New Adm Gym)", "Rupees 700"],
-        ["12", "1 Month Plan (New Adm Gym + Cardio)", "Rupees 1000"],
-        ["13", "3 Month Plan (New Adm Gym )", "Rupees 1500"],
-      ];
+   
+  <script>
+    const data = [
+      ["1", "1 Month Plan", "₹500"],
+      ["2", "3 Month Plan", "₹1300"],
+      ["3", "6 Month Plan", "₹2000"],
+      ["4", "1 Year Plan", "₹4000"],
+      ["5", "2 Month Plan", "₹1000"],
+      ["6", "Gym + Cardio 6 Month", "₹3800"]
+    ];
 
-      const tableBody = document.getElementById("tableBody");
-      const searchInput = document.getElementById("searchInput");
-      const entriesSelect = document.getElementById("entriesSelect");
-      const entriesInfo = document.getElementById("entriesInfo");
-      const paginationControls = document.getElementById("paginationControls");
+    let currentPage = 1;
+    let entriesPerPage = 5;
+    let filteredData = [...data];
 
-      let currentPage = 1;
-      let filteredData = [...data];
-      let entriesPerPage = parseInt(entriesSelect.value);
+    const tableBody = document.getElementById("tableBody");
+    const searchInput = document.getElementById("searchInput");
+    const entriesSelect = document.getElementById("entriesSelect");
+    const entriesInfo = document.getElementById("entriesInfo");
+    const paginationControls = document.getElementById("paginationControls");
 
-      function reassignIds() {
-        data.forEach((item, index) => {
-          item[0] = (index + 1).toString();
-        });
-      }
+    function renderTable() {
+      const start = (currentPage - 1) * entriesPerPage;
+      const end = start + entriesPerPage;
+      const pageData = filteredData.slice(start, end);
 
-      function renderTable() {
-        const start = (currentPage - 1) * entriesPerPage;
-        const end = start + entriesPerPage;
-        const pageData = filteredData.slice(start, end);
-
-        tableBody.innerHTML = "";
-        pageData.forEach((row) => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-            <td>${row[0]}</td>
-            <td>${row[1]}</td>
-            <td>${row[2]}</td>
-            <td class="text-center">
-              <div class="d-flex justify-content-center flex-wrap gap-2">
-                <a class="btn btn-edit-custom" href="editmembershiptype.html?id=${row[0]}">
-                  <i class="bi bi-pencil-square"></i> Edit
-                </a>
-                <button class="btn btn-delete-custom" onclick="deleteRow('${row[0]}')">
-                  <i class="bi bi-trash-fill"></i> Delete
-                </button>
-              </div>
-            </td>
-          `;
-          tableBody.appendChild(tr);
-        });
-
-        const showing = pageData.length;
-        const total = filteredData.length;
-        entriesInfo.textContent = `Showing ${start + 1} to ${
-          start + showing
-        } of ${total} entries`;
-
-        renderPagination();
-      }
-
-      function renderPagination() {
-        const totalPages = Math.ceil(filteredData.length / entriesPerPage);
-        paginationControls.innerHTML = "";
-
-        const prevLi = document.createElement("li");
-        prevLi.className = page-item ${currentPage === 1 ? "disabled" : ""};
-        prevLi.innerHTML = <a class="page-link">Previous</a>;
-        prevLi.onclick = () => {
-          if (currentPage > 1) {
-            currentPage--;
-            renderTable();
-          }
-        };
-        paginationControls.appendChild(prevLi);
-
-        for (let i = 1; i <= totalPages; i++) {
-          const li = document.createElement("li");
-          li.className = page-item ${i === currentPage ? "active" : ""};
-          li.innerHTML = <a class="page-link">${i}</a>;
-          li.onclick = () => {
-            currentPage = i;
-            renderTable();
-          };
-          paginationControls.appendChild(li);
-        }
-
-        const nextLi = document.createElement("li");
-        nextLi.className = `page-item ${
-          currentPage === totalPages ? "disabled" : ""
-        }`;
-        nextLi.innerHTML = <a class="page-link">Next</a>;
-        nextLi.onclick = () => {
-          if (currentPage < totalPages) {
-            currentPage++;
-            renderTable();
-          }
-        };
-        paginationControls.appendChild(nextLi);
-      }
-
-      function filterTable() {
-        const value = searchInput.value.toLowerCase();
-        filteredData = data.filter((row) =>
-          row.some((cell) => cell.toLowerCase().includes(value))
-        );
-        currentPage = 1;
-        renderTable();
-      }
-
-      function deleteRow(id) {
-        const index = data.findIndex((row) => row[0] === id);
-        if (index !== -1) {
-          data.splice(index, 1);
-          reassignIds();
-          filteredData = [...data];
-          renderTable();
-        }
-      }
-
-      entriesSelect.addEventListener("change", () => {
-        entriesPerPage = parseInt(entriesSelect.value);
-        currentPage = 1;
-        renderTable();
+      tableBody.innerHTML = "";
+      pageData.forEach(row => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${row[0]}</td>
+          <td>${row[1]}</td>
+          <td>${row[2]}</td>
+          <td>
+            <button class="btn btn-view-custom" onclick="viewRow('${row[0]}')"><i class="bi bi-eye"></i> View</button>
+            <button class="btn btn-delete-custom" onclick="deleteRow('${row[0]}')"><i class="bi bi-trash-fill"></i> Delete</button>
+          </td>`;
+        tableBody.appendChild(tr);
       });
 
-      searchInput.addEventListener("input", filterTable);
+      entriesInfo.textContent = `Showing ${start + 1} to ${Math.min(end, filteredData.length)} of ${filteredData.length} entries`;
+      renderPagination();
+    }
 
+    function renderPagination() {
+      const totalPages = Math.ceil(filteredData.length / entriesPerPage);
+      paginationControls.innerHTML = "";
+
+      const prev = document.createElement("li");
+      prev.className = `page-item ${currentPage === 1 ? "disabled" : ""}`;
+      prev.innerHTML = `<a class="page-link">Previous</a>`;
+      prev.onclick = () => {
+        if (currentPage > 1) { currentPage--; renderTable(); }
+      };
+      paginationControls.appendChild(prev);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const li = document.createElement("li");
+        li.className = `page-item ${currentPage === i ? "active" : ""}`;
+        li.innerHTML = `<a class="page-link">${i}</a>`;
+        li.onclick = () => { currentPage = i; renderTable(); };
+        paginationControls.appendChild(li);
+      }
+
+      const next = document.createElement("li");
+      next.className = `page-item ${currentPage === totalPages ? "disabled" : ""}`;
+      next.innerHTML = `<a class="page-link">Next</a>`;
+      next.onclick = () => {
+        if (currentPage < totalPages) { currentPage++; renderTable(); }
+      };
+      paginationControls.appendChild(next);
+    }
+
+    function deleteRow(id) {
+      const index = data.findIndex(row => row[0] === id);
+      if (index !== -1) {
+        data.splice(index, 1);
+        filteredData = data;
+        currentPage = 1;
+        renderTable();
+      }
+    }
+
+    function viewRow(id) {
+      const row = data.find(r => r[0] === id);
+      if (row) {
+        alert(`ID: ${row[0]}\nType: ${row[1]}\nAmount: ${row[2]}`);
+      }
+    }
+
+    searchInput.addEventListener("input", () => {
+      const value = searchInput.value.toLowerCase();
+      filteredData = data.filter(row => row.some(cell => cell.toLowerCase().includes(value)));
+      currentPage = 1;
       renderTable();
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    });
 
+    entriesSelect.addEventListener("change", () => {
+      entriesPerPage = parseInt(entriesSelect.value);
+      currentPage = 1;
+      renderTable();
+    });
+
+    renderTable();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">  
+  </script>
    
 
 </body>
