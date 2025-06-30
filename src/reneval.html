@@ -396,6 +396,43 @@
       <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
+
+
+<!--       ################################################  -->
+   <script>
+      $(document).ready(function () {
+        $("#membersTable").DataTable({
+          responsive: true,
+          autoWidth: false,
+          paging: true,
+          ordering: true,
+          info: true,
+          columnDefs: [
+            { responsivePriority: 1, targets: 2 },
+            { responsivePriority: 2, targets: 10 },
+            { responsivePriority: 3, targets: 5 },
+            { targets: [0, 6, 7, 8], className: "text-center" },
+          ],
+        });
+
+        // Image modal preview
+        $("body").on("click", ".img-thumbnail", function () {
+          const src = $(this).attr("src");
+          $("#modalImage").attr("src", src);
+          new bootstrap.Modal("#imageModal").show();
+        });
+      });
+    </script>
+<
+
+      <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+
+ !--       ###################################################### -->
     <!-- plugins:js -->
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
