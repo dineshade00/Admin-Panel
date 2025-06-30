@@ -380,24 +380,21 @@
 
               </div>
               <div class="row">
-               <div class="col-md-12 grid-margin stretch-card">
-                <div class="card">
-                 <div class="card-body">
-                 <div class="clearfix mb-3">
-                    <h4 class="card-title float-start" style="color:#4b0082">Revenue Graph</h4>
-          
+               <div class="col-12 mb-4">
+                 <div class="card h-100">
+                   <div class="card-body">
+                     <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap">
+                       <h4 class="card-title text-primary mb-2">Earnings Overview</h4>
+                     </div>
+                     <div class="chart-container" style="position: relative; height:50vw; max-height:400px;">
+                     <canvas id="earningsChart"></canvas>
+                   </div>
+                  </div>
+                 </div>
                 </div>
-               <canvas id="earningsChart" height="100"></canvas>
               </div>
-             </div>
-            </div>
-          </div>
-
-
-
               
-
-              <div class="row">
+             <div class="row">
                 <div class="col-12 grid-margin">
                   <div class="card">
                     <div class="card-body">
@@ -500,45 +497,45 @@
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
-       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-      <script>
-        const ctx = document.getElementById('earningsChart').getContext('2d');
-        new Chart(ctx, {
-          type: 'line',
-          data: {
-          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-          datasets: [{
-           label: 'Earnings',
-           data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
-           borderColor: '#4e73df',
-           backgroundColor: 'rgba(78, 115, 223, 0.05)',
-           fill: true,
-           tension: 0.4,
-           pointBackgroundColor: '#4e73df',
-           pointRadius: 4
-        }]
-       },
-           options: {
-           plugins: {
-           legend: {
-           display: false
-         }
-       },
-           scales: {
-           y: {
-           beginAtZero: true,
-           ticks: {
-           callback: function(value) {
-           return '₹' + value.toLocaleString();
-             }
-           }
-         }
-       }
-     }
-   });
- </script>
-
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('earningsChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      datasets: [{
+        label: 'Earnings',
+        data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+        borderColor: '#4e73df',
+        backgroundColor: 'rgba(78, 115, 223, 0.05)',
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: '#4e73df',
+        pointRadius: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: function(value) {
+              return '$' + value.toLocaleString();
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
 
 </body>
 
