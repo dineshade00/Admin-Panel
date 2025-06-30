@@ -379,8 +379,23 @@
                 </div>
 
               </div>
+              <div class="row">
+               <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                 <div class="card-body">
+                 <div class="clearfix mb-3">
+                    <h4 class="card-title float-start text-primary">Revenue Graph</h4>
+          
+                </div>
+               <canvas id="earningsChart" height="100"></canvas>
+              </div>
+             </div>
+            </div>
+          </div>
 
 
+
+              
 
               <div class="row">
                 <div class="col-12 grid-margin">
@@ -485,80 +500,44 @@
       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 
+       <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
       <script>
-        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
-        const trafficCtx = document.getElementById('trafficChart').getContext('2d');
-
-        const revenueData = {
-          monthly: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
-            data: [12000, 15000, 18000, 20000, 17000, 21000]
-          },
-          weekly: {
-            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-            data: [1800, 2200, 2000, 2400, 2100, 2500, 2700]
-          },
-          yearly: {
-            labels: ['2020', '2021', '2022', '2023', '2024'],
-            data: [120000, 135000, 150000, 175000, 200000]
-          }
-        };
-
-        let revenueChart = new Chart(revenueCtx, {
+        const ctx = document.getElementById('earningsChart').getContext('2d');
+        new Chart(ctx, {
           type: 'line',
           data: {
-            labels: revenueData.monthly.labels,
-            datasets: [{
-              label: 'Revenue (INR)',
-              data: revenueData.monthly.data,
-              borderColor: '#7e57c2',
-              backgroundColor: 'rgba(126, 87, 194, 0.1)',
-              fill: true,
-              tension: 0.4,
-              pointBackgroundColor: '#7e57c2',
-              borderWidth: 2
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: { display: false }
-            }
-          }
-        });
-
-        function updateChart(type) {
-          document.getElementById('selectedPeriod').textContent = type.charAt(0).toUpperCase() + type.slice(1);
-          revenueChart.data.labels = revenueData[type].labels;
-          revenueChart.data.datasets[0].data = revenueData[type].data;
-          revenueChart.update();
-        }
-
-        new Chart(trafficCtx, {
-          type: 'doughnut',
-          data: {
-            labels: ['Instagram', 'Walk-ins', 'Facebook', 'Google Ads'],
-            datasets: [{
-              data: [45, 25, 20, 10],
-              backgroundColor: ['#ff6f61', '#88b04b', '#6b5b95', '#f7cac9'],
-              hoverOffset: 10
-            }]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: {
-                position: 'bottom',
-                labels: {
-                  boxWidth: 15
-                }
-              }
-            }
-          }
-        });
-      </script>
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          datasets: [{
+           label: 'Earnings',
+           data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+           borderColor: '#4e73df',
+           backgroundColor: 'rgba(78, 115, 223, 0.05)',
+           fill: true,
+           tension: 0.4,
+           pointBackgroundColor: '#4e73df',
+           pointRadius: 4
+        }]
+       },
+           options: {
+           plugins: {
+           legend: {
+           display: false
+         }
+       },
+           scales: {
+           y: {
+           beginAtZero: true,
+           ticks: {
+           callback: function(value) {
+           return '₹' + value.toLocaleString();
+             }
+           }
+         }
+       }
+     }
+   });
+ </script>
 
 
 </body>
