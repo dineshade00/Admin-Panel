@@ -57,6 +57,33 @@
       margin-right: 20px;
       padding-right:14px;
   }
+    /* Sticky Sidebar for Desktop Only */
+@media (min-width: 992px) {
+  .sidebar {
+    position: fixed;
+    top: 70px; /* Navbar ki height */
+    left: 0;
+    height: calc(100vh - 70px);
+    width: 240px; /* Sidebar ki width */
+    overflow-y: auto;
+    background: #fff; /* Sidebar background color */
+    z-index: 1000;
+  }
+
+  .page-body-wrapper {
+    margin-left: 240px;
+  }
+
+  .main-panel {
+    width: calc(100% - 240px);
+  }
+}
+
+/* Optional: Sidebar ka scrollbar chhupane ke liye */
+.sidebar::-webkit-scrollbar {
+  width: 0px;
+}
+
    
 </style>
 </head>
