@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Manage Members</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- End layout styles -->
+  <link rel="shortcut icon" href="assets/images/favicon.png" />
+  <link href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css" rel="stylesheet">
+  <!-- Include Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+
+  
+   <style>
+    th.sortable {
+      cursor: pointer;
+    }
+
+ .table thead th { white-space: nowrap; }
+    .expandable-row { display: none; background-color: #f9f9f9; }
+    .expanded + .expandable-row { display: table-row; }
+    .cursor-pointer { cursor: pointer; }
+    @media (max-width: 767.98px) {
+      .col-email, .col-address, .col-type, .col-status, .col-actions {
+        display: none;
+      }
+    }
+    @media (min-width: 768px) and (max-width: 991.98px) {
+      .col-type, .col-status, .col-actions {
+        display: none;
+      }
+    }
+    @media (min-width: 992px) {
+      .expandable-row { display: none !important; }
+    }
+    .table-responsive { overflow-x: unset; }
+
+    /* Stack buttons vertically in desktop */
+    @media (min-width: 992px) {
+      .col-actions .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.25rem;
+      }
+    }
+
+    .cursor-pointer {
+      cursor: pointer;
+    }
+
+    .table {
+      width: 100%;
+      margin-bottom: 1rem;
+      background-color: transparent;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    @media (min-width: 992px) {
+      .table-responsive {
+        overflow-x: unset; /* Removes scrollbar */
+      }
+    }
+ 
+    .btn-info {
+      background-color: #4b0082;
+      color: white;
+    }
+
+    .btn-info:hover {
+      background-color: #4b0082;
+      color: white;
+    }
+    .btn-edit {
+      background-color: #013e0d;
+      color: white;
+    }
+
+    .btn-edit:hover {
+      background-color: #004d00;
+      color: white;
+    }
+
+    .btn-delete {
+      background-color: #d80404;
+      color: white;
+    }
+
+    .btn-delete:hover {
+      background-color: #a30303;
+      color: white;
+    }
+
+   
+  </style>
+
+
+  
+</head>
+
+<body>
+  <div class="container-scroller">
+
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+        <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
+            alt="logo" /></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item nav-profile dropdown">
+
+          </li>
+          <li class="nav-item dropdown">
+            <!-- Additional dropdown -->
+          </li>
+
+          <li class="nav-item dropdown">
+            <!-- Additional dropdown -->
+          </li>
+
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <!-- Logout link -->
+          </li>
+          <!-- ⛶ Fullscreen Button -->
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link" href="#">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+       <ul class="nav">
+          <li class="nav-item nav-profile bg-dark">
+
+                          <!-- <a href="#" class="nav-link">
+               <div class="nav-profile-image"> 
+                 <img src="https://kavyainfoweb.com/wp-content/uploads/2025/05/Kavya-768x430.png" alt="profile" /> 
+                 <span class="login-status online"></span> 
+             </div>  
+                <div class="nav-profile-text d-flex flex-column" style="margin-right: -15px;">
+                     <span class="font-weight mb-2" style="color:white;font-size:15px;text-align:center">Kavya Infoweb Pvt Ltd</span>
+                </div>
+
+              </a> -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Dashboard</span>
+              <i class="mdi mdi-home menu-icon" style="color:#301934"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+              aria-controls="ui-basic">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Membership Plans</span>
+              <i class="menu" style="color:#301934"></i>
+              <i class="mdi mdi-folder-key menu-icon" style="color:#301934"></i>
+            </a>
+
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="add_new.html" style="color:#301934">
+                    <i class="mdi mdi-plus-box me-2" style="color:#301934;font-weight:bold"></i> Add New
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="view_manage.html" style="color:#301934">
+                    <i class="mdi mdi-eye-settings me-2" style="color:#301934;font-weight:bold"></i> View and Manage
+                    Plans
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="addmember.html" aria-expanded="false" aria-controls="icons">
+              <span class="menu-title" style="color:#301934; font-weight:bold">Add Member</span>
+              <i class="mdi mdi-contacts menu-icon" style="color:#301934"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="managemember.html" aria-expanded="false" aria-controls="icons">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Manage Member</span>
+              <i class="mdi mdi-account-group menu-icon" style="color:#301934"></i>
+            </a>
+           
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="reneval.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Reneval</span>
+              <i class="mdi mdi-account-multiple-check menu-icon" style="color:#301934;"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="membership_report.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Membership Report</span>
+              <i class="mdi mdi-account-multiple-check menu-icon" style="color:#301934;"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="revenue_report.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Revenue Report</span>
+              <i class="mdi mdi-finance menu-icon" style="color:#301934;"></i>
+            </a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="settings.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Settings</span>
+              <i class="mdi mdi-cog menu-icon" style="color:#301934;"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Logout</span>
+              <i class="mdi mdi-logout menu-icon" style="color:#301934;"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">
+              <span class="page-title-icon text-white me-2" style="background-color: #4b0082;">
+                <i class="bi bi-person-vcard-fill"></i>
+              </span> Edit Members
+            </h3>
+            <nav aria-label="breadcrumb">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Edit Members
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="container">
+            <div class="row text-white" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+              
+
+            <!-- ##############################################################################  -->
+             
+
+            <!-- Load Content Here... -->
+       
+
+    <!-- Form Header -->
+    <div class="d-flex align-items-center text-white p-3 mb-0" style="background-color:#4b0082; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+      <h5 class="mb-0 fw-normal">Edit Member Details</h5>
+    </div>
+
+    <!-- Form Body -->
+    <form action="/src/managemember.html" method="get" class="p-4" style="background-color: #ffffff; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;">
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="fullName" class="form-label fw-bold text-dark">Full Name</label>
+          <input type="text" id="fullName" class="form-control" placeholder="Enter Your Name" />
+        </div>
+        <div class="col-md-3">
+          <label for="dob" class="form-label fw-bold text-dark">Date of Birth</label>
+          <input type="date" id="dob" class="form-control"  />
+        </div>
+        <div class="col-md-3">
+          <label for="gender" class="form-label fw-bold text-dark">Gender</label>
+          <select id="gender" class="form-select">
+            <option>Male</option>
+            <option>Female</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="phone" class="form-label fw-bold text-dark">Contact Number</label>
+          <input type="tel" id="phone" class="form-control" placeholder="Enter Your Contact Number" />
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label fw-bold text-dark">Email</label>
+          <input type="email" id="email" class="form-control" placeholder="Enter Your Email" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="address" class="form-label fw-bold text-dark">Address</label>
+          <input type="text" id="address" class="form-control" placeholder="Enter Your Address" />
+        </div>
+        <div class="col-md-6">
+          <label for="country" class="form-label fw-bold text-dark">Country</label>
+          <input type="text" id="country" class="form-control" value="India" />
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="postcode" class="form-label fw-bold text-dark">Postcode</label>
+          <input type="text" id="postcode" class="form-control" placeholder="Enter Your Postcode" />
+        </div>
+        <div class="col-md-6">
+          <label for="occupation" class="form-label fw-bold text-dark">Occupation</label>
+          <input type="text" id="occupation" class="form-control" placeholder="Enter Your Occupation" />
+        </div>
+      </div>
+
+      <div class="mb-3 col-md-5">
+        <label for="memberPhoto" class="form-label fw-bold text-dark">Member Photo</label>
+        <input type="file" id="memberPhoto" class="form-control" />
+        <small class="form-text text-muted">Leave it blank if you don’t want to change the photo.</small>
+      </div>
+
+      <button type="Submit" class="btn text-white" style="background-color: #4b0082;">Submit</button>
+    </form>
+  
+            <!-- ##############################################################################  -->
+              
+         
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+         
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+          <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">&copy; 2025 Olympus Gym -
+                All
+                rights reserved.</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Software Developed & Managed By
+                <a href="https://kavyainfoweb.com/" target="_blank">Kavya Infoweb Pvt. Ltd.</a></span>
+            </div>
+          </footer>
+      </div>
+      <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="assets/vendors/chart.js/chart.umd.js"></script>
+    <script src="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <script src="assets/js/jquery.cookie.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="assets/js/dashboard.js"></script>
+
+</body>
+
+</html>
