@@ -433,188 +433,213 @@
    
 
 
-   <script>
-    const plans = ["1 Month Plan", "2 Months Plan", "3 Months Plan", "6 Months Plan", "12 Months Plan"];
-    const data = Array.from({ length: 50 }, (_, i) => ({
-      id: i + 1,
-      name: `Member ${i + 1}`,
-      contact: `123456789${i}`,
-      email: `member${i + 1}@example.com`,
-      address: `Address ${i + 1}`,
-      type: plans[i % plans.length],
-      status: i % 3 === 0 ? "Expired" : "Active"
-    }));
+  <script>
+  const plans = ["1 Month Plan", "2 Months Plan", "3 Months Plan", "6 Months Plan", "12 Months Plan"];
+  let data = Array.from({ length: 50 }, (_, i) => ({
+    id: i + 1,
+    name: `Member ${i + 1}`,
+    contact: `123456789${i}`,
+    email: `member${i + 1}@example.com`,
+    address: `Address ${i + 1}`,
+    type: plans[i % plans.length],
+    status: i % 3 === 0 ? "Expired" : "Active"
+  }));
 
-    let currentPage = 1;
-    let itemsPerPage = 10;
-    let searchTerm = "";
-    let sortConfig = { key: "id", direction: "ascending" };
+  let currentPage = 1;
+  let itemsPerPage = 10;
+  let searchTerm = "";
+  let sortConfig = { key: "id", direction: "ascending" };
 
-    const tableBody = document.getElementById("membersBody");
-    const pagination = document.getElementById("pagination");
-    const entryInfo = document.getElementById("entryInfo");
+  const tableBody = document.getElementById("membersBody");
+  const pagination = document.getElementById("pagination");
+  const entryInfo = document.getElementById("entryInfo");
 
-    document.getElementById("recordsPerPage").addEventListener("change", (e) => {
-      itemsPerPage = parseInt(e.target.value);
-      currentPage = 1;
-      renderTable();
-    });
+  document.getElementById("recordsPerPage").addEventListener("change", (e) => {
+    itemsPerPage = parseInt(e.target.value);
+    currentPage = 1;
+    renderTable();
+  });
 
-    document.getElementById("search").addEventListener("input", (e) => {
-      searchTerm = e.target.value.toLowerCase();
-      currentPage = 1;
-      renderTable();
-    });
+  document.getElementById("search").addEventListener("input", (e) => {
+    searchTerm = e.target.value.toLowerCase();
+    currentPage = 1;
+    renderTable();
+  });
 
-    document.querySelectorAll("th.sortable").forEach((th) => {
-      th.addEventListener("click", () => {
-        const key = th.dataset.key;
-        if (sortConfig.key === key) {
-          sortConfig.direction = sortConfig.direction === "ascending" ? "descending" : "ascending";
-        } else {
-          sortConfig.key = key;
-          sortConfig.direction = "ascending";
-        }
-        renderTable();
-      });
-    });
-
-    function getSortedData() {
-      return [...data].sort((a, b) => {
-        const aVal = typeof a[sortConfig.key] === "string" ? a[sortConfig.key].toLowerCase() : a[sortConfig.key];
-        const bVal = typeof b[sortConfig.key] === "string" ? b[sortConfig.key].toLowerCase() : b[sortConfig.key];
-        if (aVal < bVal) return sortConfig.direction === "ascending" ? -1 : 1;
-        if (aVal > bVal) return sortConfig.direction === "ascending" ? 1 : -1;
-        return 0;
-      });
-    }
-
-    function renderTable() {
-      const filtered = getSortedData().filter(member =>
-        Object.values(member).some(val => val.toString().toLowerCase().includes(searchTerm))
-      );
-
-      const totalItems = filtered.length;
-      const totalPages = Math.ceil(totalItems / itemsPerPage);
-      const paginated = filtered.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-
-      tableBody.innerHTML = "";
-
-      if (paginated.length === 0) {
-        tableBody.innerHTML = `<tr><td colspan="8" class="text-center">No members found.</td></tr>`;
+  document.querySelectorAll("th.sortable").forEach((th) => {
+    th.addEventListener("click", () => {
+      const key = th.dataset.key;
+      if (sortConfig.key === key) {
+        sortConfig.direction = sortConfig.direction === "ascending" ? "descending" : "ascending";
       } else {
-        const screenWidth = window.innerWidth;
+        sortConfig.key = key;
+        sortConfig.direction = "ascending";
+      }
+      renderTable();
+    });
+  });
 
-        for (const member of paginated) {
-          const rowId = `row-${member.id}`;
-          let extraFields = "";
+  function getSortedData() {
+    return [...data].sort((a, b) => {
+      const aVal = typeof a[sortConfig.key] === "string" ? a[sortConfig.key].toLowerCase() : a[sortConfig.key];
+      const bVal = typeof b[sortConfig.key] === "string" ? b[sortConfig.key].toLowerCase() : b[sortConfig.key];
+      if (aVal < bVal) return sortConfig.direction === "ascending" ? -1 : 1;
+      if (aVal > bVal) return sortConfig.direction === "ascending" ? 1 : -1;
+      return 0;
+    });
+  }
+
+  function renderTable() {
+    const filtered = getSortedData().filter(member =>
+      Object.values(member).some(val => val.toString().toLowerCase().includes(searchTerm))
+    );
+
+    const totalItems = filtered.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const paginated = filtered.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+
+    tableBody.innerHTML = "";
+
+    if (paginated.length === 0) {
+      tableBody.innerHTML = `<tr><td colspan="8" class="text-center">No members found.</td></tr>`;
+    } else {
+      const screenWidth = window.innerWidth;
+
+      paginated.forEach((member, index) => {
+        const rowId = `row-${member.id}`;
+        let extraFields = "";
 
         if (screenWidth < 768) {
-  extraFields = `
-    <div class="mb-3"><strong>Email:</strong> ${member.email}</div>
-    <div class="mb-3"><strong>Address:</strong> ${member.address}</div>
-    <div class="mb-3"><strong>Plan:</strong> ${member.type}</div>
-    <div class="mb-3">
-      <strong>Status:</strong>
-      <span class="badge" style="background-color: ${member.status === 'Active' ? '#004D00' : '#D80404'};">${member.status}</span>
-    </div>
-    <div class="mb-3">
-      <strong>Actions:</strong><br>
-      <a href="member_profile.html" class="btn btn-info btn-sm me-2 mt-2 mb-2"><i class="fas fa-id-card"></i></a>
-      <a href="edit_members.html" class="btn btn-edit btn-sm me-2 mt-2 mb-2"><i class="fas fa-edit"></i></a>
-      <button class="btn btn-delete btn-sm mt-2 mb-2"><i class="fas fa-trash-alt"></i></button>
-    </div>
-  `;
-} else if (screenWidth < 992) {
-  extraFields = `
-    <div class="mb-3"><strong>Plan:</strong> ${member.type}</div>
-    <div class="mb-3">
-      <strong>Status:</strong>
-      <span class="badge" style="background-color: ${member.status === 'Active' ? '#004D00' : '#D80404'};">${member.status}</span>
-    </div>
-    <div class="mb-3">
-      <strong>Actions:</strong><br>
-      <a href="member_profile.html" class="btn btn-info btn-sm me-2 mt-2 mb-2"><i class="fas fa-id-card"></i></a>
-      <a href="edit_members.html" class="btn btn-edit btn-sm me-2 mt-2 mb-2"><i class="fas fa-edit"></i></a>
-      <button class="btn btn-delete btn-sm mt-2 mb-2"><i class="fas fa-trash-alt"></i></button>
-    </div>
-  `;
-}
-
-          const isExpandable = screenWidth < 992;
-
-          tableBody.innerHTML += `
-            <tr class="${isExpandable ? 'cursor-pointer' : ''}" data-toggle-id="${rowId}">
-              <td><i class="fas fa-plus-circle text-primary me-2 toggle-icon"></i> ${member.id}</td>
-              <td>${member.name}</td>
-              <td>${member.contact}</td>
-              <td class="col-email">${member.email}</td>
-              <td class="col-address">${member.address}</td>
-              <td class="col-type">${member.type}</td>
-              <td class="col-status">
-                <span class="badge" style="background-color: ${member.status === 'Active' ? '#004D00' : '#D80404'};">
-                  ${member.status}
-                </span>
-              </td>
-              <td class="col-actions">
-                <a href="member_profile.html" class="btn btn-info btn-sm me-2 mt-2 mb-2"><i class="fas fa-id-card"></i></a>
-                <a href="edit_members.html" class="btn btn-edit btn-sm me-2 mt-2 mb-2"><i class="fas fa-edit"></i></a>
-                <button class="btn btn-delete btn-sm mb-2"><i class="fas fa-trash-alt"></i></button>
-              </td>
-            </tr>
-            <tr class="expandable-row" id="${rowId}">
-              <td colspan="8">${extraFields}</td>
-            </tr>
+          extraFields = `
+            <div class="mb-3"><strong>Email:</strong> ${member.email}</div>
+            <div class="mb-3"><strong>Address:</strong> ${member.address}</div>
+            <div class="mb-3"><strong>Plan:</strong> ${member.type}</div>
+            <div class="mb-3">
+              <strong>Status:</strong>
+              <span class="badge" style="background-color: ${member.status === 'Active' ? '#004D00' : '#D80404'};">${member.status}</span>
+            </div>
+            <div class="mb-3">
+              <strong>Actions:</strong><br>
+              <a href="member_profile.html" class="btn btn-info btn-sm me-2 mt-2 mb-2"><i class="fas fa-id-card"></i></a>
+              <button class="btn btn-edit btn-sm me-2 mt-2 mb-2" onclick='handleEdit(${JSON.stringify(member)})'>
+  <i class="fas fa-edit"></i>
+</button>
+              <button class="btn btn-delete btn-sm mt-2 mb-2" data-id="${member.id}"><i class="fas fa-trash-alt"></i></button>
+            </div>
+          `;
+        } else if (screenWidth < 992) {
+          extraFields = `
+            <div class="mb-3"><strong>Plan:</strong> ${member.type}</div>
+            <div class="mb-3">
+              <strong>Status:</strong>
+              <span class="badge" style="background-color: ${member.status === 'Active' ? '#004D00' : '#D80404'};">${member.status}</span>
+            </div>
+            <div class="mb-3">
+              <strong>Actions:</strong><br>
+              <a href="member_profile.html" class="btn btn-info btn-sm me-2 mt-2 mb-2"><i class="fas fa-id-card"></i></a>
+             <button class="btn btn-edit btn-sm me-2 mt-2 mb-2" onclick='handleEdit(${JSON.stringify(member)})'>
+  <i class="fas fa-edit"></i>
+</button>
+              <button class="btn btn-delete btn-sm mt-2 mb-2" data-id="${member.id}"><i class="fas fa-trash-alt"></i></button>
+            </div>
           `;
         }
 
-        document.querySelectorAll("[data-toggle-id]").forEach(row => {
-          row.addEventListener("click", () => {
-            row.classList.toggle("expanded");
-          });
+        const isExpandable = screenWidth < 992;
+
+        tableBody.innerHTML += `
+          <tr class="${isExpandable ? 'cursor-pointer' : ''}" data-toggle-id="${rowId}">
+            <td><i class="fas fa-plus-circle text-primary me-2 toggle-icon"></i> ${(currentPage - 1) * itemsPerPage + index + 1}</td>
+            <td>${member.name}</td>
+            <td>${member.contact}</td>
+            <td class="col-email">${member.email}</td>
+            <td class="col-address">${member.address}</td>
+            <td class="col-type">${member.type}</td>
+            <td class="col-status">
+              <span class="badge" style="background-color: ${member.status === 'Active' ? '#004D00' : '#D80404'};">
+                ${member.status}
+              </span>
+            </td>
+            <td class="col-actions">
+              <a href="member_profile.html" class="btn btn-info btn-sm me-2 mb-2"><i class="fas fa-id-card"></i></a>
+              <button class="btn btn-edit btn-sm me-2 mt-2 mb-2" onclick='handleEdit(${JSON.stringify(member)})'>
+  <i class="fas fa-edit"></i>
+</button>
+              <button class="btn btn-delete btn-sm mb-2" data-id="${member.id}"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr>
+          <tr class="expandable-row" id="${rowId}">
+            <td colspan="8">${extraFields}</td>
+          </tr>
+        `;
+      });
+
+      // Toggle expandable rows
+      document.querySelectorAll("[data-toggle-id]").forEach(row => {
+        row.addEventListener("click", () => {
+          row.classList.toggle("expanded");
         });
-      }
+      });
 
-      entryInfo.textContent = `Showing ${totalItems === 0 ? 0 : (currentPage - 1) * itemsPerPage + 1} to ${Math.min(currentPage * itemsPerPage, totalItems)} of ${totalItems} entries`;
-      renderPagination(totalPages);
-    }
+      // Delete button handler
+      document.querySelectorAll(".btn-delete").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation(); // Prevent row toggle
+          const memberId = parseInt(btn.getAttribute("data-id"));
+          data = data.filter(member => member.id !== memberId);
 
-    function renderPagination(totalPages) {
-      pagination.innerHTML = "";
+          const maxPages = Math.ceil(data.length / itemsPerPage);
+          if (currentPage > maxPages) currentPage = maxPages;
 
-      const addButton = (label, page, disabled = false, active = false) => {
-        const li = document.createElement("li");
-        li.className = `page-item ${disabled ? "disabled" : ""} ${active ? "active" : ""}`;
-        const btn = document.createElement("button");
-        btn.className = "page-link";
-        btn.innerText = label;
-        btn.onclick = () => {
-          currentPage = page;
           renderTable();
-        };
-        li.appendChild(btn);
-        pagination.appendChild(li);
-      };
-
-      addButton("First", 1, currentPage === 1);
-      addButton("Previous", currentPage - 1, currentPage === 1);
-
-      const maxPages = 5;
-      let start = Math.max(1, currentPage - Math.floor(maxPages / 2));
-      let end = Math.min(totalPages, start + maxPages - 1);
-      if (end - start + 1 < maxPages) start = Math.max(1, end - maxPages + 1);
-
-      for (let i = start; i <= end; i++) {
-        addButton(i, i, false, i === currentPage);
-      }
-
-      addButton("Next", currentPage + 1, currentPage === totalPages);
-      addButton("Last", totalPages, currentPage === totalPages);
+        });
+      });
     }
 
-    window.addEventListener("resize", renderTable);
-    renderTable();
-  </script>      
+    entryInfo.textContent = `Showing ${totalItems === 0 ? 0 : (currentPage - 1) * itemsPerPage + 1} to ${Math.min(currentPage * itemsPerPage, totalItems)} of ${totalItems} entries`;
+    renderPagination(totalPages);
+  }
+
+  function renderPagination(totalPages) {
+    pagination.innerHTML = "";
+
+    const addButton = (label, page, disabled = false, active = false) => {
+      const li = document.createElement("li");
+      li.className = `page-item ${disabled ? "disabled" : ""} ${active ? "active" : ""}`;
+      const btn = document.createElement("button");
+      btn.className = "page-link";
+      btn.innerText = label;
+      btn.onclick = () => {
+        currentPage = page;
+        renderTable();
+      };
+      li.appendChild(btn);
+      pagination.appendChild(li);
+    };
+
+    addButton("First", 1, currentPage === 1);
+    addButton("Previous", currentPage - 1, currentPage === 1);
+
+    const maxPages = 5;
+    let start = Math.max(1, currentPage - Math.floor(maxPages / 2));
+    let end = Math.min(totalPages, start + maxPages - 1);
+    if (end - start + 1 < maxPages) start = Math.max(1, end - maxPages + 1);
+
+    for (let i = start; i <= end; i++) {
+      addButton(i, i, false, i === currentPage);
+    }
+
+    addButton("Next", currentPage + 1, currentPage === totalPages);
+    addButton("Last", totalPages, currentPage === totalPages);
+  }
+
+  window.addEventListener("resize", renderTable);
+  renderTable();
+   function handleEdit(member) {
+    localStorage.setItem("editMember", JSON.stringify(member));
+    window.location.href = "edit_members.html";
+  }
+</script> 
 </body>
 
 </html>
