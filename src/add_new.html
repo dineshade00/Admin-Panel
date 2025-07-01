@@ -1,120 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Add New Membership</title>
 
-    <link
-      rel="stylesheet"
-      href="assets/vendors/mdi/css/materialdesignicons.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/vendors/ti-icons/css/themify-icons.css"
-    />
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css" />
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
-    <link
-      rel="stylesheet"
-      href="assets/vendors/font-awesome/css/font-awesome.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css"
-    />
+    <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="shortcut icon" href="assets/images/favicon.png" />
-    <link
-      href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Inside your <style> tag in <head> -->
     <style>
-      .tab-button {
-        border-radius: 10px;
-        padding: 6px 16px;
-        font-weight: 500;
-      }
+        .tab-button {
+            border-radius: 10px;
+            padding: 6px 16px;
+            font-weight: 500;
+        }
 
-      .tab-active {
-        background-color: #8f4de3;
-        color: white;
-        border: 2px solid #8f4de3;
-      }
+        .tab-active {
+            background-color: #8f4de3;
+            color: white;
+            border: 2px solid #8f4de3;
+        }
 
-      .tab-inactive {
-        background-color: white;
-        color: #8f4de3;
-        border: 2px solid #8f4de3;
-      }
-
-      .card-header {
-        background-color: #4b0082 !important;
-        width: 100%;
-        font-size: 20px;
-        font-weight: 500;
-        padding: 15px 20px;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-      }
-
-      @media (max-width: 767.98px) {
-        #successMessage {
-          font-size: 16px !important;
-          padding: 16px !important;
+        .tab-inactive {
+            background-color: white;
+            color: #8f4de3;
+            border: 2px solid #8f4de3;
         }
 
         .card-header {
-          font-size: 16px;
-          padding: 12px 16px;
-          text-align: center;
+            background-color: #4b0082 !important;
+            width: 100%;
+            font-size: 20px;
+            font-weight: 500;
+            padding: 15px 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
         }
 
-        .form-label {
-          font-size: 14px;
+        @media (max-width: 767.98px) {
+            #successMessage {
+                font-size: 16px !important;
+                padding: 16px !important;
+            }
+
+            .card-header {
+                font-size: 16px;
+                padding: 12px 16px;
+                text-align: center;
+            }
+
+            .form-label {
+                font-size: 14px;
+            }
+
+            .btn {
+                font-size: 15px;
+                padding: 10px;
+                background-color: #4b0082;
+            }
+
+            input.form-control {
+                font-size: 14px;
+                padding: 10px;
+            }
         }
 
-        .btn {
-          font-size: 15px;
-          padding: 10px;
-          background-color: #4b0082;
-        }
+        @media (min-width: 992px) {
+            #sidebar {
+                position: fixed;
+                top: 70px;
+                /* navbar ke neeche distance adjust karo */
+                left: 0;
+                height: calc(100vh - 70px);
+                /* poori height navbar ke baad */
+                overflow-y: auto;
+                z-index: 999;
+                /* zaroorat pade to */
+            }
 
-        input.form-control {
-          font-size: 14px;
-          padding: 10px;
+            .main-panel {
+                margin-left: 240px;
+                /* sidebar ki width jitni ho utna margin do */
+            }
         }
-      }
-       @media (min-width: 992px) {
-          #sidebar {
-              position: fixed;
-              top: 70px; /* navbar ke neeche distance adjust karo */
-              left: 0;
-              height: calc(100vh - 70px); /* poori height navbar ke baad */
-              overflow-y: auto;
-              z-index: 999; /* zaroorat pade to */
-             }
-
-          .main-panel {
-             margin-left: 240px; /* sidebar ki width jitni ho utna margin do */
-          }
-       }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="container-scroller">
-      <!-- Navbar -->
-<!--       <nav
+        <!-- Navbar -->
+        <!--       <nav
         class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
       >
         <div
@@ -153,223 +138,151 @@
       </nav>
       -->
 
-  <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-  <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
 
-    <!-- Large logo for desktop -->
-    <a class="navbar-brand brand-logo d-none d-lg-flex align-items-center" href="index.html"
-       style="gap: 10px; padding-top: 5px; padding-bottom: 5px;">
-      <img src="https://kavyainfoweb.com/gym/uploads/mlg.png" alt="logo" style="
+                <!-- Large logo for desktop -->
+                <a class="navbar-brand brand-logo d-none d-lg-flex align-items-center" href="index.html"
+                    style="gap: 10px; padding-top: 5px; padding-bottom: 5px;">
+                    <img src="https://kavyainfoweb.com/gym/uploads/mlg.png" alt="logo" style="
         height: 85px;
         width: auto;
         object-fit: contain;
         display: block;
       " />
-    </a>
+                </a>
 
-    <!-- Small logo for collapsed / tab / mobile -->
-    <a class="navbar-brand brand-logo-mini d-lg-none" href="index.html">
-      <img src="https://kavyainfoweb.com/gym/uploads/mlg.png" alt="logo" style="height:60px; object-fit:contain;" />
-    </a>
-  </div>
-
-  <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">
-    <div class="d-flex align-items-center">
-      <!-- Menu toggler -->
-      <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-        <span class="mdi mdi-menu"></span>
-      </button>
-
-      <!-- Olympus Gym heading visible only on large screens -->
-      <h3 class="mb-0 ms-2 d-none d-lg-block" style="color: #4b0082;">Olympus Gym</h3>
-    </div>
-
-    <ul class="navbar-nav navbar-nav-right">
-      <!-- add your nav items as before -->
-      <li class="nav-item d-none d-lg-block full-screen-link">
-        <a class="nav-link" href="#">
-          <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
-        </a>
-      </li>
-    </ul>
-    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-      data-toggle="offcanvas">
-      <span class="mdi mdi-menu"></span>
-    </button>
-  </div>
-</nav>
-
-
-      
-      <div class="container-fluid page-body-wrapper">
-        <!-- Sidebar -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-          <ul class="nav">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                <span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Dashboard</span
-                >
-                <i class="mdi mdi-home menu-icon" style="color: #301934"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#ui-basic"
-                aria-expanded="false"
-                aria-controls="ui-basic"
-              >
-                <span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Membership Plans</span
-                >
-                <i class="menu" style="color: #301934"></i>
-                <i
-                  class="mdi mdi-folder-key menu-icon"
-                  style="color: #301934"
-                ></i>
-              </a>
-              <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href="add_new.html"
-                      style="color: #301934"
-                      ><i class="mdi mdi-plus-box me-2"></i> Add New</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href="view_manage.html"
-                      style="color: #301934"
-                      ><i class="mdi mdi-eye-settings me-2"></i> View and Manage
-                      Plans</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="addmember.html"
-                ><span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Add Member</span
-                ><i
-                  class="mdi mdi-contacts menu-icon"
-                  style="color: #301934"
-                ></i
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="managemember.html"
-                ><span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Manage Member</span
-                ><i
-                  class="mdi mdi-account-group menu-icon"
-                  style="color: #301934"
-                ></i
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="reneval.html"
-                ><span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Reneval</span
-                ><i
-                  class="mdi mdi-account-multiple-check menu-icon"
-                  style="color: #301934"
-                ></i
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="membership_report.html"
-                ><span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Membership Report</span
-                ><i
-                  class="mdi mdi-account-multiple-check menu-icon"
-                  style="color: #301934"
-                ></i
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="revenue_report.html"
-                ><span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Revenue Report</span
-                ><i class="mdi mdi-finance menu-icon" style="color: #301934"></i
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="settings.html"
-                ><span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Settings</span
-                ><i class="mdi mdi-cog menu-icon" style="color: #301934"></i
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html"
-                ><span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Logout</span
-                ><i class="mdi mdi-logout menu-icon" style="color: #301934"></i
-              ></a>
-            </li>
-          </ul>
-        </nav>
-
-       <!-- Main Content -->
-        <div class="main-panel">
-          <div class="content-wrapper">
-            <div
-              class="page-header d-flex flex-column flex-md-row align-items-center justify-content-between text-center text-md-start"
-            >
-              <div
-                class="d-flex align-items-center justify-content-center mb-2 mb-md-0"
-              >
-                <span
-                  class="page-title-icon  text-white me-4 "
-                  style="background-color:#4b0082
-"
-                >
-                  <i class="mdi mdi-account"></i>
-                </span>
-                <h3 class="page-title m-0">Add New Membership</h3>
-              </div>
-              <nav aria-label="breadcrumb">
-                <ul
-                  class="breadcrumb m-0 d-flex flex-wrap justify-content-center justify-content-md-end"
-                >
-                  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">
-                    Add New
-                  </li>
-                </ul>
-              </nav>
+                <!-- Small logo for collapsed / tab / mobile -->
+                <a class="navbar-brand brand-logo-mini d-lg-none" href="index.html">
+                    <img src="https://kavyainfoweb.com/gym/uploads/mlg.png" alt="logo"
+                        style="height:60px; object-fit:contain;" />
+                </a>
             </div>
 
-            <div class="container">
-              <!-- Success Message -->
-              <div
-                class="card px-3 py-2 mx-auto mb-3"
-                id="successMessage"
-                style="
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <!-- Menu toggler -->
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button"
+                        data-toggle="minimize">
+                        <span class="mdi mdi-menu"></span>
+                    </button>
+
+                    <!-- Olympus Gym heading visible only on large screens -->
+                    <h3 class="mb-0 ms-2 d-none d-lg-block" style="color: #4b0082;">Olympus Gym</h3>
+                </div>
+
+                <ul class="navbar-nav navbar-nav-right">
+                    <!-- add your nav items as before -->
+                    <li class="nav-item d-none d-lg-block full-screen-link">
+                        <a class="nav-link" href="#">
+                            <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+                        </a>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
+        </nav>
+
+
+
+        <div class="container-fluid page-body-wrapper">
+            <!-- Sidebar -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <span class="menu-title" style="color: #301934; font-weight: bold">Dashboard</span>
+                            <i class="mdi mdi-home menu-icon" style="color: #301934"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                            aria-controls="ui-basic">
+                            <span class="menu-title" style="color: #301934; font-weight: bold">Membership Plans</span>
+                            <i class="menu" style="color: #301934"></i>
+                            <i class="mdi mdi-folder-key menu-icon" style="color: #301934"></i>
+                        </a>
+                        <div class="collapse" id="ui-basic">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="add_new.html" style="color: #301934"><i
+                                            class="mdi mdi-plus-box me-2"></i> Add New</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="view_manage.html" style="color: #301934"><i
+                                            class="mdi mdi-eye-settings me-2"></i> View and Manage
+                                        Plans</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="addmember.html"><span class="menu-title"
+                                style="color: #301934; font-weight: bold">Add Member</span><i
+                                class="mdi mdi-contacts menu-icon" style="color: #301934"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="managemember.html"><span class="menu-title"
+                                style="color: #301934; font-weight: bold">Manage Member</span><i
+                                class="mdi mdi-account-group menu-icon" style="color: #301934"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reneval.html"><span class="menu-title"
+                                style="color: #301934; font-weight: bold">Reneval</span><i
+                                class="mdi mdi-account-multiple-check menu-icon" style="color: #301934"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="membership_report.html"><span class="menu-title"
+                                style="color: #301934; font-weight: bold">Membership Report</span><i
+                                class="mdi mdi-account-multiple-check menu-icon" style="color: #301934"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="revenue_report.html"><span class="menu-title"
+                                style="color: #301934; font-weight: bold">Revenue Report</span><i
+                                class="mdi mdi-finance menu-icon" style="color: #301934"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="settings.html"><span class="menu-title"
+                                style="color: #301934; font-weight: bold">Settings</span><i
+                                class="mdi mdi-cog menu-icon" style="color: #301934"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html"><span class="menu-title"
+                                style="color: #301934; font-weight: bold">Logout</span><i
+                                class="mdi mdi-logout menu-icon" style="color: #301934"></i></a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div
+                        class="page-header d-flex flex-column flex-md-row align-items-center justify-content-between text-center text-md-start">
+                        <div class="d-flex align-items-center justify-content-center mb-2 mb-md-0">
+
+                            <h3 class="page-title">
+                                <span class="page-title-icon  text-white me-2" style="background-color: #4b0082;"><i
+                                        class="mdi mdi-account"></i></span>
+                                Add New Membership
+                            </h3>
+                        </div>
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb m-0 d-flex flex-wrap justify-content-center justify-content-md-end">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Add New
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="container">
+                        <!-- Success Message -->
+                        <div class="card px-3 py-2 mx-auto mb-3" id="successMessage" style="
                   display: none;
                   background-color: #28a745;
                   color: #fff;
@@ -379,91 +292,62 @@
                   text-align: center;
                   font-size: 18px;
                   width: 100%;
-                "
-              >
-                Membership Type Added Successfully!
-              </div>
-              <!-- Membership Form -->
-              <div class="card" style="padding-top: 30px">
-                <div
-                  class="card-header text-white"
-                  style="background-color: #9b56f5"
-                >
-                  <i class="bi bi-card-checklist me-2"></i> Add New Membership
-                  Type Plan
-                </div>
-                <div class="card-body">
-                  <form autocomplete="off" id="membershipForm">
-                    <div class="row mb-3">
-                      <div class="col-md-6 mb-3 mb-md-0">
-                        <label class="form-label fw-semibold"
-                          >Membership Type</label
-                        >
-                        <input
-                          class="form-control"
-                          id="membershipType"
-                          list="membershipOptions"
-                          placeholder="Enter or select membership type"
-                          required=""
-                          type="text"
-                        />
-                        <datalist id="membershipOptions">
-                          <option value="1 Month Plan"></option>
-                          <option value="2 Month Plan"></option>
-                          <option value="3 Month Plan"></option>
-                          <option value="6 Month Plan"></option>
-                          <option value="1 Year Plan"></option>
-                          <option value="Gym + Cardio 1 Month Plan"></option>
-                          <option value="Gym + Cardio 3 Month Plan"></option>
-                          <option value="Gym + Cardio 6 Month Plan"></option>
-                          <option value="Gym + Cardio 1 Year Plan"></option>
-                        </datalist>
-                      </div>
-                      <div class="col-md-6">
-                        <label class="form-label fw-semibold">Amount</label>
-                        <input
-                          class="form-control"
-                          id="amount"
-                          placeholder="Amount will auto-fill"
-                          required=""
-                          type="text"
-                        />
-                      </div>
+                ">
+                            Membership Type Added Successfully!
+                        </div>
+                        <!-- Membership Form -->
+                        <div class="card" style="padding-top: 30px">
+                            <div class="card-header text-white" style="background-color: #9b56f5">
+                                <i class="bi bi-card-checklist me-2"></i> Add New Membership
+                                Type Plan
+                            </div>
+                            <div class="card-body">
+                                <form autocomplete="off" id="membershipForm">
+                                    <div class="row mb-3">
+                                        <div class="col-md-6 mb-3 mb-md-0">
+                                            <label class="form-label fw-semibold">Membership Type</label>
+                                            <input class="form-control" id="membershipType" list="membershipOptions"
+                                                placeholder="Enter or select membership type" required="" type="text" />
+                                            <datalist id="membershipOptions">
+                                                <option value="1 Month Plan"></option>
+                                                <option value="2 Month Plan"></option>
+                                                <option value="3 Month Plan"></option>
+                                                <option value="6 Month Plan"></option>
+                                                <option value="1 Year Plan"></option>
+                                                <option value="Gym + Cardio 1 Month Plan"></option>
+                                                <option value="Gym + Cardio 3 Month Plan"></option>
+                                                <option value="Gym + Cardio 6 Month Plan"></option>
+                                                <option value="Gym + Cardio 1 Year Plan"></option>
+                                            </datalist>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold">Amount</label>
+                                            <input class="form-control" id="amount" placeholder="Amount will auto-fill"
+                                                required="" type="text" />
+                                        </div>
+                                    </div>
+                                    <button class="btn text-white w-100 w-md-auto" style="background-color: #4b0082
+" type="submit">
+                                        Submit
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                    <button
-                      class="btn text-white w-100 w-md-auto"
-                      style="background-color: #4b0082
-"
-                      type="submit"
-                    >
-                      Submit
-                    </button>
-                  </form>
                 </div>
-              </div>
-            </div>
-          </div>
-          <!-- Footer -->
-          <footer class="footer py-3 px-4">
-            <div
-              class="d-flex flex-column flex-sm-row justify-content-between align-items-end text-center text-sm-start"
-            >
-              <!-- Left Side Text -->
-              <div
-                class="text-black mb-3 mb-sm-0 ms-4 text-center text-sm-start w-100"
-              >
-                © 2025 Olympus Gym - All rights reserved.
-              </div>
+                <!-- Footer -->
+                <footer class="footer py-3 px-4">
+                    <div
+                        class="d-flex flex-column flex-sm-row justify-content-between align-items-end text-center text-sm-start">
+                        <!-- Left Side Text -->
+                        <div class="text-black mb-3 mb-sm-0 ms-4 text-center text-sm-start w-100">
+                            © 2025 Olympus Gym - All rights reserved.
+                        </div>
 
-              <!-- Right Side: Logo centered above one-line text -->
-              <div
-                class="d-flex flex-column align-items-center align-items-sm-end"
-              >
-                <!-- Logo -->
-                <img
-                  alt="Kavya Infoweb Logo"
-                  src="kavya2.png"
-                  style="
+                        <!-- Right Side: Logo centered above one-line text -->
+                        <div class="d-flex flex-column align-items-center align-items-sm-end">
+                            <!-- Logo -->
+                            <img alt="Kavya Infoweb Logo" src="kavya2.png" style="
                     height: 80px;
                     display: block;
                     margin-left: auto;
@@ -471,26 +355,22 @@
                     margin-bottom: 6px;
                     border-radius: 7px;
                     box-shadow: 2px solid;
-                  "
-                />
-                <!-- One-line text below logo -->
-                <div
-                  class="text-center text-sm-end text-black"
-                  style="white-space: nowrap"
-                >
-                  Software Developed &amp; Managed By
-                  <a href="https://kavyainfoweb.com/" target="_blank">
-                    Kavya Infoweb Pvt. Ltd.
-                  </a>
-                </div>
-              </div>
+                  " />
+                            <!-- One-line text below logo -->
+                            <div class="text-center text-sm-end text-black" style="white-space: nowrap">
+                                Software Developed &amp; Managed By
+                                <a href="https://kavyainfoweb.com/" target="_blank">
+                                    Kavya Infoweb Pvt. Ltd.
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
-          </footer>
         </div>
-      </div>
     </div>
-        </div>
-      </div>
+    </div>
+    </div>
     </div>
 
     <!-- JS Dependencies -->
@@ -504,59 +384,60 @@
     <script src="assets/js/jquery.cookie.js"></script>
     <script src="assets/js/dashboard.js"></script>
 
-   <script>
-  const typeInput = document.getElementById("membershipType");
-  const amountInput = document.getElementById("amount");
-  const form = document.getElementById("membershipForm");
-  const successMessage = document.getElementById("successMessage");
+    <script>
+        const typeInput = document.getElementById("membershipType");
+        const amountInput = document.getElementById("amount");
+        const form = document.getElementById("membershipForm");
+        const successMessage = document.getElementById("successMessage");
 
-  const planPrices = {
-    "1 Month Plan": 500,
-    "2 Month Plan": 1000,
-    "3 Month Plan": 1300,
-    "6 Month Plan": 2000,
-    "1 Year Plan": 4000,
-    "Gym + Cardio 1 Month Plan": 800,
-    "Gym + Cardio 3 Month Plan": 2300,
-    "Gym + Cardio 6 Month Plan": 3800,
-    "Gym + Cardio 1 Year Plan": 7500,
-  };
+        const planPrices = {
+            "1 Month Plan": 500,
+            "2 Month Plan": 1000,
+            "3 Month Plan": 1300,
+            "6 Month Plan": 2000,
+            "1 Year Plan": 4000,
+            "Gym + Cardio 1 Month Plan": 800,
+            "Gym + Cardio 3 Month Plan": 2300,
+            "Gym + Cardio 6 Month Plan": 3800,
+            "Gym + Cardio 1 Year Plan": 7500,
+        };
 
-  typeInput.addEventListener("input", () => {
-    const selected = typeInput.value.trim();
-    amountInput.value = planPrices[selected] || "";
-    updateURL();
-  });
+        typeInput.addEventListener("input", () => {
+            const selected = typeInput.value.trim();
+            amountInput.value = planPrices[selected] || "";
+            updateURL();
+        });
 
-  amountInput.addEventListener("input", updateURL);
+        amountInput.addEventListener("input", updateURL);
 
-  function updateURL() {
-    const typeVal = encodeURIComponent(typeInput.value.trim());
-    const amountVal = encodeURIComponent(amountInput.value.trim());
-    const newURL = `${window.location.pathname}?type=${typeVal}&amount=${amountVal}`;
-    history.replaceState(null, "", newURL);
-  }
+        function updateURL() {
+            const typeVal = encodeURIComponent(typeInput.value.trim());
+            const amountVal = encodeURIComponent(amountInput.value.trim());
+            const newURL = `${window.location.pathname}?type=${typeVal}&amount=${amountVal}`;
+            history.replaceState(null, "", newURL);
+        }
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    successMessage.style.display = "block";
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            successMessage.style.display = "block";
 
-    setTimeout(() => {
-      form.reset();
-      successMessage.style.display = "none";
-      history.replaceState(null, "", window.location.pathname);
-    }, 2000);
-  });
+            setTimeout(() => {
+                form.reset();
+                successMessage.style.display = "none";
+                history.replaceState(null, "", window.location.pathname);
+            }, 2000);
+        });
 
-  window.addEventListener("DOMContentLoaded", () => {
-    const params = new URLSearchParams(window.location.search);
-    const type = params.get("type");
-    const amount = params.get("amount");
+        window.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const type = params.get("type");
+            const amount = params.get("amount");
 
-    if (type) typeInput.value = decodeURIComponent(type);
-    if (amount) amountInput.value = decodeURIComponent(amount);
-  });
-</script>
+            if (type) typeInput.value = decodeURIComponent(type);
+            if (amount) amountInput.value = decodeURIComponent(amount);
+        });
+    </script>
 
-  </body>
+</body>
+
 </html>
