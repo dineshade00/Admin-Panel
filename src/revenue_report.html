@@ -1,1 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Revenue Report</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- End layout styles -->
+  <link rel="shortcut icon" href="assets/images/favicon.png" />
+  <link href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css" rel="stylesheet">
+  <!-- Include Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+  
+</head>
+
+<body>
+  <div class="container-scroller">
+
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+        <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
+        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
+            alt="logo" /></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span>
+        </button>
+
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item nav-profile dropdown">
+
+          </li>
+          <li class="nav-item dropdown">
+            <!-- Additional dropdown -->
+          </li>
+
+          <li class="nav-item dropdown">
+            <!-- Additional dropdown -->
+          </li>
+
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <!-- Logout link -->
+          </li>
+          <!-- ⛶ Fullscreen Button -->
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link" href="#">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+       <ul class="nav">
+          <li class="nav-item nav-profile bg-dark">
+
+                          <!-- <a href="#" class="nav-link">
+               <div class="nav-profile-image"> 
+                 <img src="https://kavyainfoweb.com/wp-content/uploads/2025/05/Kavya-768x430.png" alt="profile" /> 
+                 <span class="login-status online"></span> 
+             </div>  
+                <div class="nav-profile-text d-flex flex-column" style="margin-right: -15px;">
+                     <span class="font-weight mb-2" style="color:white;font-size:15px;text-align:center">Kavya Infoweb Pvt Ltd</span>
+                </div>
+
+              </a> -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Dashboard</span>
+              <i class="mdi mdi-home menu-icon" style="color:#301934"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+              aria-controls="ui-basic">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Membership Plans</span>
+              <i class="menu" style="color:#301934"></i>
+              <i class="mdi mdi-folder-key menu-icon" style="color:#301934"></i>
+            </a>
+
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="add_new.html" style="color:#301934">
+                    <i class="mdi mdi-plus-box me-2" style="color:#301934;font-weight:bold"></i> Add New
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="view_manage.html" style="color:#301934">
+                    <i class="mdi mdi-eye-settings me-2" style="color:#301934;font-weight:bold"></i> View and Manage
+                    Plans
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="addmember.html" aria-expanded="false" aria-controls="icons">
+              <span class="menu-title" style="color:#301934; font-weight:bold">Add Member</span>
+              <i class="mdi mdi-contacts menu-icon" style="color:#301934"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="managemember.html" aria-expanded="false" aria-controls="icons">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Manage Member</span>
+              <i class="mdi mdi-account-group menu-icon" style="color:#301934"></i>
+            </a>
+           
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="reneval.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Reneval</span>
+              <i class="mdi mdi-account-multiple-check menu-icon" style="color:#301934;"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="membership_report.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Membership Report</span>
+              <i class="mdi mdi-account-multiple-check menu-icon" style="color:#301934;"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="revenue_report.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Revenue Report</span>
+              <i class="mdi mdi-finance menu-icon" style="color:#301934;"></i>
+            </a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="settings.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Settings</span>
+              <i class="mdi mdi-cog menu-icon" style="color:#301934;"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Logout</span>
+              <i class="mdi mdi-logout menu-icon" style="color:#301934;"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">
+              <span class="page-title-icon  text-white me-2" style="background-color: #4b0082;">
+                <i class="mdi mdi-home"></i>
+              </span> Revenue Report
+            </h3>
+            <nav aria-label="breadcrumb">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Revenue Report
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="container">
+            <div class="row text-white" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+              
+
+            <!-- ##############################################################################  -->
+             
+<div class="container my-4">
+  <!-- Card -->
+  <div class="card">
+    <div class="card-header text-white" style="background-color: #4b0082;">
+      <i class="fas fa-calendar-alt me-2"></i> Revenue Report
+    </div>
+    <div class="card-body">
+      <form id="reportForm">
+        <div class="mb-3">
+          <label class="form-label fw-bold">From Date:</label>
+          <input type="date" class="form-control" placeholder="mm/dd/yyyy">
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-bold">To Date:</label>
+          <input type="date" class="form-control" placeholder="mm/dd/yyyy">
+        </div>
+        <button type="submit" class="btn text-white w-100" style="background-color: #4b0082;">
+          Generate Report
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden Table to Show on Button Click -->
+<div class="container my-4" id="revenueTable" style="display: none;">
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Member</th>
+          <th>Membership Number</th>
+          <th>Total Amount</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+    <tbody>
+  <tr><td>Ravi Sharma</td><td>CA-100001</td><td>Rupees1000.00</td><td>2025-03-15</td></tr>
+  <tr><td>Pooja Mehra</td><td>CA-100002</td><td>Rupees1500.00</td><td>2025-03-16</td></tr>
+  <tr><td>Kunal Verma</td><td>CA-100003</td><td>Rupees2000.00</td><td>2025-06-17</td></tr>
+  <tr><td>Neha Joshi</td><td>CA-100004</td><td>Rupees500.00</td><td>2025-06-18</td></tr>
+  <tr><td>Amit Thakur</td><td>CA-100005</td><td>Rupees2500.00</td><td>2025-06-19</td></tr>
+  <tr><td>Priya Deshmukh</td><td>CA-100006</td><td>Rupees1200.00</td><td>2025-04-20</td></tr>
+  <tr><td>Deepak Chavan</td><td>CA-100007</td><td>Rupees1800.00</td><td>2025-04-21</td></tr>
+  <tr><td>Sonal Kulkarni</td><td>CA-100008</td><td>Rupees2200.00</td><td>2025-06-22</td></tr>
+  <tr><td>Rahul Patil</td><td>CA-100009</td><td>Rupees3000.00</td><td>2025-06-23</td></tr>
+  <tr><td>Meena Rathi</td><td>CA-100010</td><td>Rupees750.00</td><td>2025-06-24</td></tr>
+</tbody>
+
+    </table>
+    <div class="container my-4 text-end">
+  <button class="btn text-white" style="background-color: #4b0082;" onclick="
+  var printContents = document.querySelector('#revenueTable .table-responsive').innerHTML;
+  var originalContents = document.body.innerHTML;
+  document.body.innerHTML = printContents;
+  window.print();
+  document.body.innerHTML = originalContents;
+  location.reload();
+">
+  <i class="fas fa-print me-1"></i> Print Report
+</button>
+
+</div>
+
+  </div>
+</div>
+
+<!-- Script to Show Table -->
+<script>
+  document.getElementById("reportForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const fromDate = new Date(document.querySelector("input[type='date']").value);
+    const toDate = new Date(document.querySelectorAll("input[type='date']")[1].value);
+
+    // ✅ Condition for more than 28 days
+    const diffInTime = toDate - fromDate;
+    const diffInDays = diffInTime / (1000 * 3600 * 24);
+    if (diffInDays <= 28) {
+      alert("Please select a date range of more than 28 days.");
+      document.getElementById("revenueTable").style.display = "none";
+      return;
+    }
+
+    const rows = document.querySelectorAll("#revenueTable tbody tr");
+    let found = false;
+
+    rows.forEach(row => {
+      const dateCell = row.children[3].textContent;
+      const rowDate = new Date(dateCell);
+
+      if (rowDate >= fromDate && rowDate <= toDate) {
+        row.style.display = "";
+        found = true;
+      } else {
+        row.style.display = "none";
+      }
+    });
+
+    document.getElementById("revenueTable").style.display = found ? "block" : "none";
+  });
+</script>
+
+
+
+             
+
+            <!-- ##############################################################################  -->
+              
+         
+          </div>
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+         
+          <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+      </div>
+      <!-- page-body-wrapper ends -->
+        <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+              <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">&copy; 2025 Olympus Gym -
+                All
+                rights reserved.</span>
+              <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Software Developed & Managed By
+                <a href="https://kavyainfoweb.com/" target="_blank">Kavya Infoweb Pvt. Ltd.</a></span>
+            </div>
+          </footer>
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="assets/vendors/chart.js/chart.umd.js"></script>
+    <script src="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="assets/js/off-canvas.js"></script>
+    <script src="assets/js/misc.js"></script>
+    <script src="assets/js/settings.js"></script>
+    <script src="assets/js/todolist.js"></script>
+    <script src="assets/js/jquery.cookie.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <script src="assets/js/dashboard.js"></script>
+   
+
+</body>
+
+</html>
