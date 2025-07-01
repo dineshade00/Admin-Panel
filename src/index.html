@@ -27,7 +27,22 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 
+<style>
+   @media (min-width: 992px) {
+  #sidebar {
+    position: fixed;
+    top: 70px; /* navbar ke neeche distance adjust karo */
+    left: 0;
+    height: calc(100vh - 70px); /* poori height navbar ke baad */
+    overflow-y: auto;
+    z-index: 999; /* zaroorat pade to */
+  }
 
+  .main-panel {
+    margin-left: 240px; /* sidebar ki width jitni ho utna margin do */
+  }
+}
+</style>
   <style>
     .tab-button {
       border-radius: 10px;
@@ -58,21 +73,7 @@
       padding-right:14px;
   }
     /* Sticky Sidebar for Desktop Only */
-   @media (min-width: 992px) {
-  #sidebar {
-    position: fixed;
-    top: 70px; /* navbar ke neeche distance adjust karo */
-    left: 0;
-    height: calc(100vh - 70px); /* poori height navbar ke baad */
-    overflow-y: auto;
-    z-index: 999; /* zaroorat pade to */
-  }
-
-  .main-panel {
-    margin-left: 240px; /* sidebar ki width jitni ho utna margin do */
-  }
-}
-
+   
 </style>
 </head>
 
@@ -80,16 +81,14 @@
   <div class="container-scroller">
 
     <!-- partial:partials/_navbar.html -->
-<!--     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+<!-- <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
                 <a class="navbar-brand brand-logo" href="index.html">
              <img 
-        src="https://kavyainfoweb.com/gym/uploads/mlg.png" 
-        alt="logo" 
-        style="height:60px; width:auto; object-fit:contain; padding:5px;align-items:center" 
-               
-               
-      />
+                src="https://kavyainfoweb.com/gym/uploads/mlg.png" 
+                alt="logo" 
+                style="height:60px; width:auto; object-fit:contain; padding:5px;align-items:center" 
+              />
           <h3 class="title " style="color: #4b0082;text-align:left;padding-top:5px">Olympus Gym</h3>
         </a>
     
@@ -182,7 +181,7 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <nav class="sidebar sidebar-offcanvas " id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile bg-dark">
 
