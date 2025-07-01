@@ -28,16 +28,18 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 
 
-<style>
+  <style>
     .pagination .page-link {
       cursor: pointer;
       color: #a666fa !important;
     }
+
     .pagination .page-item.active .page-link {
       background-color: #4b0082 !important;
       border-color: #4b0082 !important;
       color: white !important;
     }
+
     .btn-edit-custom,
     .btn-delete-custom,
     .btn-view-custom {
@@ -47,70 +49,85 @@
       font-size: 0.875rem;
       padding: 6px 12px;
     }
+
     .btn-view-custom {
       background-color: #4b0082;
       color: white;
     }
+
     .btn-view-custom:hover {
       background-color: #0b5ed7;
     }
+
     .btn-edit-custom {
       background-color: #b67eff;
       color: white;
     }
+
     .btn-edit-custom:hover {
       background-color: #9856f0;
     }
+
     .btn-delete-custom {
       background-color: #dc3545;
       color: white;
     }
+
     .btn-delete-custom:hover {
       background-color: red;
     }
+
     .card-header {
       background-color: #4b0082 !important;
       color: white;
     }
+
     .breadcrumb-item.active {
       color: #b67eff;
     }
+
     .breadcrumb-item a {
       color: #b67eff;
       text-decoration: none;
     }
+
     .breadcrumb-item a:hover {
       text-decoration: underline;
     }
+
     @media (max-width: 768px) {
-      .control-row > div {
+      .control-row>div {
         width: 100% !important;
         margin-bottom: 10px;
       }
     }
-  
-   @media (min-width: 992px) {
-  #sidebar {
-    position: fixed;
-    top: 70px; /* navbar ke neeche distance adjust karo */
-    left: 0;
-    height: calc(100vh - 70px); /* poori height navbar ke baad */
-    overflow-y: auto;
-    z-index: 999; /* zaroorat pade to */
-  }
 
-  .main-panel {
-    margin-left: 240px; /* sidebar ki width jitni ho utna margin do */
-  }
-}
-  </style>  
+    @media (min-width: 992px) {
+      #sidebar {
+        position: fixed;
+        top: 70px;
+        /* navbar ke neeche distance adjust karo */
+        left: 0;
+        height: calc(100vh - 70px);
+        /* poori height navbar ke baad */
+        overflow-y: auto;
+        z-index: 999;
+        /* zaroorat pade to */
+      }
+
+      .main-panel {
+        margin-left: 240px;
+        /* sidebar ki width jitni ho utna margin do */
+      }
+    }
+  </style>
 </head>
 
 <body>
   <div class="container-scroller">
 
     <!-- partial:partials/_navbar.html -->
-<!--     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+    <!--     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
         <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
         <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
@@ -149,60 +166,60 @@
         </button>
       </div>
     </nav> -->
-      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-  <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
 
-    <!-- Large logo for desktop -->
-    <a class="navbar-brand brand-logo d-none d-lg-flex align-items-center" href="index.html"
-       style="gap: 10px; padding-top: 5px; padding-bottom: 5px;">
-      <img src="https://kavyainfoweb.com/gym/uploads/mlg.png" alt="logo" style="
+        <!-- Large logo for desktop -->
+        <a class="navbar-brand brand-logo d-none d-lg-flex align-items-center" href="index.html"
+          style="gap: 10px; padding-top: 5px; padding-bottom: 5px;">
+          <img src="https://kavyainfoweb.com/gym/uploads/mlg.png" alt="logo" style="
         height: 85px;
         width: auto;
         object-fit: contain;
         display: block;
       " />
-    </a>
-
-    <!-- Small logo for collapsed / tab / mobile -->
-    <a class="navbar-brand brand-logo-mini d-lg-none" href="index.html">
-      <img src="https://kavyainfoweb.com/gym/uploads/mlg.png" alt="logo" style="height:60px; object-fit:contain;" />
-    </a>
-  </div>
-
-  <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">
-    <div class="d-flex align-items-center">
-      <!-- Menu toggler -->
-      <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-        <span class="mdi mdi-menu"></span>
-      </button>
-
-      <!-- Olympus Gym heading visible only on large screens -->
-      <h3 class="mb-0 ms-2 d-none d-lg-block" style="color: #4b0082;">Olympus Gym</h3>
-    </div>
-
-    <ul class="navbar-nav navbar-nav-right">
-      <!-- add your nav items as before -->
-      <li class="nav-item d-none d-lg-block full-screen-link">
-        <a class="nav-link" href="#">
-          <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
         </a>
-      </li>
-    </ul>
-    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-      data-toggle="offcanvas">
-      <span class="mdi mdi-menu"></span>
-    </button>
-  </div>
-</nav>
+
+        <!-- Small logo for collapsed / tab / mobile -->
+        <a class="navbar-brand brand-logo-mini d-lg-none" href="index.html">
+          <img src="https://kavyainfoweb.com/gym/uploads/mlg.png" alt="logo" style="height:60px; object-fit:contain;" />
+        </a>
+      </div>
+
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center">
+          <!-- Menu toggler -->
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+
+          <!-- Olympus Gym heading visible only on large screens -->
+          <h3 class="mb-0 ms-2 d-none d-lg-block" style="color: #4b0082;">Olympus Gym</h3>
+        </div>
+
+        <ul class="navbar-nav navbar-nav-right">
+          <!-- add your nav items as before -->
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link" href="#">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
 
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
-      <ul class="nav">
+        <ul class="nav">
           <li class="nav-item nav-profile bg-dark">
 
-                          <!-- <a href="#" class="nav-link">
+            <!-- <a href="#" class="nav-link">
                <div class="nav-profile-image"> 
                  <img src="https://kavyainfoweb.com/wp-content/uploads/2025/05/Kavya-768x430.png" alt="profile" /> 
                  <span class="login-status online"></span> 
@@ -255,7 +272,7 @@
               <span class="menu-title" style="color:#301934;font-weight:bold">Manage Member</span>
               <i class="mdi mdi-account-group menu-icon" style="color:#301934"></i>
             </a>
-           
+
           </li>
           <li class="nav-item">
             <a class="nav-link" href="reneval.html">
@@ -275,7 +292,7 @@
               <i class="mdi mdi-finance menu-icon" style="color:#301934;"></i>
             </a>
           </li>
-           <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="settings.html">
               <span class="menu-title" style="color:#301934;font-weight:bold">Settings</span>
               <i class="mdi mdi-cog menu-icon" style="color:#301934;"></i>
@@ -293,11 +310,11 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="page-header">
-           <h3 class="page-title">
-           <span class="page-title-icon text-white me-2" style="background-color:#4b0082">
-               <i class="mdi mdi-account"></i>
-          </span> Membership Plans
-          </h3>
+            <h3 class="page-title">
+              <span class="page-title-icon text-white me-2" style="background-color:#4b0082">
+                <i class="mdi mdi-account"></i>
+              </span> Membership Plans
+            </h3>
 
             <nav aria-label="breadcrumb">
               <ul class="breadcrumb">
@@ -312,82 +329,102 @@
           </div>
           <div class="container">
             <div class="row text-white" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-              
 
-            <!-- ##############################################################################  -->
-             
 
-               <div class="page-header">
-                </div>
-          <div class="container mt-4">
-            <div class="card">
-              <div class="card-header fw-bold">Membership Plans DataTable</div>
-              <div class="card-body">
-                <div class="d-flex flex-wrap justify-content-between mb-3 align-items-center control-row gap-2">
-  <div>
-    Show
-    <select id="entriesSelect" class="form-select d-inline-block w-auto mx-2">
-      <option>5</option>
-      <option>10</option>
-      <option>20</option>
-    </select>
-    entries
-  </div>
-  <div>
-    <label class="me-2">Search:</label>
-    <input type="search" id="searchInput" class="form-control d-inline-block w-auto" />
-  </div>
-</div>
+              <!-- ##############################################################################  -->
 
-                <div class="table-responsive">
-                  <table class="table table-bordered align-middle text-center" id="membershipTable">
-                    <thead class="table-light">
-                      <tr>
-                        <th>Id</th>
-                        <th>Type</th>
-                        <th>Amount</th>
-                        <th>Actions</th>
-                      </tr>
-                    </thead>
-                    <tbody id="tableBody"></tbody>
-                  </table>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-3">
-                  <div id="entriesInfo">Showing entries</div>
-                  <nav><ul class="pagination mb-0 flex-wrap" id="paginationControls"></ul></nav>
+
+              <div class="page-header">
+              </div>
+              <div class="container mt-4">
+                <div class="card">
+                  <div class="card-header fw-bold">Membership Plans DataTable</div>
+                  <div class="card-body">
+                    <div class="d-flex flex-wrap justify-content-between mb-3 align-items-center control-row gap-2">
+                      <div>
+                        Show
+                        <select id="entriesSelect" class="form-select d-inline-block w-auto mx-2">
+                          <option>5</option>
+                          <option>10</option>
+                          <option>20</option>
+                        </select>
+                        entries
+                      </div>
+                      <div>
+                        <label class="me-2">Search:</label>
+                        <input type="search" id="searchInput" class="form-control d-inline-block w-auto" />
+                      </div>
+                    </div>
+
+                    <div class="table-responsive">
+                      <table class="table table-bordered align-middle text-center" id="membershipTable">
+                        <thead class="table-light">
+                          <tr>
+                            <th>Id</th>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody id="tableBody"></tbody>
+                      </table>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-3">
+                      <div id="entriesInfo">Showing entries</div>
+                      <nav>
+                        <ul class="pagination mb-0 flex-wrap" id="paginationControls"></ul>
+                      </nav>
+                    </div>
+                  </div>
                 </div>
               </div>
+              <!-- ##############################################################################  -->
+
+              <!-- Edit Modal -->
+              <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header" style="background-color:#4b0082;color:white;">
+                      <h5 class="modal-title">Edit Membership Plan</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                      <form id="editForm">
+                        <input type="hidden" id="editId" />
+                        <div class="mb-3">
+                          <label class="form-label">Plan Type</label>
+                          <input type="text" class="form-control" id="editType" required />
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">Amount</label>
+                          <input type="text" class="form-control" id="editAmount" required />
+                        </div>
+                        <button type="submit" class="btn w-100"
+                          style="background-color:#4b0082;color:white;">Update</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
             </div>
-          </div>
-            <!-- ##############################################################################  -->
-              
-         
-          </div>
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-         <!-- Footer -->
-         
-        </div>
-          
-      </div>
-         <footer class="footer py-3 px-4">
-            <div
-              class="d-flex flex-column flex-sm-row justify-content-between align-items-end text-center text-sm-start"
-            >
-              <!-- Left Side Text -->
-              <div class="text-black mb-3 mb-sm-0 ms-4">
-                &copy; 2025 Olympus Gym - All rights reserved.
-              </div>
-
-              <!-- Right Side: Logo centered above one-line text -->
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <!-- Footer -->
+            <footer class="footer py-3 px-4">
               <div
-                class="d-flex flex-column align-items-center align-items-sm-end"
-              >
-                <!-- Logo -->
-                <img
-                  src="kavya2.png"
-                  alt="Kavya Infoweb Logo"
-                  style="
+                class="d-flex flex-column flex-sm-row justify-content-between align-items-end text-center text-sm-start">
+                <!-- Left Side Text -->
+                <div class="text-black mb-3 mb-sm-0">
+                  &copy; 2025 Olympus Gym - All rights reserved.
+                </div>
+
+                <!-- Right Side: Logo centered above one-line text -->
+                <div class="d-flex flex-column align-items-center align-items-sm-end">
+                  <!-- Logo -->
+                  <img src="kavya2.png" alt="Kavya Infoweb Logo" style="
                     height: 80px;
                     display: block;
                     margin-left: auto;
@@ -395,49 +432,45 @@
                     margin-bottom: 6px;
                     border-radius: 7px;
                     box-shadow: 2px solid;
-                  "
-                />
+                  " />
 
-                <!-- One-line text below logo -->
-                <div
-                  class="text-center text-sm-end text-black"
-                  style="white-space: nowrap"
-                >
-                  Software Developed & Managed By
-                  <a href="https://kavyainfoweb.com/" target="_blank">
-                    Kavya Infoweb Pvt. Ltd.
-                  </a>
+                  <!-- One-line text below logo -->
+                  <div class="text-center text-sm-end text-black" style="white-space: nowrap">
+                    Software Developed & Managed By
+                    <a href="https://kavyainfoweb.com/" target="_blank">
+                      Kavya Infoweb Pvt. Ltd.
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </footer>
-    </div>
-          <!-- partial -->
+            </footer>
+          </div>
         </div>
-    
-        <!-- main-panel ends -->
       </div>
-      <!-- page-body-wrapper ends -->
+      <!-- partial -->
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="assets/vendors/chart.js/chart.umd.js"></script>
-    <script src="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="assets/js/off-canvas.js"></script>
-    <script src="assets/js/misc.js"></script>
-    <script src="assets/js/settings.js"></script>
-    <script src="assets/js/todolist.js"></script>
-    <script src="assets/js/jquery.cookie.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page -->
-   
+    <!-- main-panel ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- Plugin js for this page -->
+  <script src="assets/vendors/chart.js/chart.umd.js"></script>
+  <script src="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- inject:js -->
+  <script src="assets/js/off-canvas.js"></script>
+  <script src="assets/js/misc.js"></script>
+  <script src="assets/js/settings.js"></script>
+  <script src="assets/js/todolist.js"></script>
+  <script src="assets/js/jquery.cookie.js"></script>
+  <!-- endinject -->
   <script>
-    const data = [
+    // load from localStorage if present, otherwise default data
+    let data = JSON.parse(localStorage.getItem("membershipData")) || [
       ["1", "1 Month Plan", "₹500"],
       ["2", "3 Month Plan", "₹1300"],
       ["3", "6 Month Plan", "₹2000"],
@@ -456,6 +489,10 @@
     const entriesInfo = document.getElementById("entriesInfo");
     const paginationControls = document.getElementById("paginationControls");
 
+    function saveData() {
+      localStorage.setItem("membershipData", JSON.stringify(data));
+    }
+
     function renderTable() {
       const start = (currentPage - 1) * entriesPerPage;
       const end = start + entriesPerPage;
@@ -465,13 +502,17 @@
       pageData.forEach(row => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-          <td>${row[0]}</td>
-          <td>${row[1]}</td>
-          <td>${row[2]}</td>
-          <td>
-            <button class="btn btn-view-custom" onclick="viewRow('${row[0]}')"><i class="bi bi-eye"></i> View</button>
-            <button class="btn btn-delete-custom" onclick="deleteRow('${row[0]}')"><i class="bi bi-trash-fill"></i> Delete</button>
-          </td>`;
+        <td>${row[0]}</td>
+        <td>${row[1]}</td>
+        <td>${row[2]}</td>
+        <td>
+          <button class="btn btn-edit-custom" onclick="editRow('${row[0]}')" style="background-color:#4b0082">
+            <i class="bi bi-pencil-square"></i> Edit
+          </button>
+          <button class="btn btn-delete-custom" onclick="deleteRow('${row[0]}')">
+            <i class="bi bi-trash-fill"></i> Delete
+          </button>
+        </td>`;
         tableBody.appendChild(tr);
       });
 
@@ -501,7 +542,7 @@
 
       const next = document.createElement("li");
       next.className = `page-item ${currentPage === totalPages ? "active" : ""}`;
-      next.innerHTML = `<a class="page-link"  style="background-color:#4b0082;color:white;">Next</a>`;
+      next.innerHTML = `<a class="page-link" style="background-color:#4b0082;color:white;">Next</a>`;
       next.onclick = () => {
         if (currentPage < totalPages) { currentPage++; renderTable(); }
       };
@@ -512,18 +553,23 @@
       const index = data.findIndex(row => row[0] === id);
       if (index !== -1) {
         data.splice(index, 1);
+        saveData();
         filteredData = data;
         currentPage = 1;
         renderTable();
       }
     }
 
-    function viewRow(id) {
+    function editRow(id) {
       const row = data.find(r => r[0] === id);
       if (row) {
-        alert(`ID: ${row[0]}\nType: ${row[1]}\nAmount: ${row[2]}`);
+        document.getElementById("editId").value = row[0];
+        document.getElementById("editType").value = row[1];
+        document.getElementById("editAmount").value = row[2];
+        new bootstrap.Modal(document.getElementById("editModal")).show();
       }
     }
+
 
     searchInput.addEventListener("input", () => {
       const value = searchInput.value.toLowerCase();
@@ -539,10 +585,35 @@
     });
 
     renderTable();
+
+
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">  
+
+
+  <script>
+    document.getElementById("editForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const id = document.getElementById("editId").value;
+      const type = document.getElementById("editType").value;
+      const amount = document.getElementById("editAmount").value;
+
+      const index = data.findIndex(r => r[0] === id);
+      if (index !== -1) {
+        data[index][1] = type;
+        data[index][2] = amount;
+        localStorage.setItem("membershipData", JSON.stringify(data));
+        filteredData = data;
+        renderTable();
+        bootstrap.Modal.getInstance(document.getElementById("editModal")).hide();
+      }
+    });
+
   </script>
-   
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+  </script>
+
 
 </body>
 
