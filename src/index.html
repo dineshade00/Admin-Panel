@@ -406,20 +406,36 @@
 
               </div>
              
-              <div class="row mar">
-                <div class="col-12 mb-4">
-                  <div class="card chart-container h-100">
-                    <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-start mb-3 flex-wrap">
-                        <h4 class="card-title text-primary mb-2">Revenue Graph</h4>
-                    </div>
-                    <div class="" style="position: relative; height:50vw; max-height:350px;">
-                      <canvas id="earningsChart"></canvas>
-                    </div>
-                  </div>
-                 </div>
-                </div>
-              </div>
+             <div class="row g-3">
+  <!-- Monthly Revenue Chart -->
+  <div class="col-12 col-md-6">
+    <div class="card chart-container h-100">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+          <h4 class="card-title mb-0" style="color:#4b0082;">Monthly Revenue</h4>
+        </div>
+        <div style="position: relative; height:50vw; max-height:350px;">
+          <canvas id="monthlyRevenueChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Yearly Revenue Chart -->
+  <div class="col-12 col-md-6">
+    <div class="card chart-container h-100">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+          <h4 class="card-title mb-0" style="color:#4b0082;">Yearly Revenue</h4>
+        </div>
+        <div style="position: relative; height:50vw; max-height:350px;">
+          <canvas id="yearlyRevenueChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
               
              <div class="row">
                 <div class="col-12 grid-margin">
@@ -556,6 +572,98 @@
       <!-- Custom js for this page -->
       <script src="assets/js/dashboard.js"></script>
  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+   // Monthly Revenue - June days
+const juneDays = Array.from({ length: 30 }, (_, i) => `June ${i + 1}`);
+
+// Random revenue generation for demo
+const juneRevenue = Array.from({ length: 30 }, () => Math.floor(Math.random() * 5000) + 500);
+
+// chart
+const monthlyCtx = document.getElementById('monthlyRevenueChart').getContext('2d');
+new Chart(monthlyCtx, {
+  type: 'bar',
+  data: {
+    labels: juneDays,
+    datasets: [{
+      label: 'Daily Revenue (₹)',
+      data: juneRevenue,
+      backgroundColor: '#4b0082'
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: {
+      mode: 'index',
+      intersect: false
+    },
+    plugins: {
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            return `₹${context.parsed.y.toLocaleString()}`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Day of Month"
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Revenue (₹)"
+        }
+      }
+    }
+  }
+});
+
+// Yearly Revenue
+const yearlyCtx = document.getElementById('yearlyRevenueChart').getContext('2d');
+new Chart(yearlyCtx, {
+  type: 'line',
+  data: {
+    labels: ['2020', '2021', '2022', '2023', '2024'],
+    datasets: [{
+      label: 'Yearly Revenue (₹)',
+      data: [25000, 32000, 40000, 50000, 65000],
+      borderColor: '#4b0082',
+      backgroundColor: 'rgba(75,0,130,0.2)',
+      fill: true,
+      tension: 0.3
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: {
+      mode: 'index',
+      intersect: false
+    },
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Year"
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Total Revenue (₹)"
+        }
+      }
+    }
+  }
+});
+
+</script>    
 <script>
   const ctx = document.getElementById('earningsChart').getContext('2d');
   new Chart(ctx, {
