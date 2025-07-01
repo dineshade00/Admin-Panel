@@ -334,21 +334,28 @@
           </ul>
         </nav>
 
-        <!-- Main Content -->
+       <!-- Main Content -->
         <div class="main-panel">
           <div class="content-wrapper">
-            <div class="page-header">
-              <h3 class="page-title">
+            <div
+              class="page-header d-flex flex-column flex-md-row align-items-center justify-content-between text-center text-md-start"
+            >
+              <div
+                class="d-flex align-items-center justify-content-center mb-2 mb-md-0"
+              >
                 <span
-                  class="page-title-icon  text-white me-2" style="background-color: #4b0082;"
-                  ><i class="mdi mdi-account"></i
-                ></span>
-                Add New Membership
-              </h3>
+                  class="page-title-icon bg-gradient-primary text-white me-2"
+                >
+                  <i class="mdi mdi-home"></i>
+                </span>
+                <h3 class="page-title m-0">Add New Membership</h3>
+              </div>
               <nav aria-label="breadcrumb">
-                <ul class="breadcrumb">
-                  <li class="breadcrumb-item"><a href="index.html" style="transform: none;color: #4b0082;">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page" style="color: #4b0082;">
+                <ul
+                  class="breadcrumb m-0 d-flex flex-wrap justify-content-center justify-content-md-end"
+                >
+                  <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">
                     Add New
                   </li>
                 </ul>
@@ -358,8 +365,8 @@
             <div class="container">
               <!-- Success Message -->
               <div
-                id="successMessage"
                 class="card px-3 py-2 mx-auto mb-3"
+                id="successMessage"
                 style="
                   display: none;
                   background-color: #28a745;
@@ -374,59 +381,57 @@
               >
                 Membership Type Added Successfully!
               </div>
-
               <!-- Membership Form -->
-              <div class="card" >
+              <div class="card" style="padding-top: 30px">
                 <div
                   class="card-header text-white"
-                  style="background-color: #4b0082"
+                  style="background-color: #9b56f5"
                 >
                   <i class="bi bi-card-checklist me-2"></i> Add New Membership
                   Type Plan
                 </div>
-
                 <div class="card-body">
-                  <form id="membershipForm" autocomplete="off">
+                  <form autocomplete="off" id="membershipForm">
                     <div class="row mb-3">
                       <div class="col-md-6 mb-3 mb-md-0">
                         <label class="form-label fw-semibold"
                           >Membership Type</label
                         >
                         <input
-                          list="membershipOptions"
-                          id="membershipType"
-                          type="text"
                           class="form-control"
+                          id="membershipType"
+                          list="membershipOptions"
                           placeholder="Enter or select membership type"
-                          required
+                          required=""
+                          type="text"
                         />
                         <datalist id="membershipOptions">
-                          <option value="1 Month Plan" />
-                          <option value="2 Month Plan" />
-                          <option value="3 Month Plan" />
-                          <option value="6 Month Plan" />
-                          <option value="1 Year Plan" />
-                          <option value="Gym + Cardio 1 Month Plan" />
-                          <option value="Gym + Cardio 3 Month Plan" />
-                          <option value="Gym + Cardio 6 Month Plan" />
-                          <option value="Gym + Cardio 1 Year Plan" />
+                          <option value="1 Month Plan"></option>
+                          <option value="2 Month Plan"></option>
+                          <option value="3 Month Plan"></option>
+                          <option value="6 Month Plan"></option>
+                          <option value="1 Year Plan"></option>
+                          <option value="Gym + Cardio 1 Month Plan"></option>
+                          <option value="Gym + Cardio 3 Month Plan"></option>
+                          <option value="Gym + Cardio 6 Month Plan"></option>
+                          <option value="Gym + Cardio 1 Year Plan"></option>
                         </datalist>
                       </div>
                       <div class="col-md-6">
                         <label class="form-label fw-semibold">Amount</label>
                         <input
-                          type="text"
-                          id="amount"
                           class="form-control"
+                          id="amount"
                           placeholder="Amount will auto-fill"
-                          required
+                          required=""
+                          type="text"
                         />
                       </div>
                     </div>
                     <button
-                      type="submit"
                       class="btn text-white w-100 w-md-auto"
-                      style="background-color: #4b0082"
+                      style="background-color: #b67eff"
+                      type="submit"
                     >
                       Submit
                     </button>
@@ -435,16 +440,16 @@
               </div>
             </div>
           </div>
-
           <!-- Footer -->
-       <!-- Footer -->
           <footer class="footer py-3 px-4">
             <div
               class="d-flex flex-column flex-sm-row justify-content-between align-items-end text-center text-sm-start"
             >
               <!-- Left Side Text -->
-              <div class="text-black mb-3 mb-sm-0">
-                &copy; 2025 Olympus Gym - All rights reserved.
+              <div
+                class="text-black mb-3 mb-sm-0 text-center text-sm-start w-100"
+              >
+                © 2025 Olympus Gym - All rights reserved.
               </div>
 
               <!-- Right Side: Logo centered above one-line text -->
@@ -453,8 +458,8 @@
               >
                 <!-- Logo -->
                 <img
-                  src="kavya2.png"
                   alt="Kavya Infoweb Logo"
+                  src="assets/images/kavya2.png"
                   style="
                     height: 80px;
                     display: block;
@@ -465,13 +470,12 @@
                     box-shadow: 2px solid;
                   "
                 />
-
                 <!-- One-line text below logo -->
                 <div
                   class="text-center text-sm-end text-black"
-                  style="white-space: nowrap; padding-left :2px"
+                  style="white-space: nowrap"
                 >
-                  Software Developed & Managed By
+                  Software Developed &amp; Managed By
                   <a href="https://kavyainfoweb.com/" target="_blank">
                     Kavya Infoweb Pvt. Ltd.
                   </a>
