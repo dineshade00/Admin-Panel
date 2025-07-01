@@ -126,46 +126,7 @@
 <body>
   <div class="container-scroller">
 
-    <!-- partial:partials/_navbar.html -->
-    <!--     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-        <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
-            alt="logo" /></a>
-      </div>
-      <div class="navbar-menu-wrapper d-flex align-items-stretch">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="mdi mdi-menu"></span>
-        </button>
-
-        <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item nav-profile dropdown">
-
-          </li>
-          <li class="nav-item dropdown">
-          
-          </li>
-
-          <li class="nav-item dropdown">
-            
-          </li>
-
-          <li class="nav-item nav-logout d-none d-lg-block">
-            
-          </li>
-          
-          <li class="nav-item d-none d-lg-block full-screen-link">
-            <a class="nav-link" href="#">
-              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
-            </a>
-          </li>
-        </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-          data-toggle="offcanvas">
-          <span class="mdi mdi-menu"></span>
-        </button>
-      </div>
-    </nav> -->
+   
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
       <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
 
@@ -469,122 +430,153 @@
   <script src="assets/js/jquery.cookie.js"></script>
   <!-- endinject -->
   <script>
-    // load from localStorage if present, otherwise default data
-    let data = JSON.parse(localStorage.getItem("membershipData")) || [
-      ["1", "1 Month Plan", "₹500"],
-      ["2", "3 Month Plan", "₹1300"],
-      ["3", "6 Month Plan", "₹2000"],
-      ["4", "1 Year Plan", "₹4000"],
-      ["5", "2 Year Plan", "₹1000"],
-      ["6", "Gym + Cardio 6 Month", "₹3800"]
-    ];
+   // load from localStorage if present, otherwise default data
+let data = JSON.parse(localStorage.getItem("membershipData")) || [
+  ["1", "1 Month Plan", "₹500"],
+  ["2", "3 Month Plan", "₹1300"],
+  ["3", "6 Month Plan", "₹2000"],
+  ["4", "1 Year Plan", "₹4000"],
+  ["5", "2 Year Plan", "₹1000"],
+  ["6", "Gym + Cardio 6 Month", "₹3800"]
+];
 
-    let currentPage = 1;
-    let entriesPerPage = 5;
-    let filteredData = [...data];
+// agar localStorage pehli baar khali hai to default data store kar do
+if (!localStorage.getItem("membershipData")) {
+  localStorage.setItem("membershipData", JSON.stringify(data));
+}
 
-    const tableBody = document.getElementById("tableBody");
-    const searchInput = document.getElementById("searchInput");
-    const entriesSelect = document.getElementById("entriesSelect");
-    const entriesInfo = document.getElementById("entriesInfo");
-    const paginationControls = document.getElementById("paginationControls");
+let currentPage = 1;
+let entriesPerPage = 5;
+let filteredData = [...data];
 
-    function saveData() {
-      localStorage.setItem("membershipData", JSON.stringify(data));
-    }
+const tableBody = document.getElementById("tableBody");
+const searchInput = document.getElementById("searchInput");
+const entriesSelect = document.getElementById("entriesSelect");
+const entriesInfo = document.getElementById("entriesInfo");
+const paginationControls = document.getElementById("paginationControls");
 
-    function renderTable() {
-      const start = (currentPage - 1) * entriesPerPage;
-      const end = start + entriesPerPage;
-      const pageData = filteredData.slice(start, end);
+function saveData() {
+  localStorage.setItem("membershipData", JSON.stringify(data));
+}
 
-      tableBody.innerHTML = "";
-      pageData.forEach(row => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-        <td>${row[0]}</td>
-        <td>${row[1]}</td>
-        <td>${row[2]}</td>
-        <td>
-          <button class="btn btn-edit-custom" onclick="editRow('${row[0]}')" style="background-color:#4b0082">
-            <i class="bi bi-pencil-square"></i> Edit
-          </button>
-          <button class="btn btn-delete-custom" onclick="deleteRow('${row[0]}')">
-            <i class="bi bi-trash-fill"></i> Delete
-          </button>
-        </td>`;
-        tableBody.appendChild(tr);
-      });
+function renderTable() {
+  const start = (currentPage - 1) * entriesPerPage;
+  const end = start + entriesPerPage;
+  const pageData = filteredData.slice(start, end);
 
-      entriesInfo.textContent = `Showing ${start + 1} to ${Math.min(end, filteredData.length)} of ${filteredData.length} entries`;
-      renderPagination();
-    }
+  tableBody.innerHTML = "";
+  pageData.forEach(row => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${row[0]}</td>
+      <td>${row[1]}</td>
+      <td>${row[2]}</td>
+      <td>
+        <button class="btn btn-edit-custom" onclick="editRow('${row[0]}')" style="background-color:#4b0082">
+          <i class="bi bi-pencil-square"></i> Edit
+        </button>
+        <button class="btn btn-delete-custom" onclick="deleteRow('${row[0]}')">
+          <i class="bi bi-trash-fill"></i> Delete
+        </button>
+      </td>`;
+    tableBody.appendChild(tr);
+  });
 
-    function renderPagination() {
-      const totalPages = Math.ceil(filteredData.length / entriesPerPage);
-      paginationControls.innerHTML = "";
+  entriesInfo.textContent = `Showing ${start + 1} to ${Math.min(end, filteredData.length)} of ${filteredData.length} entries`;
+  renderPagination();
+}
 
-      const prev = document.createElement("li");
-      prev.className = `page-item ${currentPage === 1 ? "active" : ""}`;
-      prev.innerHTML = `<a class="page-link" style="background-color:#4b0082;color:white;">Previous</a>`;
-      prev.onclick = () => {
-        if (currentPage > 1) { currentPage--; renderTable(); }
-      };
-      paginationControls.appendChild(prev);
+function renderPagination() {
+  const totalPages = Math.ceil(filteredData.length / entriesPerPage);
+  paginationControls.innerHTML = "";
 
-      for (let i = 1; i <= totalPages; i++) {
-        const li = document.createElement("li");
-        li.className = `page-item ${currentPage === i ? "active" : ""}`;
-        li.innerHTML = `<a class="page-link">${i}</a>`;
-        li.onclick = () => { currentPage = i; renderTable(); };
-        paginationControls.appendChild(li);
-      }
-
-      const next = document.createElement("li");
-      next.className = `page-item ${currentPage === totalPages ? "active" : ""}`;
-      next.innerHTML = `<a class="page-link" style="background-color:#4b0082;color:white;">Next</a>`;
-      next.onclick = () => {
-        if (currentPage < totalPages) { currentPage++; renderTable(); }
-      };
-      paginationControls.appendChild(next);
-    }
-
-    function deleteRow(id) {
-      const index = data.findIndex(row => row[0] === id);
-      if (index !== -1) {
-        data.splice(index, 1);
-        saveData();
-        filteredData = data;
-        currentPage = 1;
-        renderTable();
-      }
-    }
-
-    function editRow(id) {
-      const row = data.find(r => r[0] === id);
-      if (row) {
-        document.getElementById("editId").value = row[0];
-        document.getElementById("editType").value = row[1];
-        document.getElementById("editAmount").value = row[2];
-        new bootstrap.Modal(document.getElementById("editModal")).show();
-      }
-    }
-
-
-    searchInput.addEventListener("input", () => {
-      const value = searchInput.value.toLowerCase();
-      filteredData = data.filter(row => row.some(cell => cell.toLowerCase().includes(value)));
-      currentPage = 1;
+  const prev = document.createElement("li");
+  prev.className = `page-item ${currentPage === 1 ? "active" : ""}`;
+  prev.innerHTML = `<a class="page-link" style="background-color:#4b0082;color:white;">Previous</a>`;
+  prev.onclick = () => {
+    if (currentPage > 1) {
+      currentPage--;
       renderTable();
-    });
+    }
+  };
+  paginationControls.appendChild(prev);
 
-    entriesSelect.addEventListener("change", () => {
-      entriesPerPage = parseInt(entriesSelect.value);
-      currentPage = 1;
+  for (let i = 1; i <= totalPages; i++) {
+    const li = document.createElement("li");
+    li.className = `page-item ${currentPage === i ? "active" : ""}`;
+    li.innerHTML = `<a class="page-link">${i}</a>`;
+    li.onclick = () => {
+      currentPage = i;
       renderTable();
-    });
+    };
+    paginationControls.appendChild(li);
+  }
 
+  const next = document.createElement("li");
+  next.className = `page-item ${currentPage === totalPages ? "active" : ""}`;
+  next.innerHTML = `<a class="page-link" style="background-color:#4b0082;color:white;">Next</a>`;
+  next.onclick = () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      renderTable();
+    }
+  };
+  paginationControls.appendChild(next);
+}
+
+function deleteRow(id) {
+  const index = data.findIndex(row => row[0] === id);
+  if (index !== -1) {
+    data.splice(index, 1);
+    saveData();
+    filteredData = data;
+    currentPage = 1;
     renderTable();
+  }
+}
+
+function editRow(id) {
+  const row = data.find(r => r[0] === id);
+  if (row) {
+    document.getElementById("editId").value = row[0];
+    document.getElementById("editType").value = row[1];
+    document.getElementById("editAmount").value = row[2];
+    new bootstrap.Modal(document.getElementById("editModal")).show();
+  }
+}
+
+searchInput.addEventListener("input", () => {
+  const value = searchInput.value.toLowerCase();
+  filteredData = data.filter(row => row.some(cell => cell.toLowerCase().includes(value)));
+  currentPage = 1;
+  renderTable();
+});
+
+entriesSelect.addEventListener("change", () => {
+  entriesPerPage = parseInt(entriesSelect.value);
+  currentPage = 1;
+  renderTable();
+});
+
+// form submit edit handler
+document.getElementById("editForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const id = document.getElementById("editId").value;
+  const type = document.getElementById("editType").value;
+  const amount = document.getElementById("editAmount").value;
+
+  const index = data.findIndex(r => r[0] === id);
+  if (index !== -1) {
+    data[index][1] = type;
+    data[index][2] = amount;
+    saveData();
+    filteredData = data;
+    renderTable();
+    bootstrap.Modal.getInstance(document.getElementById("editModal")).hide();
+  }
+});
+
+renderTable();
 
 
   </script>
