@@ -96,6 +96,21 @@
       padding: 1.5rem;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     }
+
+     @media (min-width: 992px) {
+  #sidebar {
+    position: fixed;
+    top: 70px; /* navbar ke neeche distance adjust karo */
+    left: 0;
+    height: calc(100vh - 70px); /* poori height navbar ke baad */
+    overflow-y: auto;
+    z-index: 999; /* zaroorat pade to */
+  }
+
+  .main-panel {
+    margin-left: 240px; /* sidebar ki width jitni ho utna margin do */
+  }
+}
   </style>
 
 
