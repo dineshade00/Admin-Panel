@@ -406,6 +406,21 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="assets/js/dashboard.js"></script>
+       <script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const memberData = JSON.parse(localStorage.getItem("editMember"));
+    if (!memberData) return;
+
+    document.getElementById("fullName").value = memberData.name || "";
+    document.getElementById("phone").value = memberData.contact || "";
+    document.getElementById("email").value = memberData.email || "";
+    document.getElementById("address").value = memberData.address || "";
+
+    // Clear the data after use
+    localStorage.removeItem("editMember");
+  });
+</script>
+
 
 </body>
 
