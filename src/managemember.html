@@ -420,7 +420,7 @@
    
 
 
-      <script>
+   <script>
     const plans = ["1 Month Plan", "2 Months Plan", "3 Months Plan", "6 Months Plan", "12 Months Plan"];
     const data = Array.from({ length: 50 }, (_, i) => ({
       id: i + 1,
@@ -496,27 +496,37 @@
           const rowId = `row-${member.id}`;
           let extraFields = "";
 
-          if (screenWidth < 768) {
-            extraFields = `
-              <strong>Email:</strong> ${member.email}<br>
-              <strong>Address:</strong> ${member.address}<br>
-              <strong>Plan:</strong> ${member.type}<br>
-              <strong>Status:</strong> <span class="badge" style="background-color: ${member.status === 'Active' ? '#004D00' : '#D80404'};">${member.status}</span><br>
-              <strong>Actions:</strong><br>
-              <button class="btn btn-info btn-sm me-2 mb-2"><i class="fas fa-id-card"></i></button>
-              <button class="btn btn-edit btn-sm me-2 mb-2"><i class="fas fa-edit"></i></button>
-              <button class="btn btn-delete btn-sm mb-2"><i class="fas fa-trash-alt"></i></button>
-            `;
-          } else if (screenWidth < 992) {
-            extraFields = `
-              <strong>Plan:</strong> ${member.type}<br>
-              <strong>Status:</strong> <span class="badge" style="background-color: ${member.status === 'Active' ? '#004D00' : '#D80404'};">${member.status}</span><br>
-              <strong>Actions:</strong><br>
-              <button class="btn btn-info btn-sm me-2 mb-2"><i class="fas fa-id-card"></i></button>
-              <button class="btn btn-edit btn-sm me-2 mb-2"><i class="fas fa-edit"></i></button>
-              <button class="btn btn-delete btn-sm mb-2"><i class="fas fa-trash-alt"></i></button>
-            `;
-          }
+        if (screenWidth < 768) {
+  extraFields = `
+    <div class="mb-3"><strong>Email:</strong> ${member.email}</div>
+    <div class="mb-3"><strong>Address:</strong> ${member.address}</div>
+    <div class="mb-3"><strong>Plan:</strong> ${member.type}</div>
+    <div class="mb-3">
+      <strong>Status:</strong>
+      <span class="badge" style="background-color: ${member.status === 'Active' ? '#004D00' : '#D80404'};">${member.status}</span>
+    </div>
+    <div class="mb-3">
+      <strong>Actions:</strong><br>
+      <button class="btn btn-info btn-sm me-2 mt-2 mb-2"><i class="fas fa-id-card"></i></button>
+      <button class="btn btn-edit btn-sm me-2 mt-2 mb-2"><i class="fas fa-edit"></i></button>
+      <button class="btn btn-delete btn-sm mt-2 mb-2"><i class="fas fa-trash-alt"></i></button>
+    </div>
+  `;
+} else if (screenWidth < 992) {
+  extraFields = `
+    <div class="mb-3"><strong>Plan:</strong> ${member.type}</div>
+    <div class="mb-3">
+      <strong>Status:</strong>
+      <span class="badge" style="background-color: ${member.status === 'Active' ? '#004D00' : '#D80404'};">${member.status}</span>
+    </div>
+    <div class="mb-3">
+      <strong>Actions:</strong><br>
+      <button class="btn btn-info btn-sm me-2 mt-2 mb-2"><i class="fas fa-id-card"></i></button>
+      <button class="btn btn-edit btn-sm me-2 mt-2 mb-2"><i class="fas fa-edit"></i></button>
+      <button class="btn btn-delete btn-sm mt-2 mb-2"><i class="fas fa-trash-alt"></i></button>
+    </div>
+  `;
+}
 
           const isExpandable = screenWidth < 992;
 
@@ -591,8 +601,7 @@
 
     window.addEventListener("resize", renderTable);
     renderTable();
-  </script>
-      
+  </script>      
 </body>
 
 </html>
