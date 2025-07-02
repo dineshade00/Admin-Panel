@@ -1,1 +1,305 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Add New Member</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css">
+  <!-- endinject -->
+  <!-- Plugin css for this page -->
+  <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <!-- endinject -->
+  <!-- Layout styles -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <!-- End layout styles -->
+  <link rel="shortcut icon" href="assets/images/favicon.png" />
+  <link href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css" rel="stylesheet">
+  <!-- Include Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Bootstrap & DataTables CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+  <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet" />
+
+
+
+ 
+
+
+</head>
+
+<body>
+  <div class="container-scroller">
+
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+
+                 <a class="navbar-brand brand-logo d-none d-lg-flex align-items-center" href="index.html"
+                    style="gap: 10px; padding-top: 5px; padding-bottom: 5px;">
+                    <img src="assets/images/olm2.png" alt="logo" style="
+        height: 115px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+      " />
+                </a>
+
+                <!-- Small logo for collapsed / tab / mobile -->
+                <a class="navbar-brand brand-logo-mini d-lg-none" href="index.html">
+                    <img src="assets/images/olm2.png" alt="logo"
+                        style="height:60px; object-fit:contain;" />
+                </a>
+
+            </div>
+
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span> 
+          <h3 class="mb-0 ms-2 d-none d-lg-block" style="color: #4b0082;">Olympus Gym</h3>
+        </button>
+
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item nav-profile dropdown">
+
+          </li>
+          <li class="nav-item dropdown">
+            <!-- Additional dropdown -->
+          </li>
+
+          <li class="nav-item dropdown">
+            <!-- Additional dropdown -->
+          </li>
+
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <!-- Logout link -->
+          </li>
+          <!-- ⛶ Fullscreen Button -->
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link" href="#">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item nav-profile bg-dark">
+
+            <!-- <a href="#" class="nav-link">
+               <div class="nav-profile-image"> 
+                 <img src="https://kavyainfoweb.com/wp-content/uploads/2025/05/Kavya-768x430.png" alt="profile" /> 
+                 <span class="login-status online"></span> 
+             </div>  
+                <div class="nav-profile-text d-flex flex-column" style="margin-right: -15px;">
+                     <span class="font-weight mb-2" style="color:white;font-size:15px;text-align:center">Kavya Infoweb Pvt Ltd</span>
+                </div>
+
+              </a> -->
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Dashboard</span>
+              <i class="mdi mdi-home menu-icon" style="color:#301934"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+              aria-controls="ui-basic">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Membership Plans</span>
+              <i class="menu" style="color:#301934"></i>
+              <i class="mdi mdi-folder-key menu-icon" style="color:#301934"></i>
+            </a>
+
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="add_new.html" style="color:#301934">
+                    <i class="mdi mdi-plus-box me-2" style="color:#301934;font-weight:bold"></i> Add New
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="view_manage.html" style="color:#301934">
+                    <i class="mdi mdi-eye-settings me-2" style="color:#301934;font-weight:bold"></i> View and Manage
+                    Plans
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="addmember.html" aria-expanded="false" aria-controls="icons">
+              <span class="menu-title" style="color:#301934; font-weight:bold">Add Member</span>
+              <i class="mdi mdi-contacts menu-icon" style="color:#301934"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="managemember.html" aria-expanded="false" aria-controls="icons">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Manage Member</span>
+              <i class="mdi mdi-account-group menu-icon" style="color:#301934"></i>
+            </a>
+
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="reneval.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Reneval</span>
+              <i class="mdi mdi-account-multiple-check menu-icon" style="color:#301934;"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="membership_report.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Membership Report</span>
+              <i class="mdi mdi-account-multiple-check menu-icon" style="color:#301934;"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="revenue_report.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Revenue Report</span>
+              <i class="mdi mdi-finance menu-icon" style="color:#301934;"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="settings.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Settings</span>
+              <i class="mdi mdi-cog menu-icon" style="color:#301934;"></i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">
+              <span class="menu-title" style="color:#301934;font-weight:bold">Logout</span>
+              <i class="mdi mdi-logout menu-icon" style="color:#301934;"></i>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- partial -->
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">
+              <span class="page-title-icon bg-gradient-primary text-white me-2">
+                <i class="mdi mdi-account-multiple-check"></i>
+              </span> Reneval
+            </h3>
+            <nav aria-label="breadcrumb">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="index.html">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+
+                  Reneval
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="container">
+            <div class="row text-white" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+
+
+              <!-- ##############################################################################  -->
+
+
+              <!-- Load Content Here... -->
+       
+              <!-- ##############################################################################  -->
+
+
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            
+            <!-- partial -->
+          </div>
+                   <!-- main-panel ends -->
+        </div>
+          <footer class="footer py-3 px-4">
+            <div
+              class="d-flex flex-column flex-sm-row justify-content-between align-items-end text-center text-sm-start"
+            >
+              <!-- Left Side Text -->
+              <div
+                class="text-black mb-3 mb-sm-0 text-center text-sm-start w-100"
+              >
+                © 2025 Olympus Gym - All rights reserved.
+              </div>
+
+              <!-- Right Side: Logo centered above one-line text -->
+              <div
+                class="d-flex flex-column align-items-center align-items-sm-end"
+              >
+                <!-- Logo -->
+                <img
+                  alt="Kavya Infoweb Logo"
+                  src="kavya2.png"
+                  style="
+                    height: 80px;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-bottom: 6px;
+                    border-radius: 7px;
+                    box-shadow: 2px solid;
+                  "
+                />
+                <!-- One-line text below logo -->
+                <div
+                  class="text-center text-sm-end text-black"
+                  style="white-space: nowrap"
+                >
+                  Software Developed &amp; Managed By
+                  <a href="https://kavyainfoweb.com/" target="_blank">
+                    Kavya Infoweb Pvt. Ltd.
+                  </a>
+                </div>
+              </div>
+            </div>
+          </footer>
+
+        <!-- page-body-wrapper ends -->
+      </div>
+      <!-- container-scroller -->
+      <!-- plugins:js -->
+      <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+      <!-- endinject -->
+      <!-- Plugin js for this page -->
+      <script src="assets/vendors/chart.js/chart.umd.js"></script>
+      <script src="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+      <!-- End plugin js for this page -->
+      <!-- inject:js -->
+      <script src="assets/js/off-canvas.js"></script>
+      <script src="assets/js/misc.js"></script>
+      <script src="assets/js/settings.js"></script>
+      <script src="assets/js/todolist.js"></script>
+      <script src="assets/js/jquery.cookie.js"></script>
+      <!-- endinject -->
+      <!-- Custom js for this page -->
+      <script src="assets/js/dashboard.js"></script>
+
+     
+
+
+</body>
+
+</html>
