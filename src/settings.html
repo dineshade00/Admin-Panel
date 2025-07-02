@@ -532,7 +532,80 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="assets/js/dashboard.js"></script>
-     
+
+
+          <script>
+      function enableSettingsFields() {
+        document.getElementById("systemName").disabled = false;
+        document.getElementById("logo").disabled = false;
+
+        document.getElementById("currentPassword").disabled = true;
+        document.getElementById("newPassword").disabled = true;
+        document.getElementById("confirmPassword").disabled = true;
+
+        document.getElementById("saveSettingsBtn").style.display =
+          "inline-block";
+        document.getElementById("savePasswordBtn").style.display = "none";
+      }
+
+      function enablePasswordFields() {
+        document.getElementById("currentPassword").disabled = false;
+        document.getElementById("newPassword").disabled = false;
+        document.getElementById("confirmPassword").disabled = false;
+
+        document.getElementById("systemName").disabled = true;
+        document.getElementById("logo").disabled = true;
+
+        document.getElementById("savePasswordBtn").style.display =
+          "inline-block";
+        document.getElementById("saveSettingsBtn").style.display = "none";
+      }
+
+      function saveSettings() {
+        const systemName = document.getElementById("systemName").value;
+        const logo = document.getElementById("logo").files[0];
+
+        alert(
+          "✅ Settings saved!\nSystem Name: " +
+            systemName +
+            "\nLogo: " +
+            (logo ? logo.name : "No file selected")
+        );
+
+        document.getElementById("systemName").disabled = true;
+        document.getElementById("logo").disabled = true;
+        document.getElementById("saveSettingsBtn").style.display = "none";
+      }
+
+      function savePassword() {
+        const currentPassword =
+          document.getElementById("currentPassword").value;
+        const newPassword = document.getElementById("newPassword").value;
+        const confirmPassword =
+          document.getElementById("confirmPassword").value;
+
+        if (!currentPassword || !newPassword || !confirmPassword) {
+          alert("⚠️ Please fill in all password fields.");
+          return;
+        }
+
+        if (newPassword !== confirmPassword) {
+          alert("❌ New Password and Confirm Password do not match.");
+          return;
+        }
+
+        alert("🔐 Password changed successfully!");
+
+        document.getElementById("currentPassword").disabled = true;
+        document.getElementById("newPassword").disabled = true;
+        document.getElementById("confirmPassword").disabled = true;
+        document.getElementById("savePasswordBtn").style.display = "none";
+
+        document.getElementById("currentPassword").value = "";
+        document.getElementById("newPassword").value = "";
+        document.getElementById("confirmPassword").value = "";
+      }
+    </script>
    
 
 </body>
