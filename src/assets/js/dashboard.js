@@ -153,7 +153,7 @@
     new Chart(ctx, {
       type: 'doughnut',
       data: {
-        labels: ['Search Engines 30%', 'Direct Click 30%', 'Bookmarks Click 40%'],
+        labels: ['Nutrition Plans 30%', 'Online Training 30%', 'In-Gym Training 40%'],
         datasets: [{
           data: [30, 30, 40],
           backgroundColor: [gradientStrokeBlue, gradientStrokeGreen, gradientStrokeRed],
