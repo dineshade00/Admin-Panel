@@ -32,20 +32,7 @@
   <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
   <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet" />
 
-  <style>
-      .form-control {
-        border-radius: 0; /* No rounded corners */
-      }
-
-      .form-control:focus {
-        box-shadow: none; /* Remove blue glow */
-        outline: none; /* Remove browser default outline */
-      }
-      .btn {
-        border: none;
-        outline: none;
-      }
-    </style>
+ 
 </head>
 
 <body>
@@ -231,42 +218,7 @@
 
               <!-- Load Content Here... -->
             
-                 <div class="container my-5">
-      <div class="card">
-        <div
-          class="card-header text-white"
-          style="background-color: #4b0082; font-weight: bold"
-        >
-          Pay Due Amount
-        </div>
-        <div class="card-body">
-          <div class="mb-3">
-            <label class="form-label">Full Name</label>
-            <input type="text" id="fullName" class="form-control" readonly />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Due Amount</label>
-            <input type="text" id="dueAmount" class="form-control" readonly />
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Payment Amount</label>
-            <input
-              type="number"
-              class="form-control"
-              id="paymentAmount"
-              placeholder="Enter payment amount"
-            />
-          </div>
-          <button
-            class="btn btn-primary"
-            style="background-color: #4b0082; color: white"
-          >
-            Submit Payment
-          </button>
-        </div>
-      </div>
-    </div>
-
+               
               
               <!-- ##############################################################################  -->
 
@@ -343,47 +295,7 @@
       <script src="assets/js/dashboard.js"></script>
 
 
-        <script>
-      const urlParams = new URLSearchParams(window.location.search);
-      const name = urlParams.get("name");
-      const due = urlParams.get("due");
-
-      document.getElementById("fullName").value = name || "";
-      document.getElementById("dueAmount").value = due || "0.00";
-
-      // Handle button click
-      document
-        .querySelector("button.btn-primary")
-        .addEventListener("click", function () {
-          const paymentAmount = document.getElementById("paymentAmount").value;
-
-          if (paymentAmount && parseFloat(paymentAmount) > 0) {
-            alert("Payment successful");
-          } else {
-            alert("Please enter a payment amount");
-          }
-        });
-
-      function applyUpdates() {
-        const updates = JSON.parse(
-          localStorage.getItem("memberUpdates") || "[]"
-        );
-        updates.forEach((update) => {
-          const row = $(
-            `#membersTable tbody tr[data-contact="${update.contact}"]`
-          );
-          if (row.length) {
-            row.find("td").eq(4).text(update.type);
-            row.find("td").eq(5).html(update.expiry);
-            row.find("td").eq(6).text(update.total);
-            row.find("td").eq(7).text(update.paid);
-            row.find("td").eq(8).text(update.due);
-          }
-        });
-        localStorage.removeItem("memberUpdates");
-      }
-    </script>
-
+   
 
 
       
