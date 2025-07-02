@@ -1105,6 +1105,68 @@ function refreshBirthdays() {
 
 document.addEventListener('DOMContentLoaded', initializeBirthdays);
 </script>
+
+<script>
+   new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Nutrition Plans 30%', 'Online Training 30%', 'In-Gym Training 40%'],
+        datasets: [{
+          data: [30, 30, 40],
+          backgroundColor: [gradientStrokeBlue, gradientStrokeGreen, gradientStrokeRed],
+          hoverBackgroundColor: [
+            gradientStrokeBlue,
+            gradientStrokeGreen,
+            gradientStrokeRed
+          ],
+          borderColor: [
+            gradientStrokeBlue,
+            gradientStrokeGreen,
+            gradientStrokeRed
+          ],
+          legendColor: [
+            gradientLegendBlue,
+            gradientLegendGreen,
+            gradientLegendRed
+          ]
+        }]
+      },
+      options: {
+        cutout: 50,
+        animationEasing: "easeOutBounce",
+        animateRotate: true,
+        animateScale: false,
+        responsive: true,
+        maintainAspectRatio: true,
+        showScale: true,
+        legend: false,
+        plugins: {
+          legend: {
+            display: false,
+          }
+        }
+      },
+      plugins: [{
+        afterDatasetUpdate: function (chart, args, options) {
+          const chartId = chart.canvas.id;
+          var i;
+          const legendId = `${chartId}-legend`;
+          const ul = document.createElement('ul');
+          for (i = 0; i < chart.data.datasets[0].data.length; i++) {
+            ul.innerHTML += `
+                <li>
+                  <span style="background-color: ${chart.data.datasets[0].legendColor[i]}"></span>
+                  ${chart.data.labels[i]}
+                </li>
+              `;
+          }
+          return document.getElementById(legendId).appendChild(ul);
+        }
+      }]
+    });
+  }
+
+</script>
       
 </body>
 
