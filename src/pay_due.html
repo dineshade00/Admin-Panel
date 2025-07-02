@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>View & Manage Membership</title>
+  <title>Add New Member</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css">
@@ -27,8 +27,94 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 
- 
+  <!-- Bootstrap & DataTables CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+  <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet" />
 
+   <style>
+     
+.sidebar{
+    margin-left: -12px;
+}
+      #membersPage {
+       
+        font-family: "Segoe UI", sans-serif;
+        min-height: 100vh;
+      }
+
+      #membersPage .card-header {
+        background-color: #4b2c82;
+        color: white;
+        font-size: 1.25rem;
+      }
+
+      #membersPage table.dataTable thead {
+        background-color: #4b2c82;
+        color: white;
+      }
+
+      #membersPage .img-thumbnail {
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+        cursor: pointer;
+      }
+
+      #membersPage #modalImage {
+        max-width: 90%;
+        max-height: 80vh;
+        object-fit: cover;
+        border-radius: 0 !important;
+      }
+
+      #membersPage .badge-active {
+        background-color: #28a745;
+      }
+
+      #membersPage .badge-expired {
+        background-color: #dc3545;
+      }
+
+      #membersPage .btn-renew,
+      #membersPage .btn-danger {
+        color: white;
+        border: none;
+      }
+
+      #membersPage .btn-renew {
+        background-color: #4b0082;
+        font-weight: bold;
+      }
+
+      #membersPage .btn-renew:hover,
+      #membersPage .btn-renew:focus,
+      #membersPage .btn-renew:active {
+        background-color: #430172 !important;
+        color: white !important;
+        box-shadow: none !important;
+        outline: none !important;
+      }
+
+      #membersPage .modal-content .btn-close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        filter: invert(1);
+      }
+
+      @media (max-width: 576px) {
+        #membersPage .dataTables_length,
+        #membersPage .dataTables_filter {
+          margin-bottom: 1rem;
+        }
+
+        #membersPage .dataTables_wrapper .row > div {
+          width: 100% !important;
+        }
+      }
+    </style>
 
 
 </head>
@@ -37,50 +123,10 @@
   <div class="container-scroller">
 
     <!-- partial:partials/_navbar.html -->
-<!--     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-        <a class="navbar-brand brand-logo" href="index.html"><img src="assets/images/logo.svg" alt="logo" /></a>
-        <a class="navbar-brand brand-logo-mini" href="index.html"><img src="assets/images/logo-mini.svg"
-            alt="logo" /></a>
-      </div>
-      <div class="navbar-menu-wrapper d-flex align-items-stretch">
-        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="mdi mdi-menu"></span>
-        </button>
+    <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
 
-        <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item nav-profile dropdown">
-
-          </li>
-          <li class="nav-item dropdown">
-            
-          </li>
-
-          <li class="nav-item dropdown">
-            
-          </li>
-
-          <li class="nav-item nav-logout d-none d-lg-block">
-            
-          </li>
-          
-          <li class="nav-item d-none d-lg-block full-screen-link">
-            <a class="nav-link" href="#">
-              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
-            </a>
-          </li>
-        </ul>
-        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-          data-toggle="offcanvas">
-          <span class="mdi mdi-menu"></span>
-        </button>
-      </div>
-    </nav> -->
-      <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-    <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
-
-                <!-- Large logo for desktop -->
-              <a class="navbar-brand brand-logo d-none d-lg-flex align-items-center" href="index.html"
+                 <a class="navbar-brand brand-logo d-none d-lg-flex align-items-center" href="index.html"
                     style="gap: 10px; padding-top: 5px; padding-bottom: 5px;">
                     <img src="assets/images/olm2.png" alt="logo" style="
         height: 115px;
@@ -98,33 +144,40 @@
 
             </div>
 
+      <div class="navbar-menu-wrapper d-flex align-items-stretch">
+        <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+          <span class="mdi mdi-menu"></span> 
+          <h3 class="mb-0 ms-2 d-none d-lg-block" style="color: #4b0082;">Olympus Gym</h3>
+        </button>
 
-  <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">
-    <div class="d-flex align-items-center">
-      <!-- Menu toggler -->
-      <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-        <span class="mdi mdi-menu"></span>
-      </button>
+        <ul class="navbar-nav navbar-nav-right">
+          <li class="nav-item nav-profile dropdown">
 
-      <!-- Olympus Gym heading visible only on large screens -->
-      <h3 class="mb-0 ms-2 d-none d-lg-block" style="color: #4b0082;">Olympus Gym</h3>
-    </div>
+          </li>
+          <li class="nav-item dropdown">
+            <!-- Additional dropdown -->
+          </li>
 
-    <ul class="navbar-nav navbar-nav-right">
-      <!-- add your nav items as before -->
-      <li class="nav-item d-none d-lg-block full-screen-link">
-        <a class="nav-link" href="#">
-          <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
-        </a>
-      </li>
-    </ul>
-    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-      data-toggle="offcanvas">
-      <span class="mdi mdi-menu"></span>
-    </button>
-  </div>
-</nav>
+          <li class="nav-item dropdown">
+            <!-- Additional dropdown -->
+          </li>
 
+          <li class="nav-item nav-logout d-none d-lg-block">
+            <!-- Logout link -->
+          </li>
+          <!-- ⛶ Fullscreen Button -->
+          <li class="nav-item d-none d-lg-block full-screen-link">
+            <a class="nav-link" href="#">
+              <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+            </a>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="mdi mdi-menu"></span>
+        </button>
+      </div>
+    </nav>
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_sidebar.html -->
@@ -212,7 +265,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="logout.html">
+            <a class="nav-link" href="login.html">
               <span class="menu-title" style="color:#301934;font-weight:bold">Logout</span>
               <i class="mdi mdi-logout menu-icon" style="color:#301934;"></i>
             </a>
@@ -224,18 +277,18 @@
         <div class="content-wrapper">
           <div class="page-header">
             <h3 class="page-title">
-              <span class="page-title-icon text-white me-2" style="background-color:#4b0082">
-                <i class="mdi mdi-home"></i>
-              </span> Membership Plans
+              <span class="page-title-icon bg-gradient-primary text-white me-2" style="background-color: #4b0082">
+                <i class="mdi mdi-account-multiple-check" ></i>
+              </span> Reneval
             </h3>
-
             <nav aria-label="breadcrumb">
               <ul class="breadcrumb">
                 <li class="breadcrumb-item">
-                  <a href="index.html" style="color : #4b0082">Home</a>
+                  <a href="index.html">Home</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  Membership Report
+
+                  Reneval
                 </li>
               </ul>
             </nav>
@@ -248,8 +301,126 @@
 
 
               <!-- Load Content Here... -->
+             <div id="membersPage">
+      <div >
+        <div class="card shadow">
+          <div class="card-header" style="font-weight: bold; font-size: 18px">
+            Members DataTable
+          </div>
+          <div class="card-body">
+            <table
+              id="membersTable"
+              class="table table-bordered table-hover table-striped nowrap w-100"
+            >
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Photo</th>
+                  <th>Fullname</th>
+                  <th>Contact</th>
+                  <th>Type</th>
+                  <th>Expiry</th>
+                  <th>Total Amount</th>
+                  <th>Paid Amount</th>
+                  <th>Due Amount</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-contact="4440001111">
+                  <td>1</td>
+                  <td>
+                    <img
+                      src="https://via.placeholder.com/50"
+                      class="img-thumbnail"
+                    />
+                  </td>
+                  <td>Niraj Sontakke</td>
+                  <td>4440001111</td>
+                  <td>1 Month Plan</td>
+                  <td>2025-07-15<br /><small>15 days left</small></td>
+                  <td>500.00</td>
+                  <td>200.00</td>
+                  <td>300.00</td>
+                  <td>
+                    <span class="badge badge-expired">Expired</span>
+                  </td>
+                  <td>
+                    <button
+                      class="btn btn-sm btn-danger paydue-btn"
+                      data-name="Niraj Sontakke"
+                      data-contact="4440001111"
+                      data-type="1 Month Plan"
+                      data-expiry="2025-07-15"
+                    >
+                      Pay Due
+                    </button>
+                  </td>
+                </tr>
+
+                <tr data-contact="4440001111">
+                  <td>2</td>
+                  <td>
+                    <img
+                      src="https://via.placeholder.com/50"
+                      class="img-thumbnail"
+                    />
+                  </td>
+                  <td>Sushant Sharma</td>
+                  <td>4440001111</td>
+                  <td>3 Month Plan</td>
+                  <td>2025-07-15<br /><small>15 days left</small></td>
+                  <td>500.00</td>
+                  <td>500.00</td>
+                  <td>000.00</td>
+                  <td>
+                    <span class="badge badge-active">Active</span>
+                  </td>
+                  <td>
+                    <button
+                      class="btn btn-sm btn-renew renew-btn"
+                      data-name="Sushant Sharma"
+                      data-contact="4440001111"
+                      data-type="3 Month Plan"
+                      data-expiry="2025-07-15"
+                    >
+                      Renew
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal for image preview -->
+      <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content bg-transparent border-0">
+            <div class="modal-body text-center">
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+              <img
+                id="modalImage"
+                src=""
+                alt="Preview"
+                class="img-fluid border shadow"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
+
+              
               <!-- ##############################################################################  -->
 
 
@@ -259,10 +430,9 @@
             
             <!-- partial -->
           </div>
-          
-          <!-- main-panel ends -->
+                   <!-- main-panel ends -->
         </div>
-         <footer class="footer py-3 px-4">
+          <footer class="footer py-3 px-4">
             <div
               class="d-flex flex-column flex-sm-row justify-content-between align-items-end text-center text-sm-start"
             >
@@ -304,12 +474,10 @@
               </div>
             </div>
           </footer>
+
         <!-- page-body-wrapper ends -->
       </div>
       <!-- container-scroller -->
-
-
-
       <!-- plugins:js -->
       <script src="assets/vendors/js/vendor.bundle.base.js"></script>
       <!-- endinject -->
@@ -327,6 +495,132 @@
       <!-- Custom js for this page -->
       <script src="assets/js/dashboard.js"></script>
 
+
+
+
+         <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        const table = $("#membersTable").DataTable({
+          responsive: true,
+          pageLength: 10,
+          initComplete: function () {
+            applyUpdates();
+            updateStatusAndActions();
+          },
+        });
+
+        function applyUpdates() {
+          const updates = JSON.parse(
+            localStorage.getItem("memberUpdates") || "[]"
+          );
+          updates.forEach((update) => {
+            const row = $(
+              `#membersTable tbody tr[data-contact="${update.contact}"]`
+            );
+            if (row.length) {
+              row.find("td").eq(4).text(update.type);
+              row.find("td").eq(5).html(update.expiry);
+              row.find("td").eq(6).text(update.total);
+              row.find("td").eq(7).text(update.paid);
+              const due = (
+                parseFloat(update.total) - parseFloat(update.paid)
+              ).toFixed(2);
+              row.find("td").eq(8).text(due);
+            }
+          });
+          localStorage.removeItem("memberUpdates");
+        }
+
+        function updateStatusAndActions() {
+          $("#membersTable tbody tr").each(function () {
+            const $row = $(this);
+            const total = parseFloat($row.find("td").eq(6).text());
+            const paid = parseFloat($row.find("td").eq(7).text());
+            const due = total - paid;
+
+            const statusCell = $row.find("td").eq(9);
+            const actionCell = $row.find("td").eq(10);
+
+            const name = $row.find("td").eq(2).text();
+            const contact = $row.find("td").eq(3).text();
+            const type = $row.find("td").eq(4).text();
+            const expiry = $row.find("td").eq(5).text().split("<")[0].trim();
+
+            if (paid >= total) {
+              statusCell.html('<span class="badge badge-active">Active</span>');
+              actionCell.html(`
+                <button class="btn btn-sm btn-renew renew-btn"
+                  data-name="${name}"
+                  data-contact="${contact}"
+                  data-type="${type}"
+                  data-expiry="${expiry}">
+                  Renew
+                </button>
+              `);
+            } else {
+              statusCell.html(
+                '<span class="badge badge-expired">Expired</span>'
+              );
+              actionCell.html(`
+                <button class="btn btn-sm btn-danger paydue-btn"
+                style=" background-color: rgb(250, 195, 43); font-weight: bold; "
+                  data-name="${name}"
+                  data-contact="${contact}"
+                  data-type="${type}"
+                  data-expiry="${expiry}">
+                  Pay Due
+                </button>
+              `);
+            }
+          });
+        }
+
+        $(document).on("click", ".img-thumbnail", function () {
+          $("#modalImage").attr("src", this.src);
+          $("#imageModal").modal("show");
+        });
+
+        $(document).on("click", ".paydue-btn", function () {
+          const name = $(this).data("name");
+          const contact = $(this).data("contact");
+          const type = $(this).data("type");
+          const expiry = $(this).data("expiry");
+
+          const url = `pay_due.html?name=${encodeURIComponent(
+            name
+          )}&contact=${encodeURIComponent(contact)}&type=${encodeURIComponent(
+            type
+          )}&expiry=${encodeURIComponent(expiry)}`;
+          window.open(url, "_blank");
+        });
+
+        $(document).on("click", ".renew-btn", function () {
+          const name = $(this).data("name");
+          const contact = $(this).data("contact");
+          const type = $(this).data("type");
+          const expiry = $(this).data("expiry");
+
+          const url = `renew.html?name=${encodeURIComponent(
+            name
+          )}&contact=${encodeURIComponent(contact)}&type=${encodeURIComponent(
+            type
+          )}&expiry=${encodeURIComponent(expiry)}`;
+          window.open(url, "_blank");
+        });
+      });
+    </script>
+
+
+
+      
 
 </body>
 
