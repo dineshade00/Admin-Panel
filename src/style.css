@@ -1,1 +1,210 @@
+  tr.odd td,
+      tr.odd small {
+        color: black !important; /* Use !important with caution, consider specificity */
+      }
 
+      tr.even td,
+      tr.even small {
+        color: black;
+      }
+
+      .page-item .page-link {
+        color: black;
+      }
+    select {
+      margin: 10px;
+    }
+
+    .sidebar {
+      margin-left: -12px;
+    }
+
+    #membersPage .page-item.active .page-link {
+      background-color: #4b2c82;
+      border: none;
+    }
+
+    #membersPage {
+      font-family: "Segoe UI", sans-serif;
+      
+    }
+
+    #membersPage .card-header {
+      background-color: #4b2c82;
+      color: white;
+      font-size: 1.25rem;
+    }
+
+    #membersPage table { /* Added this selector for the table border */
+        border-top: 1px solid rgb(213, 211, 211); /* Example: 2px solid border in the theme color */
+    }
+
+    #membersPage table.dataTable thead {
+      background-color: #4b2c82;
+      color: white;
+    }
+
+    #membersPage .img-thumbnail {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #membersPage #modalImage {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: cover;
+      border-radius: 0 !important;
+    }
+
+    #membersPage .badge-active {
+      background-color: #004D00;
+      border-radius: 2px;
+      padding: 6px 9px;
+      font-family: sans-serif;
+    }
+
+    #membersPage .badge-expired {
+      background-color: #D80404;
+      border-radius: 2px;
+      padding: 6px 9px;
+      font-family: sans-serif;
+    }
+
+    #membersPage .btn-renew,
+    #membersPage .btn-danger {
+      color: white;
+      border: none;
+    }
+
+    #membersPage .btn-renew {
+      background-color: #4b0082;
+      font-weight: bold;
+    }
+
+    #membersPage .btn-renew:hover,
+    #membersPage .btn-renew:focus,
+    #membersPage .btn-renew:active {
+      background-color: #430172 !important;
+      color: white !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+
+    #membersPage .modal-content .btn-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      filter: invert(1);
+    }
+
+    /* --- REVISED CSS for DataTables Controls --- */
+
+    /* Basic flex setup for both length and filter to ensure alignment */
+    #membersPage .dataTables_wrapper .dataTables_length,
+    #membersPage .dataTables_wrapper .dataTables_filter {
+      display: flex;
+      /* Use flexbox for horizontal alignment */
+      align-items: center;
+      /* Vertically align items in the middle */
+      gap: 1rem;
+      /* Add consistent gap between label and input/select */
+      margin-bottom: 1rem;
+      /* Spacing below the controls */
+    }
+
+    /* Adjust specific elements within the controls */
+    #membersPage .dataTables_length label,
+    #membersPage .dataTables_filter label {
+      white-space: nowrap;
+      /* Prevent label text from wrapping */
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      /* Gap between label text and select/input */
+    }
+
+    /* Ensure select and input fields don't take unnecessary width */
+    #membersPage .dataTables_length .form-select {
+      width: auto;
+      /* Allow select to size according to its content */
+      min-width: 80px;
+      /* Prevent it from becoming too narrow */
+    }
+
+    #membersPage .dataTables_filter .form-control {
+      flex-grow: 1;
+      /* Allow the search input to grow and take available space */
+      max-width: 100%;
+      /* Ensure it doesn't overflow its container */
+    }
+
+    /* Desktop View (>= 768px): Align Show entries to left, Search to right */
+    @media (min-width: 768px) {
+      #membersPage .dataTables_wrapper .row:first-child>div {
+        display: flex;
+        align-items: center;
+      }
+
+      #membersPage .dataTables_wrapper .dataTables_length {
+        justify-content: flex-start;
+        /* Align "Show entries" to the left */
+        flex-grow: 1;
+        /* Allow it to take up available space on its side */
+        margin-right: 20px;
+        /* Add more space between "Show entries" and Search */
+      }
+
+      #membersPage .dataTables_wrapper .dataTables_filter {
+        justify-content: flex-end;
+        /* Align search to the right */
+        flex-grow: 1;
+        /* Allow it to take up available space on its side */
+      }
+    }
+
+
+    /* Mobile View (<= 767px): Stack controls vertically */
+    @media (max-width: 767px) {
+      #membersPage .dataTables_wrapper .dataTables_length,
+      #membersPage .dataTables_wrapper .dataTables_filter {
+        flex-direction: column;
+        /* Stack items vertically */
+        align-items: flex-start;
+        /* Align items to the left when stacked */
+        width: 100%;
+        /* Take full width */
+        box-sizing: border-box;
+        /* Include padding in width calculation */
+        margin-bottom: 1rem;
+        /* Consistent spacing */
+      }
+
+      #membersPage .dataTables_length label,
+      #membersPage .dataTables_filter label {
+        width: 100%;
+        /* Make label take full width when stacked */
+        justify-content: flex-start;
+        margin-bottom: 0.5rem;
+        /* Space between label and input/select */
+      }
+
+      #membersPage .dataTables_filter .form-control,
+      #membersPage .dataTables_length .form-select {
+        width: 100%;
+        /* Inputs/selects take full width on mobile */
+      }
+
+      /* Adjust DataTables info and pagination for mobile to center them */
+      #membersPage .dataTables_info,
+      #membersPage .dataTables_paginate {
+        text-align: center !important;
+        width: 100%;
+      }
+
+      #membersPage .dataTables_paginate .pagination {
+        justify-content: center;
+      }
+    }
