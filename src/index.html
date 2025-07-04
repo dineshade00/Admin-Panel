@@ -162,6 +162,61 @@
 }
 
 </style>
+<style>
+  @media (max-width: 576px) {
+    .birthday-section {
+      padding: 1rem !important;
+      overflow-x: hidden;
+    }
+
+    .birthday-section .section-header h4 {
+      font-size: 1rem;
+    }
+
+    .birthday-section .card-body,
+    .birthday-section .tab-content {
+      padding: 0.5rem !important;
+    }
+
+    .filter-tabs .nav-link {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.6rem;
+    }
+
+    .filter-tabs .badge {
+      font-size: 0.7rem;
+      padding: 0.25em 0.5em;
+    }
+
+    .birthday-carousel-card {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .birthday-carousel-card .card-body {
+      padding: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .birthday-carousel-card h6 {
+      font-size: 0.95rem;
+    }
+
+    .birthday-carousel-card small {
+      font-size: 0.8rem;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+  }
+</style>
+
 </head>
 
 <body>
@@ -467,41 +522,43 @@
           </div>
         </div>
 
-
-         <div class="row" style="padding-right:20px">
-           <div class="col-md-5 grid-margin stretch-card">
-             <div class="card">
-              <div class="card-body" style="padding-right: 20px">
-                <h4 class="card-title">Revenue Sources</h4>
-                 <div class="doughnutjs-wrapper d-flex justify-content-center">
-                   <canvas id="traffic-chart"></canvas>
-                 </div>
-               <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4"></div>
-             </div>
-           </div>
+<div class="container">
+  <div class="row g-3">
+    <!-- Revenue Sources Card -->
+    <div class="col-12 col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Revenue Sources</h4>
+          <div class="doughnutjs-wrapper d-flex justify-content-center">
+            <canvas id="traffic-chart"></canvas>
           </div>
-       <div class="col-md-7 mx-auto grid-margin stretch-card">
-         <div class="birthday-section" style="padding-right: 20px">
-           <div class="section-header">
-            <div class="d-flex justify-content-between align-items-center">
-              <h4 class="mb-0">
-               <i class="fas fa-birthday-cake me-2"></i> Birthdays
-              </h4>
-            <div class="d-flex gap-3">
-            <span class="badge bg-light text-dark">
-              <i class="fas fa-calendar-day me-1"></i>
-              Today: <span id="currentDate"></span>
-            </span>
-            <button class="btn btn-light btn-sm" onclick="refreshBirthdays()">
-              <i class="fas fa-sync-alt"></i>
-            </button>
-          </div>
+          <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4"></div>
         </div>
       </div>
+    </div>
 
-      <!-- Filter Tabs -->
-      <div class="p-3 pb-0">
-        <div class="filter-tabs">
+    <!-- Birthdays Card - Full width on mobile -->
+    <div class="col-12 col-md-7">
+      <div class="birthday-section card p-3">
+        <div class="section-header mb-3">
+          <div class="d-flex justify-content-between align-items-center">
+            <h4 class="mb-0">
+              <i class="fas fa-birthday-cake me-2"></i> Birthdays
+            </h4>
+            <div class="d-flex gap-2">
+              <span class="badge bg-light text-dark">
+                <i class="fas fa-calendar-day me-1"></i>
+                Today: <span id="currentDate"></span>
+              </span>
+              <button class="btn btn-light btn-sm" onclick="refreshBirthdays()">
+                <i class="fas fa-sync-alt"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs mb-3">
           <ul class="nav nav-pills" id="birthdayTabs" role="tablist">
             <li class="nav-item" role="presentation">
               <button class="nav-link active" id="today-tab" data-bs-toggle="pill" data-bs-target="#today" type="button" role="tab">
@@ -520,24 +577,24 @@
             </li>
           </ul>
         </div>
-      </div>
 
-      <!-- Tab Content -->
-      <div class="tab-content p-3" id="birthdayTabContent">
-        <div class="tab-pane fade show active" id="today" role="tabpanel">
-          <div id="todayBirthdays"></div>
-        </div>
-        <div class="tab-pane fade" id="upcoming" role="tabpanel">
-          <div id="upcomingBirthdays"></div>
-        </div>
-        <div class="tab-pane fade" id="previous" role="tabpanel">
-          <div id="previousBirthdays"></div>
+        <!-- Tab Content -->
+        <div class="tab-content" id="birthdayTabContent">
+          <div class="tab-pane fade show active" id="today" role="tabpanel">
+            <div id="todayBirthdays"></div>
+          </div>
+          <div class="tab-pane fade" id="upcoming" role="tabpanel">
+            <div id="upcomingBirthdays"></div>
+          </div>
+          <div class="tab-pane fade" id="previous" role="tabpanel">
+            <div id="previousBirthdays"></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
- </div>
               
              <div class="row">
                 <div class="col-12 grid-margin">
