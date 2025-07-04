@@ -1,167 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <title>View & Manage Membership</title>
 
-    <!-- CSS -->
-    <link
-      rel="stylesheet"
-      href="assets/vendors/mdi/css/materialdesignicons.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/vendors/ti-icons/css/themify-icons.css"
-    />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Add New Membership</title>
+
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css" />
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
-    <link
-      rel="stylesheet"
-      href="assets/vendors/font-awesome/css/font-awesome.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css"
-    />
+    <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <!--   <link rel="shortcut icon" href="assets/images/favicon.png" /> -->
-    <link rel="shortcut icon" href="assets/images/olm2.png" />
-    <link
-      href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
-      rel="stylesheet"
-    />
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
+    <link href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <!-- Inside your <style> tag in <head> -->
     <style>
-      .pagination .page-link {
-        cursor: pointer;
-        color: #4b0082 !important;
-      }
-
-      .pagination .page-item.active .page-link {
-        background-color: #4b0082 !important;
-        border-color: #4b0082 !important;
-        color: white !important;
-      }
-
-      .btn-edit-custom,
-      .btn-delete-custom {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.875rem;
-        padding: 6px 12px;
-      }
-
-      .btn-edit-custom {
-        background-color: #4b0082;
-        color: white;
-      }
-
-      .btn-edit-custom:hover {
-        background-color: #4b0082;
-        color: white;
-      }
-
-      .btn-delete-custom {
-        background-color: #dc3545;
-        color: white;
-      }
-
-      .btn-delete-custom:hover {
-        background-color: #bb2d3b;
-        color: white;
-      }
-
-      .card-header {
-        background-color: #4b0082 !important;
-        color: white;
-      }
-
-      .breadcrumb-item.active {
-        color: #4b0082;
-      }
-
-      .breadcrumb-item a {
-        color: #4b0082;
-        text-decoration: none;
-      }
-
-      .breadcrumb-item a:hover {
-        text-decoration: underline;
-      }
-
-      @media (max-width: 768px) {
-        .control-row > div {
-          width: 100% !important;
-          margin-bottom: 10px;
-        }
-      }
-
-      @media (min-width: 992px) {
-        #sidebar {
-          position: fixed;
-          top: 70px; /* navbar ke neeche distance adjust karo */
-          left: 0;
-          height: calc(100vh - 70px); /* poori height navbar ke baad */
-          overflow-y: auto;
-          z-index: 999; /* zaroorat pade to */
+        .tab-button {
+            border-radius: 10px;
+            padding: 6px 16px;
+            font-weight: 500;
         }
 
-        .main-panel {
-          margin-left: 240px; /* sidebar ki width jitni ho utna margin do */
+        .tab-active {
+            background-color: #8f4de3;
+            color: white;
+            border: 2px solid #8f4de3;
         }
-      }
+
+        .tab-inactive {
+            background-color: white;
+            color: #8f4de3;
+            border: 2px solid #8f4de3;
+        }
+
+        .card-header {
+            background-color: #4b0082 !important;
+            width: 100%;
+            font-size: 20px;
+            font-weight: 500;
+            padding: 15px 20px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        @media (max-width: 767.98px) {
+            #successMessage {
+                font-size: 16px !important;
+                padding: 16px !important;
+            }
+
+            .card-header {
+                font-size: 16px;
+                padding: 12px 16px;
+                text-align: center;
+            }
+
+            .form-label {
+                font-size: 14px;
+            }
+
+            .btn {
+                font-size: 15px;
+                padding: 10px;
+                background-color: #4b0082;
+            }
+
+            input.form-control {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            #sidebar {
+                position: fixed;
+                top: 70px;
+                /* navbar ke neeche distance adjust karo */
+                left: 0;
+                height: calc(100vh - 70px);
+                /* poori height navbar ke baad */
+                overflow-y: auto;
+                z-index: 999;
+                /* zaroorat pade to */
+            }
+
+            .main-panel {
+                margin-left: 240px;
+                /* sidebar ki width jitni ho utna margin do */
+            }
+        }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="container-scroller">
-      <!-- Navbar -->
-      <nav
+        <!-- Navbar -->
+        <!--       <nav
         class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
       >
         <div
           class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start"
         >
-          <a
-            class="navbar-brand brand-logo d-none d-lg-flex align-items-center"
-            href="index.html"
-            style="gap: 10px; padding-top: 5px; padding-bottom: 5px"
-          >
-            <img
-              src="assets/images/olm2.png"
-              alt="logo"
-              style="
-                height: 115px;
-                width: auto;
-                object-fit: contain;
-                display: block;
-              "
-            />
-          </a>
-
-          <!-- Small logo for collapsed / tab / mobile -->
-          <a class="navbar-brand brand-logo-mini d-lg-none" href="index.html">
-            <img
-              src="assets/images/olm2.png"
-              alt="logo"
-              style="
-                height: 90px;
-                width: auto;
-                object-fit: contain;
-                display: block;
-              "
-            />
-          </a>
+          <a class="navbar-brand brand-logo" href="index.html"
+            ><img src="" alt="logo"
+          /></a>
+          <a class="navbar-brand brand-logo-mini" href="index.html"
+            ><img src="assets/images/logo-mini.svg" alt="logo"
+          /></a>
         </div>
         <div class="navbar-menu-wrapper d-flex align-items-stretch">
           <button
@@ -171,15 +120,7 @@
           >
             <span class="mdi mdi-menu"></span>
           </button>
-
-          <h3
-            class="mb-0 ms-2 d-none d-lg-block"
-            style="color: #4b0082; padding-top: 20px"
-          >
-            Olympus Gym
-          </h3>
           <ul class="navbar-nav navbar-nav-right">
-            <!-- Add profile/logout here if needed -->
             <li class="nav-item d-none d-lg-block full-screen-link">
               <a class="nav-link" href="#">
                 <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
@@ -195,378 +136,245 @@
           </button>
         </div>
       </nav>
+      -->
 
-      <div class="container-fluid page-body-wrapper">
-        <!-- Sidebar -->
-        <nav class="sidebar sidebar-offcanvas" id="sidebar">
-          <ul class="nav">
-            <li class="nav-item nav-profile bg-dark"></li>
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">
-                <span
-                  class="menu-title"
-                  style="color: #25022b; font-weight: bold"
-                  >Dashboard</span
-                >
-                <i class="mdi mdi-home menu-icon" style="color: #301934"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                data-bs-toggle="collapse"
-                href="#ui-basic"
-                aria-expanded="false"
-                aria-controls="ui-basic"
-              >
-                <span
-                  class="menu-title"
-                  style="color: #220427; font-weight: bold"
-                  >Membership Plans</span
-                >
-                <i
-                  class="mdi mdi-folder-key menu-icon"
-                  style="color: #301934"
-                ></i>
-              </a>
-              <div class="collapse" id="ui-basic">
-                <ul class="nav flex-column sub-menu">
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href="add_new.html"
-                      style="color: #301934"
-                    >
-                      <i
-                        class="mdi mdi-plus-box me-2"
-                        style="color: #301934"
-                      ></i>
-                      Add New
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
-                      href="view_manage.html"
-                      style="color: #301934"
-                    >
-                      <i
-                        class="mdi mdi-eye-settings me-2"
-                        style="color: #301934"
-                      ></i>
-                      View and Manage Plans
-                    </a>
-                  </li>
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+
+                <!-- Large logo for desktop -->
+               <a class="navbar-brand brand-logo d-none d-lg-flex align-items-center" href="index.html"
+                    style="gap: 10px; padding-top: 5px; padding-bottom: 5px;">
+                    <img src="assets/images/olm2.png" alt="logo" style="
+        height: 115px;
+        width: auto;
+        object-fit: contain;
+        display: block;
+      " />
+                </a>
+
+                <!-- Small logo for collapsed / tab / mobile -->
+                <a class="navbar-brand brand-logo-mini d-lg-none" href="index.html">
+                    <img src="assets/images/olm2.png" alt="logo"
+                        style="height:60px; object-fit:contain;" />
+                </a>
+
+            </div>
+
+            <div class="navbar-menu-wrapper d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <!-- Menu toggler -->
+                    <button class="navbar-toggler navbar-toggler align-self-center" type="button"
+                        data-toggle="minimize">
+                        <span class="mdi mdi-menu"></span>
+                    </button>
+
+                    <!-- Olympus Gym heading visible only on large screens -->
+                    <h3 class="mb-0 ms-2 d-none d-lg-block" style="color: #4b0082;">Olympus Gym</h3>
+                </div>
+
+                <ul class="navbar-nav navbar-nav-right">
+                    <!-- add your nav items as before -->
+                    <li class="nav-item d-none d-lg-block full-screen-link">
+                        <a class="nav-link" href="#">
+                            <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
+                        </a>
+                    </li>
                 </ul>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="addmember.html"
-                ><span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Add Member</span
-                ><i
-                  class="mdi mdi-contacts menu-icon"
-                  style="color: #301934"
-                ></i
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="managemember.html"
-                ><span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Manage Member</span
-                ><i
-                  class="mdi mdi-account-group menu-icon"
-                  style="color: #301934"
-                ></i
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="reneval.html"
-                ><span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Reneval</span
-                ><i
-                  class="mdi mdi-account-multiple-check menu-icon"
-                  style="color: #301934"
-                ></i
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="membership_report.html"
-                ><span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Membership Report</span
-                ><i
-                  class="mdi mdi-account-multiple-check menu-icon"
-                  style="color: #301934"
-                ></i
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="revenue_report.html"
-                ><span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Revenue Report</span
-                ><i class="mdi mdi-finance menu-icon" style="color: #301934"></i
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="settings.html"
-                ><span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Settings</span
-                ><i class="mdi mdi-cog menu-icon" style="color: #301934"></i
-              ></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html"
-                ><span
-                  class="menu-title"
-                  style="color: #301934; font-weight: bold"
-                  >Logout</span
-                ><i class="mdi mdi-logout menu-icon" style="color: #301934"></i
-              ></a>
-            </li>
-          </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+                    data-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
         </nav>
 
-        <!-- Main Content -->
-        <div class="main-panel">
-          <div class="content-wrapper">
-            <div class="page-header">
-              <div class="container-fluid">
-                <div class="row align-items-center">
-                  <div class="col-md-6 col-12 mb-2 mb-md-0">
-                    <h3
-                      class="page-title d-flex align-items-center"
-                      style="padding-left: 10px"
-                    >
-                      <span
-                        class="page-title-icon text-white me-2"
-                        style="background-color: #4b0082"
-                      >
-                        <i class="mdi mdi-account-group"></i>
-                      </span>
-                      Manage Membership Types
-                    </h3>
-                  </div>
-                  <div class="col-md-6 col-12 text-md-end">
-                    <nav aria-label="breadcrumb">
-                      <ul
-                        class="breadcrumb justify-content-md-end justify-content-start mb-0"
-                      >
-                        <li class="breadcrumb-item">
-                          <a href="index.html">Home</a>
-                        </li>
-                        <li class="breadcrumb-item active" aria-current="page">
-                          Manage Membership Types
-                        </li>
-                      </ul>
-                    </nav>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <div class="container mt-4">
-              <div class="card">
-                <div
-                  class="card-header fw-bold"
-                  style="background-color: #4b0082"
-                >
-                  Membership Plans DataTable
-                </div>
-                <div class="card-body">
-                  <div
-                    class="d-flex flex-wrap justify-content-between mb-3 align-items-center control-row gap-2"
-                  >
-                    <div class="px-1">
-                      Show
-                      <select
-                        id="entriesSelect"
-                        class="form-select d-inline-block w-auto mx-2"
-                        style="min-width: 70px"
-                      >
-                        <option selected>5</option>
-                        <option>10</option>
-                        <option>20</option>
-                      </select>
-                      entries
+
+        <div class="container-fluid page-body-wrapper">
+            <!-- Sidebar -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <span class="menu-title" style="color: #301934; font-weight: bold">Dashboard</span>
+                            <i class="mdi mdi-home menu-icon" style="color: #301934"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
+                            aria-controls="ui-basic">
+                            <span class="menu-title" style="color: #301934; font-weight: bold">Membership Plans</span>
+                            <i class="menu" style="color: #301934"></i>
+                            <i class="mdi mdi-folder-key menu-icon" style="color: #301934"></i>
+                        </a>
+                        <div class="collapse" id="ui-basic">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="add_new.html" style="color: #301934"><i
+                                            class="mdi mdi-plus-box me-2"></i> Add New</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="view_manage.html" style="color: #301934"><i
+                                            class="mdi mdi-eye-settings me-2"></i> View and Manage
+                                        Plans</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="addmember.html"><span class="menu-title"
+                                style="color: #301934; font-weight: bold">Add Member</span><i
+                                class="mdi mdi-contacts menu-icon" style="color: #301934"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="managemember.html"><span class="menu-title"
+                                style="color: #301934; font-weight: bold">Manage Member</span><i
+                                class="mdi mdi-account-group menu-icon" style="color: #301934"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reneval.html"><span class="menu-title"
+                                style="color: #301934; font-weight: bold">Reneval</span><i
+                                class="mdi mdi-account-multiple-check menu-icon" style="color: #301934"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="membership_report.html"><span class="menu-title"
+                                style="color: #301934; font-weight: bold">Membership Report</span><i
+                                class="mdi mdi-account-multiple-check menu-icon" style="color: #301934"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="revenue_report.html"><span class="menu-title"
+                                style="color: #301934; font-weight: bold">Revenue Report</span><i
+                                class="mdi mdi-finance menu-icon" style="color: #301934"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="settings.html"><span class="menu-title"
+                                style="color: #301934; font-weight: bold">Settings</span><i
+                                class="mdi mdi-cog menu-icon" style="color: #301934"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html"><span class="menu-title"
+                                style="color: #301934; font-weight: bold">Logout</span><i
+                                class="mdi mdi-logout menu-icon" style="color: #301934"></i></a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Main Content -->
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div
+                        class="page-header d-flex flex-column flex-md-row align-items-center justify-content-between text-center text-md-start">
+                        <div class="d-flex align-items-center justify-content-center mb-2 mb-md-0">
+
+                            <h3 class="page-title">
+                                <span class="page-title-icon  text-white me-2" style="background-color: #4b0082;"><i
+                                        class="mdi mdi-account"></i></span>
+                                Add New Membership
+                            </h3>
+                        </div>
+                        <nav aria-label="breadcrumb">
+                            <ul class="breadcrumb m-0 d-flex flex-wrap justify-content-center justify-content-md-end">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Add New
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
-                    <div class="px-1">
-                      <label class="me-2">Search:</label>
-                      <input
-                        type="search"
-                        id="searchInput"
-                        class="form-control d-inline-block"
-                        style="width: 160px"
-                      />
+
+                    <div class="container">
+                        <!-- Success Message -->
+                        <div class="card px-3 py-2 mx-auto mb-3" id="successMessage" style="
+                  display: none;
+                  background-color: #28a745;
+                  color: #fff;
+                  font-weight: bold;
+                  border-radius: 10px;
+                  padding: 20px;
+                  text-align: center;
+                  font-size: 18px;
+                  width: 100%;
+                ">
+                            Membership Type Added Successfully!
+                        </div>
+                        <!-- Membership Form -->
+                        <div class="card">
+                            <div class="card-header text-white" style="background-color:#4b0082">
+                                <i class="bi bi-card-checklist me-2"></i> Add New Membership
+                                Type Plan
+                            </div>
+                            <div class="card-body">
+                                <form autocomplete="off" id="membershipForm">
+                                    <div class="row mb-3">
+                                        <div class="col-md-6 mb-3 mb-md-0">
+                                            <label class="form-label fw-semibold">Membership Type</label>
+                                            <input class="form-control" id="membershipType" list="membershipOptions"
+                                                placeholder="Enter or select membership type" required="" type="text" />
+                                            <datalist id="membershipOptions">
+                                                <option value="1 Month Plan"></option>
+                                                <option value="2 Month Plan"></option>
+                                                <option value="3 Month Plan"></option>
+                                                <option value="6 Month Plan"></option>
+                                                <option value="1 Year Plan"></option>
+                                                <option value="Gym + Cardio 1 Month Plan"></option>
+                                                <option value="Gym + Cardio 3 Month Plan"></option>
+                                                <option value="Gym + Cardio 6 Month Plan"></option>
+                                                <option value="Gym + Cardio 1 Year Plan"></option>
+                                            </datalist>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label fw-semibold">Amount</label>
+                                            <input class="form-control" id="amount" placeholder="Amount will auto-fill"
+                                                required="" type="text" />
+                                        </div>
+                                    </div>
+                                    <button class="btn text-white w-100 w-md-auto" style="background-color: #4b0082
+" type="submit">
+                                        Submit
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-
-                  <div class="table-responsive">
-                    <table
-                      class="table table-bordered align-middle text-center"
-                      id="membershipTable"
-                    >
-                      <thead class="table-light">
-                        <tr>
-                          <th>Id</th>
-                          <th>Type</th>
-                          <th>Amount</th>
-                          <th>Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody id="tableBody"></tbody>
-                    </table>
-                  </div>
-
-                  <div
-                    class="d-flex flex-column flex-md-row justify-content-between align-items-center mt-3"
-                  >
-                    <div class="mb-2 mb-md-0" id="entriesInfo">
-                      Showing entries
-                    </div>
-                    <nav>
-                      <ul
-                        class="pagination mb-0 flex-wrap"
-                        id="paginationControls"
-                      ></ul>
-                    </nav>
-                  </div>
                 </div>
-              </div>
-            </div>
+                <!-- Footer -->
+                <footer class="footer py-3 px-4">
+                    <div
+                        class="d-flex flex-column flex-sm-row justify-content-between align-items-end text-center text-sm-start">
+                        <!-- Left Side Text -->
+                        <div class="text-black mb-3 mb-sm-0 ms-4 text-center text-sm-start w-100">
+                            © 2025 Olympus Gym - All rights reserved.
+                        </div>
 
-            <!-- Edit Modal -->
-            <div class="modal fade" id="editModal" tabindex="-1">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div
-                    class="modal-header"
-                    style="background: #4b0082; color: white"
-                  >
-                    <h5 class="modal-title">Edit Membership</h5>
-                    <button
-                      type="button"
-                      class="btn-close"
-                      data-bs-dismiss="modal"
-                    ></button>
-                  </div>
-                  <div class="modal-body">
-                    <form id="editForm">
-                      <input type="hidden" id="editId" />
-                      <div class="mb-3">
-                        <label>Type</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="editType"
-                          required
-                        />
-                      </div>
-                      <div class="mb-3">
-                        <label>Amount</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="editAmount"
-                          required
-                        />
-                      </div>
-                      <button
-                        class="btn btn-primary w-100"
-                        style="background: #4b0082"
-                      >
-                        Update
-                      </button>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Footer -->
-          <footer class="footer py-3 px-4">
-            <!-- Desktop View -->
-            <div
-              class="d-none d-sm-flex flex-column flex-sm-row justify-content-between align-items-end text-center text-sm-start"
-            >
-              <!-- Left Side Text -->
-              <div
-                class="text-black mb-3 mb-sm-0 text-center text-sm-start w-100"
-              >
-                © 2025 Olympus Gym - All rights reserved.
-              </div>
-
-              <!-- Right Side: Logo centered above one-line text -->
-              <div
-                class="d-flex flex-column align-items-center align-items-sm-end"
-              >
-                <!-- Logo -->
-                <img
-                  alt="Kavya Infoweb Logo"
-                  src="kavya2.png"
-                  style="
+                        <!-- Right Side: Logo centered above one-line text -->
+                        <div class="d-flex flex-column align-items-center align-items-sm-end">
+                            <!-- Logo -->
+                            <img alt="Kavya Infoweb Logo" src="kavya2.png" style="
                     height: 80px;
                     display: block;
                     margin-left: auto;
                     margin-right: auto;
                     margin-bottom: 6px;
                     border-radius: 7px;
-                  "
-                />
-                <!-- One-line text below logo -->
-                <div
-                  class="text-center text-sm-end text-black"
-                  style="white-space: nowrap"
-                >
-                  Software Developed &amp; Managed By
-                  <a href="https://kavyainfoweb.com/" target="_blank">
-                    Kavya Infoweb Pvt. Ltd.
-                  </a>
-                </div>
-              </div>
+                    box-shadow: 2px solid;
+                  " />
+                            <!-- One-line text below logo -->
+                            <div class="text-center text-sm-end text-black" style="white-space: nowrap">
+                                Software Developed &amp; Managed By
+                                <a href="https://kavyainfoweb.com/" target="_blank">
+                                    Kavya Infoweb Pvt. Ltd.
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
-
-            <!-- Mobile View -->
-            <div class="d-block d-sm-none text-center">
-              <!-- Logo -->
-              <img
-                src="kavya2.png"
-                alt="Kavya Infoweb Logo"
-                style="height: 80px; margin-bottom: 6px; border-radius: 7px"
-              />
-              <div class="text-black mb-4">
-                © 2025 Olympus Gym - All rights reserved.
-              </div>
-
-              <!-- Footer Text (now fully visible and wrapping if needed) -->
-
-              <!-- Left Text -->
-
-              <div class="text-black px-2 mb-4">
-                Software Developed &amp; Managed By
-                <a href="https://kavyainfoweb.com/" target="_blank">
-                  Kavya Infoweb Pvt. Ltd.
-                </a>
-              </div>
-            </div>
-          </footer>
         </div>
-      </div>
+    </div>
+    </div>
+    </div>
     </div>
 
-    <!-- JS -->
+    <!-- JS Dependencies -->
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
     <script src="assets/vendors/chart.js/chart.umd.js"></script>
     <script src="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
@@ -576,168 +384,61 @@
     <script src="assets/js/todolist.js"></script>
     <script src="assets/js/jquery.cookie.js"></script>
     <script src="assets/js/dashboard.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-      let data = [
-        ["1", "1 Month Plan", "Rupees 500"],
-        ["2", "3 Month Plan", "Rupees 1300"],
-        ["3", "6 Month Plan", "Rupees 2000"],
-        ["4", "1 Year Plan", "Rupees 4000"],
-        ["5", "2 Month Plan", "Rupees 1000"],
-      ];
+        const typeInput = document.getElementById("membershipType");
+        const amountInput = document.getElementById("amount");
+        const form = document.getElementById("membershipForm");
+        const successMessage = document.getElementById("successMessage");
 
-      const tableBody = document.getElementById("tableBody");
-      const searchInput = document.getElementById("searchInput");
-      const entriesSelect = document.getElementById("entriesSelect");
-      const entriesInfo = document.getElementById("entriesInfo");
-      const paginationControls = document.getElementById("paginationControls");
-
-      let currentPage = 1;
-      let filteredData = [...data];
-      let entriesPerPage = parseInt(entriesSelect.value);
-
-      function reassignIds() {
-        data.forEach((item, index) => {
-          item[0] = (index + 1).toString();
-        });
-      }
-
-      function renderTable() {
-        const start = (currentPage - 1) * entriesPerPage;
-        const end = start + entriesPerPage;
-        const pageData = filteredData.slice(start, end);
-
-        tableBody.innerHTML = "";
-        pageData.forEach((row) => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-      <td>${row[0]}</td>
-      <td>${row[1]}</td>
-      <td>${row[2]}</td>
-      <td>
-        <div class="d-flex justify-content-center flex-wrap gap-2">
-          <button class="btn btn-edit-custom" data-id="${row[0]}">
-            <i class="bi bi-pencil-square"></i> Edit
-          </button>
-          <button class="btn btn-delete-custom" onclick="deleteRow('${row[0]}')">
-            <i class="bi bi-trash-fill"></i> Delete
-          </button>
-        </div>
-      </td>`;
-          tableBody.appendChild(tr);
-        });
-
-        const showing = pageData.length;
-        const total = filteredData.length;
-        entriesInfo.textContent = `Showing ${start + 1} to ${
-          start + showing
-        } of ${total} entries`;
-
-        renderPagination();
-
-        document.querySelectorAll(".btn-edit-custom").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const id = btn.dataset.id;
-            const row = data.find((r) => r[0] === id);
-            if (row) {
-              document.getElementById("editId").value = row[0];
-              document.getElementById("editType").value = row[1];
-              document.getElementById("editAmount").value = row[2];
-              bootstrap.Modal.getOrCreateInstance(
-                document.getElementById("editModal")
-              ).show();
-            }
-          });
-        });
-      }
-
-      function renderPagination() {
-        const totalPages = Math.ceil(filteredData.length / entriesPerPage);
-        paginationControls.innerHTML = "";
-
-        const prevLi = document.createElement("li");
-        prevLi.className = `page-item ${currentPage === 1 ? "disabled" : ""}`;
-        prevLi.innerHTML = `<a class="page-link">Previous</a>`;
-        prevLi.onclick = () => {
-          if (currentPage > 1) {
-            currentPage--;
-            renderTable();
-          }
+        const planPrices = {
+            "1 Month Plan": 500,
+            "2 Month Plan": 1000,
+            "3 Month Plan": 1300,
+            "6 Month Plan": 2000,
+            "1 Year Plan": 4000,
+            "Gym + Cardio 1 Month Plan": 800,
+            "Gym + Cardio 3 Month Plan": 2300,
+            "Gym + Cardio 6 Month Plan": 3800,
+            "Gym + Cardio 1 Year Plan": 7500,
         };
-        paginationControls.appendChild(prevLi);
 
-        for (let i = 1; i <= totalPages; i++) {
-          const li = document.createElement("li");
-          li.className = `page-item ${i === currentPage ? "active" : ""}`;
-          li.innerHTML = `<a class="page-link">${i}</a>`;
-          li.onclick = () => {
-            currentPage = i;
-            renderTable();
-          };
-          paginationControls.appendChild(li);
+        typeInput.addEventListener("input", () => {
+            const selected = typeInput.value.trim();
+            amountInput.value = planPrices[selected] || "";
+            updateURL();
+        });
+
+        amountInput.addEventListener("input", updateURL);
+
+        function updateURL() {
+            const typeVal = encodeURIComponent(typeInput.value.trim());
+            const amountVal = encodeURIComponent(amountInput.value.trim());
+            const newURL = `${window.location.pathname}?type=${typeVal}&amount=${amountVal}`;
+            history.replaceState(null, "", newURL);
         }
 
-        const nextLi = document.createElement("li");
-        nextLi.className = `page-item ${
-          currentPage === totalPages ? "disabled" : ""
-        }`;
-        nextLi.innerHTML = `<a class="page-link">Next</a>`;
-        nextLi.onclick = () => {
-          if (currentPage < totalPages) {
-            currentPage++;
-            renderTable();
-          }
-        };
-        paginationControls.appendChild(nextLi);
-      }
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            successMessage.style.display = "block";
 
-      function deleteRow(id) {
-        const index = data.findIndex((row) => row[0] === id);
-        if (index !== -1) {
-          data.splice(index, 1);
-          reassignIds();
-          filteredData = [...data];
-          renderTable();
-        }
-      }
-
-      document
-        .getElementById("editForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
-          const id = document.getElementById("editId").value;
-          const type = document.getElementById("editType").value;
-          const amount = document.getElementById("editAmount").value;
-
-          const index = data.findIndex((r) => r[0] === id);
-          if (index !== -1) {
-            data[index][1] = type;
-            data[index][2] = amount;
-            filteredData = [...data];
-            renderTable();
-            bootstrap.Modal.getOrCreateInstance(
-              document.getElementById("editModal")
-            ).hide();
-          }
+            setTimeout(() => {
+                form.reset();
+                successMessage.style.display = "none";
+                history.replaceState(null, "", window.location.pathname);
+            }, 2000);
         });
 
-      entriesSelect.addEventListener("change", () => {
-        entriesPerPage = parseInt(entriesSelect.value);
-        currentPage = 1;
-        renderTable();
-      });
+        window.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const type = params.get("type");
+            const amount = params.get("amount");
 
-      searchInput.addEventListener("input", function () {
-        const value = searchInput.value.toLowerCase();
-        filteredData = data.filter((row) =>
-          row.some((cell) => cell.toLowerCase().includes(value))
-        );
-        currentPage = 1;
-        renderTable();
-      });
-
-      renderTable();
+            if (type) typeInput.value = decodeURIComponent(type);
+            if (amount) amountInput.value = decodeURIComponent(amount);
+        });
     </script>
-  </body>
+
+</body>
+
 </html>
