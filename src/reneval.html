@@ -2,135 +2,223 @@
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Add New Member</title>
-  <!-- plugins:css -->
   <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="assets/vendors/ti-icons/css/themify-icons.css">
   <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css">
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
   <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css" />
   <link rel="stylesheet" href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <!-- endinject -->
-  <!-- Layout styles -->
   <link rel="stylesheet" href="assets/css/style.css">
-  <!-- End layout styles -->
   <link rel="shortcut icon" href="assets/images/favicon.png" />
   <link href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css" rel="stylesheet">
-  <!-- Include Chart.js CDN -->
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 
-  <!-- Bootstrap & DataTables CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
   <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet" />
 
-   <style>
+  <style>
+    select {
+      margin: 10px;
+    }
 
-  select{
-    margin: 10px;
-  }
-.sidebar{
-    margin-left: -12px;
-}
+    .sidebar {
+      margin-left: -12px;
+    }
 
-       #membersPage .page-item.active .page-link {
-        background-color: #4b2c82;
-        border: none;
+    #membersPage .page-item.active .page-link {
+      background-color: #4b2c82;
+      border: none;
+    }
+
+    #membersPage {
+      font-family: "Segoe UI", sans-serif;
+      min-height: 100vh;
+    }
+
+    #membersPage .card-header {
+      background-color: #4b2c82;
+      color: white;
+      font-size: 1.25rem;
+    }
+
+    #membersPage table { /* Added this selector for the table border */
+        border-top: 1px solid rgb(213, 211, 211); /* Example: 2px solid border in the theme color */
+    }
+
+    #membersPage table.dataTable thead {
+      background-color: #4b2c82;
+      color: white;
+    }
+
+    #membersPage .img-thumbnail {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #membersPage #modalImage {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: cover;
+      border-radius: 0 !important;
+    }
+
+    #membersPage .badge-active {
+      background-color: #004D00;
+      border-radius: 2px;
+      padding: 6px 9px;
+      font-family: sans-serif;
+    }
+
+    #membersPage .badge-expired {
+      background-color: #D80404;
+      border-radius: 2px;
+      padding: 6px 9px;
+      font-family: sans-serif;
+    }
+
+    #membersPage .btn-renew,
+    #membersPage .btn-danger {
+      color: white;
+      border: none;
+    }
+
+    #membersPage .btn-renew {
+      background-color: #4b0082;
+      font-weight: bold;
+    }
+
+    #membersPage .btn-renew:hover,
+    #membersPage .btn-renew:focus,
+    #membersPage .btn-renew:active {
+      background-color: #430172 !important;
+      color: white !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+
+    #membersPage .modal-content .btn-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      filter: invert(1);
+    }
+
+    /* --- REVISED CSS for DataTables Controls --- */
+
+    /* Basic flex setup for both length and filter to ensure alignment */
+    #membersPage .dataTables_wrapper .dataTables_length,
+    #membersPage .dataTables_wrapper .dataTables_filter {
+      display: flex;
+      /* Use flexbox for horizontal alignment */
+      align-items: center;
+      /* Vertically align items in the middle */
+      gap: 1rem;
+      /* Add consistent gap between label and input/select */
+      margin-bottom: 1rem;
+      /* Spacing below the controls */
+    }
+
+    /* Adjust specific elements within the controls */
+    #membersPage .dataTables_length label,
+    #membersPage .dataTables_filter label {
+      white-space: nowrap;
+      /* Prevent label text from wrapping */
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      /* Gap between label text and select/input */
+    }
+
+    /* Ensure select and input fields don't take unnecessary width */
+    #membersPage .dataTables_length .form-select {
+      width: auto;
+      /* Allow select to size according to its content */
+      min-width: 80px;
+      /* Prevent it from becoming too narrow */
+    }
+
+    #membersPage .dataTables_filter .form-control {
+      flex-grow: 1;
+      /* Allow the search input to grow and take available space */
+      max-width: 100%;
+      /* Ensure it doesn't overflow its container */
+    }
+
+    /* Desktop View (>= 768px): Align Show entries to left, Search to right */
+    @media (min-width: 768px) {
+      #membersPage .dataTables_wrapper .row:first-child>div {
+        display: flex;
+        align-items: center;
       }
-      #membersPage {
-       
-        font-family: "Segoe UI", sans-serif;
-        min-height: 100vh;
+
+      #membersPage .dataTables_wrapper .dataTables_length {
+        justify-content: flex-start;
+        /* Align "Show entries" to the left */
+        flex-grow: 1;
+        /* Allow it to take up available space on its side */
+        margin-right: 20px;
+        /* Add more space between "Show entries" and Search */
       }
 
-      #membersPage .card-header {
-        background-color: #4b2c82;
-        color: white;
-        font-size: 1.25rem;
+      #membersPage .dataTables_wrapper .dataTables_filter {
+        justify-content: flex-end;
+        /* Align search to the right */
+        flex-grow: 1;
+        /* Allow it to take up available space on its side */
+      }
+    }
+
+
+    /* Mobile View (<= 767px): Stack controls vertically */
+    @media (max-width: 767px) {
+      #membersPage .dataTables_wrapper .dataTables_length,
+      #membersPage .dataTables_wrapper .dataTables_filter {
+        flex-direction: column;
+        /* Stack items vertically */
+        align-items: flex-start;
+        /* Align items to the left when stacked */
+        width: 100%;
+        /* Take full width */
+        box-sizing: border-box;
+        /* Include padding in width calculation */
+        margin-bottom: 1rem;
+        /* Consistent spacing */
       }
 
-      #membersPage table.dataTable thead {
-        background-color: #4b2c82;
-        color: white;
+      #membersPage .dataTables_length label,
+      #membersPage .dataTables_filter label {
+        width: 100%;
+        /* Make label take full width when stacked */
+        justify-content: flex-start;
+        margin-bottom: 0.5rem;
+        /* Space between label and input/select */
       }
 
-      #membersPage .img-thumbnail {
-        width: 50px;
-        height: 50px;
-        object-fit: cover;
-        border-radius: 50%;
-        cursor: pointer;
+      #membersPage .dataTables_filter .form-control,
+      #membersPage .dataTables_length .form-select {
+        width: 100%;
+        /* Inputs/selects take full width on mobile */
       }
 
-      #membersPage #modalImage {
-        max-width: 100%;
-        max-height: 80vh;
-        object-fit: cover;
-        border-radius: 0 !important;
+      /* Adjust DataTables info and pagination for mobile to center them */
+      #membersPage .dataTables_info,
+      #membersPage .dataTables_paginate {
+        text-align: center !important;
+        width: 100%;
       }
 
-      #membersPage .badge-active {
-        background-color: #004D00;
-        border-radius: 2px;
-        padding: 6px 9px;
-         font-family: sans-serif;
+      #membersPage .dataTables_paginate .pagination {
+        justify-content: center;
       }
-
-      #membersPage .badge-expired {
-        background-color:  #D80404;
-        border-radius: 2px;
-        padding: 6px 9px;
-         font-family: sans-serif;
-      }
-
-      #membersPage .btn-renew,
-      #membersPage .btn-danger {
-        color: white;
-        border: none;
-      }
-
-      #membersPage .btn-renew {
-        background-color: #4b0082;
-        font-weight: bold;
-      }
-
-      #membersPage .btn-renew:hover,
-      #membersPage .btn-renew:focus,
-      #membersPage .btn-renew:active {
-        background-color: #430172 !important;
-        color: white !important;
-        box-shadow: none !important;
-        outline: none !important;
-      }
-
-      #membersPage .modal-content .btn-close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        filter: invert(1);
-      }
-
-     
-
-      @media (max-width: 576px) {
-        #membersPage .dataTables_length,
-        #membersPage .dataTables_filter {
-          margin-bottom: 1rem;
-        }
-
-        #membersPage .dataTables_wrapper .row > div {
-          width: 100% !important;
-        }
-      }
-    </style>
+    }
+  </style>
 
 
 </head>
@@ -138,50 +226,43 @@
 <body>
   <div class="container-scroller">
 
-    <!-- partial:partials/_navbar.html -->
     <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
 
-                 <a class="navbar-brand brand-logo d-none d-lg-flex align-items-center" href="index.html"
-                    style="gap: 10px; padding-top: 5px; padding-bottom: 5px;">
-                    <img src="assets/images/olm2.png" alt="logo" style="
+        <a class="navbar-brand brand-logo d-none d-lg-flex align-items-center" href="index.html"
+          style="gap: 10px; padding-top: 5px; padding-bottom: 5px;">
+          <img src="assets/images/olm2.png" alt="logo" style="
         height: 115px;
         width: auto;
         object-fit: contain;
         display: block;
       " />
-                </a>
+        </a>
 
-                <!-- Small logo for collapsed / tab / mobile -->
-                <a class="navbar-brand brand-logo-mini d-lg-none" href="index.html">
-                    <img src="assets/images/olm2.png" alt="logo"
-                        style="height:60px; object-fit:contain;" />
-                </a>
+        <a class="navbar-brand brand-logo-mini d-lg-none" href="index.html">
+          <img src="assets/images/olm2.png" alt="logo" style="height:60px; object-fit:contain;" />
+        </a>
 
-            </div>
+      </div>
 
       <div class="navbar-menu-wrapper d-flex align-items-stretch">
         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-          <span class="mdi mdi-menu"></span> 
+          <span class="mdi mdi-menu"></span>
         </button>
-          <h3 class="mb-0 ms-2 d-none d-lg-block" style="color: #4b0082;padding-top:20px">Olympus Gym</h3>
+        <h3 class="mb-0 ms-2 d-none d-lg-block" style="color: #4b0082;padding-top:20px">Olympus Gym</h3>
 
         <ul class="navbar-nav navbar-nav-right">
           <li class="nav-item nav-profile dropdown">
 
           </li>
           <li class="nav-item dropdown">
-            <!-- Additional dropdown -->
-          </li>
+            </li>
 
           <li class="nav-item dropdown">
-            <!-- Additional dropdown -->
-          </li>
+            </li>
 
           <li class="nav-item nav-logout d-none d-lg-block">
-            <!-- Logout link -->
-          </li>
-          <!-- ⛶ Fullscreen Button -->
+            </li>
           <li class="nav-item d-none d-lg-block full-screen-link">
             <a class="nav-link" href="#">
               <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
@@ -194,24 +275,12 @@
         </button>
       </div>
     </nav>
-    <!-- partial -->
     <div class="container-fluid page-body-wrapper">
-      <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item nav-profile bg-dark">
 
-            <!-- <a href="#" class="nav-link">
-               <div class="nav-profile-image"> 
-                 <img src="https://kavyainfoweb.com/wp-content/uploads/2025/05/Kavya-768x430.png" alt="profile" /> 
-                 <span class="login-status online"></span> 
-             </div>  
-                <div class="nav-profile-text d-flex flex-column" style="margin-right: -15px;">
-                     <span class="font-weight mb-2" style="color:white;font-size:15px;text-align:center">Kavya Infoweb Pvt Ltd</span>
-                </div>
-
-              </a> -->
-          </li>
+            </li>
           <li class="nav-item">
             <a class="nav-link" href="index.html">
               <span class="menu-title" style="color:#301934;font-weight:bold">Dashboard</span>
@@ -288,13 +357,12 @@
           </li>
         </ul>
       </nav>
-      <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="page-header">
             <h3 class="page-title">
               <span class="page-title-icon text-white me-2" style="background-color: #4b0082">
-                <i class="mdi mdi-account-multiple-check" ></i>
+                <i class="mdi mdi-account-multiple-check"></i>
               </span> Reneval
             </h3>
             <nav aria-label="breadcrumb">
@@ -313,161 +381,107 @@
             <div class="row text-white" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
 
 
-              <!-- ##############################################################################  -->
+              <div id="membersPage">
+                <div>
+                  <div class="card shadow">
+                    <div class="card-header" style="font-weight: bold; font-size: 18px">
+                      Members DataTable
+                    </div>
+                    <div class="card-body">
+                      <table id="membersTable" class="table table-bordered table-striped table-hover nowrap w-100 ">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Photo</th>
+                            <th>Fullname</th>
+                            <th>Contact</th>
+                            <th>Type</th>
+                            <th>Expiry</th>
+                            <th>Total Amount</th>
+                            <th>Paid Amount</th>
+                            <th>Due Amount</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr data-contact="4440001111">
+                            <td>1</td>
+                            <td>
+                              <img src="https://via.placeholder.com/50" class="img-thumbnail" />
+                            </td>
+                            <td>Niraj Sontakke</td>
+                            <td>4440001111</td>
+                            <td>1 Month Plan</td>
+                            <td>2025-07-15<br /><small>15 days left</small></td>
+                            <td>500.00</td>
+                            <td>200.00</td>
+                            <td>300.00</td>
+                            <td>
+                              <span class="badge badge-expired">Expired</span>
+                            </td>
+                            <td>
+                              <button class="btn btn-sm btn-danger paydue-btn" data-name="Niraj Sontakke"
+                                data-contact="4440001111" data-type="1 Month Plan" data-expiry="2025-07-15">
+                                Pay Due
+                              </button>
+                            </td>
+                          </tr>
 
+                          <tr data-contact="9876543210">
+                            <td>2</td>
+                            <td>
+                              <img src="https://via.placeholder.com/50/FF5733/FFFFFF" class="img-thumbnail" />
+                            </td>
+                            <td>Sushant Sharma</td>
+                            <td>9876543210</td>
+                            <td>3 Month Plan</td>
+                            <td>2025-07-15<br /><small>15 days left</small></td>
+                            <td>500.00</td>
+                            <td>500.00</td>
+                            <td>000.00</td>
+                            <td>
+                              <span class="badge badge-active">Active</span>
+                            </td>
+                            <td>
+                              <button class="btn btn-sm btn-renew renew-btn" data-name="Sushant Sharma"
+                                data-contact="9876543210" data-type="3 Month Plan" data-expiry="2025-07-15">
+                                Renew
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
 
-              <!-- Load Content Here... -->
-             <div id="membersPage">
-      <div >
-        <div class="card shadow">
-          <div class="card-header" style="font-weight: bold; font-size: 18px">
-            Members DataTable
-          </div>
-          <div class="card-body">
-            <table
-              id="membersTable"
-              class="table table-bordered table-striped table-hover  nowrap w-100 "
-            >
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Photo</th>
-                  <th>Fullname</th>
-                  <th>Contact</th>
-                  <th>Type</th>
-                  <th>Expiry</th>
-                  <th>Total Amount</th>
-                  <th>Paid Amount</th>
-                  <th>Due Amount</th>
-                  <th>Status</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr data-contact="4440001111">
-                  <td>1</td>
-                  <td>
-                    <img
-                      src="https://via.placeholder.com/50"
-                      class="img-thumbnail"
-                    />
-                  </td>
-                  <td>Niraj Sontakke</td>
-                  <td>4440001111</td>
-                  <td>1 Month Plan</td>
-                  <td>2025-07-15<br /><small>15 days left</small></td>
-                  <td>500.00</td>
-                  <td>200.00</td>
-                  <td>300.00</td>
-                  <td>
-                    <span class="badge badge-expired">Expired</span>
-                  </td>
-                  <td>
-                    <button
-                      class="btn btn-sm btn-danger paydue-btn"
-                      data-name="Niraj Sontakke"
-                      data-contact="4440001111"
-                      data-type="1 Month Plan"
-                      data-expiry="2025-07-15"
-                    >
-                      Pay Due
-                    </button>
-                  </td>
-                </tr>
-
-                <tr data-contact="4440001111">
-                  <td>2</td>
-                  <td>
-                    <img
-                      src="https://via.placeholder.com/50"
-                      class="img-thumbnail"
-                    />
-                  </td>
-                  <td>Sushant Sharma</td>
-                  <td>4440001111</td>
-                  <td>3 Month Plan</td>
-                  <td>2025-07-15<br /><small>15 days left</small></td>
-                  <td>500.00</td>
-                  <td>500.00</td>
-                  <td>000.00</td>
-                  <td>
-                    <span class="badge badge-active">Active</span>
-                  </td>
-                  <td>
-                    <button
-                      class="btn btn-sm btn-renew renew-btn"
-                      data-name="Sushant Sharma"
-                      data-contact="4440001111"
-                      data-type="3 Month Plan"
-                      data-expiry="2025-07-15"
-                    >
-                      Renew
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-
-      <!-- Modal for image preview -->
-      <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content bg-transparent border-0">
-            <div class="modal-body text-center">
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
-              <img
-                id="modalImage"
-                src=""
-                alt="Preview"
-                class="img-fluid border shadow"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-              
-              <!-- ##############################################################################  -->
-
-
-            </div>
-            <!-- content-wrapper ends -->
-            <!-- partial:partials/_footer.html -->
-            
-            <!-- partial -->
-          </div>
-                   <!-- main-panel ends -->
-        </div>
-          <footer class="footer py-3 px-4">
-            <div
-              class="d-flex flex-column flex-sm-row justify-content-between align-items-end text-center text-sm-start"
-            >
-              <!-- Left Side Text -->
-              <div
-                class="text-black mb-3 mb-sm-0 text-center text-sm-start w-100"
-              >
-                © 2025 Olympus Gym - All rights reserved.
+                <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content bg-transparent border-0">
+                      <div class="modal-body text-center">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <img id="modalImage" src="" alt="Preview" class="img-fluid border shadow" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
-              <!-- Right Side: Logo centered above one-line text -->
-              <div
-                class="d-flex flex-column align-items-center align-items-sm-end"
-              >
-                <!-- Logo -->
-                <img
-                  alt="Kavya Infoweb Logo"
-                  src="kavya2.png"
-                  style="
+
+
+              </div>
+            </div>
+          </div>
+        <footer class="footer py-3 px-4">
+          <div
+            class="d-flex flex-column flex-sm-row justify-content-between align-items-end text-center text-sm-start">
+            <div class="text-black mb-3 mb-sm-0 text-center text-sm-start w-100">
+              © 2025 Olympus Gym - All rights reserved.
+            </div>
+
+            <div class="d-flex flex-column align-items-center align-items-sm-end">
+              <img alt="Kavya Infoweb Logo" src="kavya2.png" style="
                     height: 80px;
                     display: block;
                     margin-left: auto;
@@ -475,168 +489,153 @@
                     margin-bottom: 6px;
                     border-radius: 7px;
                     box-shadow: 2px solid;
-                  "
-                />
-                <!-- One-line text below logo -->
-                <div
-                  class="text-center text-sm-end text-black"
-                  style="white-space: nowrap"
-                >
-                  Software Developed &amp; Managed By
-                  <a href="https://kavyainfoweb.com/" target="_blank">
-                    Kavya Infoweb Pvt. Ltd.
-                  </a>
-                </div>
+                  " />
+              <div class="text-center text-sm-end text-black" style="white-space: nowrap">
+                Software Developed &amp; Managed By
+                <a href="https://kavyainfoweb.com/" target="_blank">
+                  Kavya Infoweb Pvt. Ltd.
+                </a>
               </div>
             </div>
-          </footer>
+          </div>
+        </footer>
 
-        <!-- page-body-wrapper ends -->
-      </div>
-      <!-- container-scroller -->
-      <!-- plugins:js -->
+        </div>
       <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-      <!-- endinject -->
-      <!-- Plugin js for this page -->
-    
       <script src="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-      <!-- End plugin js for this page -->
-      <!-- inject:js -->
       <script src="assets/js/off-canvas.js"></script>
       <script src="assets/js/misc.js"></script>
       <script src="assets/js/settings.js"></script>
       <script src="assets/js/todolist.js"></script>
       <script src="assets/js/jquery.cookie.js"></script>
-      <!-- endinject -->
-      <!-- Custom js for this page -->
       <script src="assets/js/dashboard.js"></script>
 
 
 
 
-         <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+      <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+      <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
 
-    <script>
-      $(document).ready(function () {
-        const table = $("#membersTable").DataTable({
-          responsive: true,
-          pageLength: 10,
-          initComplete: function () {
-            applyUpdates();
-            updateStatusAndActions();
-          },
-        });
+      <script>
+        $(document).ready(function () {
+          const table = $("#membersTable").DataTable({
+            responsive: true,
+            pageLength: 10,
+            dom: '<"row"<"col-sm-12 col-md-6 d-flex justify-content-start"l><"col-sm-12 col-md-6 d-flex justify-content-end"f>>' + // Length and Filter
+              '<"row"<"col-sm-12"tr>>' + // Table
+              '<"row"<"col-sm-12 col-md-5 d-flex justify-content-start"i><"col-sm-12 col-md-7 d-flex justify-content-end"p>>', // Information and Pagination
+            initComplete: function () {
+              applyUpdates();
+              updateStatusAndActions();
+            },
+          });
 
-        function applyUpdates() {
-          const updates = JSON.parse(
-            localStorage.getItem("memberUpdates") || "[]"
-          );
-          updates.forEach((update) => {
-            const row = $(
-              `#membersTable tbody tr[data-contact="${update.contact}"]`
+          function applyUpdates() {
+            const updates = JSON.parse(
+              localStorage.getItem("memberUpdates") || "[]"
             );
-            if (row.length) {
-              row.find("td").eq(4).text(update.type);
-              row.find("td").eq(5).html(update.expiry);
-              row.find("td").eq(6).text(update.total);
-              row.find("td").eq(7).text(update.paid);
-              const due = (
-                parseFloat(update.total) - parseFloat(update.paid)
-              ).toFixed(2);
-              row.find("td").eq(8).text(due);
-            }
-          });
-          localStorage.removeItem("memberUpdates");
-        }
-
-        function updateStatusAndActions() {
-          $("#membersTable tbody tr").each(function () {
-            const $row = $(this);
-            const total = parseFloat($row.find("td").eq(6).text());
-            const paid = parseFloat($row.find("td").eq(7).text());
-            const due = total - paid;
-
-            const statusCell = $row.find("td").eq(9);
-            const actionCell = $row.find("td").eq(10);
-
-            const name = $row.find("td").eq(2).text();
-            const contact = $row.find("td").eq(3).text();
-            const type = $row.find("td").eq(4).text();
-            const expiry = $row.find("td").eq(5).text().split("<")[0].trim();
-
-            if (paid >= total) {
-              statusCell.html('<span class="badge badge-active">Active</span>');
-              actionCell.html(`
-                <button class="btn btn-sm btn-renew renew-btn"
-                  data-name="${name}"
-                  data-contact="${contact}"
-                  data-type="${type}"
-                  data-expiry="${expiry}">
-                  Renew
-                </button>
-              `);
-            } else {
-              statusCell.html(
-                '<span class="badge badge-expired">Expired</span>'
+            updates.forEach((update) => {
+              const row = $(
+                `#membersTable tbody tr[data-contact="${update.contact}"]`
               );
-              actionCell.html(`
-                <button class="btn btn-sm btn-danger paydue-btn"
-                style=" background-color: rgb(250, 195, 43); font-weight: bold; "
-                  data-name="${name}"
-                  data-contact="${contact}"
-                  data-type="${type}"
-                  data-expiry="${expiry}">
-                  Pay Due
-                </button>
-              `);
-            }
+              if (row.length) {
+                row.find("td").eq(4).text(update.type);
+                row.find("td").eq(5).html(update.expiry);
+                row.find("td").eq(6).text(update.total);
+                row.find("td").eq(7).text(update.paid);
+                const due = (
+                  parseFloat(update.total) - parseFloat(update.paid)
+                ).toFixed(2);
+                row.find("td").eq(8).text(due);
+              }
+            });
+            localStorage.removeItem("memberUpdates");
+          }
+
+          function updateStatusAndActions() {
+            $("#membersTable tbody tr").each(function () {
+              const $row = $(this);
+              const total = parseFloat($row.find("td").eq(6).text());
+              const paid = parseFloat($row.find("td").eq(7).text());
+              const due = total - paid;
+
+              const statusCell = $row.find("td").eq(9);
+              const actionCell = $row.find("td").eq(10);
+
+              const name = $row.find("td").eq(2).text();
+              const contact = $row.find("td").eq(3).text();
+              const type = $row.find("td").eq(4).text();
+              const expiry = $row.find("td").eq(5).text().split("<")[0].trim();
+
+              if (paid >= total) {
+                statusCell.html('<span class="badge badge-active">Active</span>');
+                actionCell.html(`
+                  <button class="btn btn-sm btn-renew renew-btn"
+                    data-name="${name}"
+                    data-contact="${contact}"
+                    data-type="${type}"
+                    data-expiry="${expiry}">
+                    Renew
+                  </button>
+                `);
+              } else {
+                statusCell.html(
+                  '<span class="badge badge-expired">Expired</span>'
+                );
+                actionCell.html(`
+                  <button class="btn btn-sm btn-danger paydue-btn"
+                  style=" background-color: rgb(250, 195, 43); font-weight: bold; "
+                    data-name="${name}"
+                    data-contact="${contact}"
+                    data-type="${type}"
+                    data-expiry="${expiry}">
+                    Pay Due
+                  </button>
+                `);
+              }
+            });
+          }
+
+          $(document).on("click", ".img-thumbnail", function () {
+            $("#modalImage").attr("src", this.src);
+            $("#imageModal").modal("show");
           });
-        }
 
-        $(document).on("click", ".img-thumbnail", function () {
-          $("#modalImage").attr("src", this.src);
-          $("#imageModal").modal("show");
+          $(document).on("click", ".paydue-btn", function () {
+            const name = $(this).data("name");
+            const contact = $(this).data("contact");
+            const type = $(this).data("type");
+            const expiry = $(this).data("expiry");
+
+            const url = `pay_due.html?name=${encodeURIComponent(
+              name
+            )}&contact=${encodeURIComponent(contact)}&type=${encodeURIComponent(
+              type
+            )}&expiry=${encodeURIComponent(expiry)}`;
+            window.open(url, "_blank");
+          });
+
+          $(document).on("click", ".renew-btn", function () {
+            const name = $(this).data("name");
+            const contact = $(this).data("contact");
+            const type = $(this).data("type");
+            const expiry = $(this).data("expiry");
+
+            const url = `renew.html?name=${encodeURIComponent(
+              name
+            )}&contact=${encodeURIComponent(contact)}&type=${encodeURIComponent(
+              type
+            )}&expiry=${encodeURIComponent(expiry)}`;
+            window.open(url, "_blank");
+          });
         });
-
-        $(document).on("click", ".paydue-btn", function () {
-          const name = $(this).data("name");
-          const contact = $(this).data("contact");
-          const type = $(this).data("type");
-          const expiry = $(this).data("expiry");
-
-          const url = `pay_due.html?name=${encodeURIComponent(
-            name
-          )}&contact=${encodeURIComponent(contact)}&type=${encodeURIComponent(
-            type
-          )}&expiry=${encodeURIComponent(expiry)}`;
-          window.open(url, "_blank");
-        });
-
-        $(document).on("click", ".renew-btn", function () {
-          const name = $(this).data("name");
-          const contact = $(this).data("contact");
-          const type = $(this).data("type");
-          const expiry = $(this).data("expiry");
-
-          const url = `renew.html?name=${encodeURIComponent(
-            name
-          )}&contact=${encodeURIComponent(contact)}&type=${encodeURIComponent(
-            type
-          )}&expiry=${encodeURIComponent(expiry)}`;
-          window.open(url, "_blank");
-        });
-      });
-    </script>
+      </script>
 
 
-
-      
 
 </body>
 
