@@ -172,7 +172,9 @@
   filter: brightness(0) invert(0);
 } */
 
+  </style>
 
+ <style>
   @media (max-width: 576px) {
     .birthday-section {
       padding: 1rem !important;
@@ -224,9 +226,15 @@
     body {
       overflow-x: hidden;
     }
+
+    /* Added fix: Stack the right content below title on small screens */
+    .birthday-header-wrap {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      gap: 0.5rem;
+    }
   }
 </style>
-
 </head>
 
 <body>
@@ -560,10 +568,10 @@
     </div>
 
     <!-- Birthdays Card - Full width on mobile -->
-    <div class="col-12 col-md-7 stretch-card" style="margin-left: -3px;">
+    <div class="col-12 col-md-7 grid-margin stretch-card" style="margin-left: -3px;">
   <div class="birthday-section card p-3">
     <div class="section-header mb-3">
-      <div class="d-flex justify-content-between align-items-center ">
+      <div class="d-flex justify-content-between align-items-center birthday-header-wrap">
         <h4 class="mb-0">
           <i class="fas fa-birthday-cake me-2"></i> Birthdays
         </h4>
