@@ -208,6 +208,12 @@
       </div>
     </div>
   </main>
+  
+
+  <footer>
+    &copy; 2025 Kavya Infoweb Pvt. Ltd. All rights reserved.
+  </footer>
+
   <script>
   document.querySelector("form").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -220,15 +226,12 @@
 
     if (enteredEmail === storedEmail && enteredPassword === storedPassword) {
       alert("Login successful");
-      window.location.href = "index.html";
+      window.location.href = "index.html"; // ya jo aapka homepage hai
     } else {
       alert("Invalid email or password");
     }
   });
 </script>
 
-  <footer>
-    &copy; 2025 Kavya Infoweb Pvt. Ltd. All rights reserved.
-  </footer>
 </body>
 </html>
