@@ -561,59 +561,60 @@
 
     <!-- Birthdays Card - Full width on mobile -->
     <div class="col-12 col-md-7 stretch-card" style="margin-left: -3px;">
-      <div class="birthday-section card p-3">
-        <div class="section-header mb-3">
-          <div class="d-flex justify-content-between align-items-center ">
-            <h4 class="mb-0">
-              <i class="fas fa-birthday-cake me-2"></i> Birthdays
-            </h4>
-            <div class="d-flex gap-2">
-              <span class="badge bg-light text-dark">
-                <i class="fas fa-calendar-day me-1"></i>
-                Today: <span id="currentDate"></span>
-              </span>
-              <button class="btn btn-light btn-sm" onclick="refreshBirthdays()">
-                <i class="fas fa-sync-alt"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Filter Tabs -->
-        <div class="filter-tabs mb-3">
-          <ul class="nav nav-pills" id="birthdayTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="today-tab" data-bs-toggle="pill" data-bs-target="#today" type="button" role="tab">
-                <i class="fas fa-gift me-1"></i> Today's Birthdays <span class="badge bg-success ms-1" id="todayCount">0</span>
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="upcoming-tab" data-bs-toggle="pill" data-bs-target="#upcoming" type="button" role="tab">
-                <i class="fas fa-calendar-plus me-1"></i> Upcoming (30 days) <span class="badge bg-warning ms-1" id="upcomingCount">0</span>
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="previous-tab" data-bs-toggle="pill" data-bs-target="#previous" type="button" role="tab">
-                <i class="fas fa-history me-1"></i> Previous (30 days) <span class="badge bg-secondary ms-1" id="previousCount">0</span>
-              </button>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Tab Content -->
-        <div class="tab-content" id="birthdayTabContent">
-          <div class="tab-pane fade show active" id="today" role="tabpanel">
-            <div id="todayBirthdays"></div>
-          </div>
-          <div class="tab-pane fade" id="upcoming" role="tabpanel">
-            <div id="upcomingBirthdays"></div>
-          </div>
-          <div class="tab-pane fade" id="previous" role="tabpanel">
-            <div id="previousBirthdays"></div>
-          </div>
+  <div class="birthday-section card p-3">
+    <div class="section-header mb-3">
+      <div class="d-flex justify-content-between align-items-center ">
+        <h4 class="mb-0">
+          <i class="fas fa-birthday-cake me-2"></i> Birthdays
+        </h4>
+        <div class="d-flex gap-2">
+          <span class="badge bg-light text-dark">
+            <i class="fas fa-calendar-day me-1"></i>
+            Today: <span id="currentDate"></span>
+          </span>
+          <button class="btn btn-light btn-sm" onclick="refreshBirthdays()">
+            <i class="fas fa-sync-alt"></i>
+          </button>
         </div>
       </div>
     </div>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs mb-3">
+      <ul class="nav nav-pills" id="birthdayTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="today-tab" data-bs-toggle="pill" data-bs-target="#today" type="button" role="tab">
+            <i class="fas fa-gift me-1"></i> Today's Birthdays <span class="badge bg-success ms-1" id="todayCount">0</span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="upcoming-tab" data-bs-toggle="pill" data-bs-target="#upcoming" type="button" role="tab">
+            <i class="fas fa-calendar-plus me-1"></i> Upcoming (30 days) <span class="badge bg-warning ms-1" id="upcomingCount">0</span>
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="next3-tab" data-bs-toggle="pill" data-bs-target="#next3" type="button" role="tab">
+            <i class="fas fa-calendar-day me-1"></i> Next 3 Days <span class="badge bg-info text-dark ms-1" id="next3Count">0</span>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tab-content" id="birthdayTabContent">
+      <div class="tab-pane fade show active" id="today" role="tabpanel">
+        <div id="todayBirthdays"></div>
+      </div>
+      <div class="tab-pane fade" id="upcoming" role="tabpanel">
+        <div id="upcomingBirthdays"></div>
+      </div>
+      <div class="tab-pane fade" id="next3" role="tabpanel">
+        <div id="next3Birthdays"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
   </div>
 </div>
 
@@ -1042,18 +1043,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <script>
 const birthData = [
-  { id: 1, name: "Suresh Rao", email: "john@example.com", phone: "+1234567890", birthday: "2025-07-02", age: 28, position: "Marketing Manager", company: "ABC Corp" },
-  { id: 2, name: "Amit Agrawal", email: "sarah@example.com", phone: "+1234567891", birthday: "2025-07-05", age: 32, position: "Sales Director", company: "XYZ Ltd" },
+  { id: 1, name: "Suresh Rao", email: "john@example.com", phone: "+1234567890", birthday: "2025-07-07", age: 28, position: "Marketing Manager", company: "ABC Corp" },
+  { id: 2, name: "Amit Agrawal", email: "sarah@example.com", phone: "+1234567891", birthday: "2025-07-06", age: 32, position: "Sales Director", company: "XYZ Ltd" },
   { id: 3, name: "Ria Ramaswamy", email: "mike@example.com", phone: "+1234567892", birthday: "2025-07-15", age: 25, position: "Developer", company: "Tech Solutions" },
   { id: 4, name: "Harshal Patel", email: "emma@example.com", phone: "+1234567893", birthday: "2025-06-25", age: 30, position: "HR Manager", company: "Global Inc" },
-    { id: 5, name: "Smriti Mandhana", email: "emma@example.com", phone: "+1234567893", birthday: "2025-07-03", age: 30, position: "HR Manager", company: "Global Inc" },
-      { id: 6, name: "Harish Dev", email: "emma@example.com", phone: "+1234567893", birthday: "2025-07-02", age: 30, position: "HR Manager", company: "Global Inc" },
-        { id: 7, name: "Rahul Patil", email: "emma@example.com", phone: "+1234567893", birthday: "2025-06-25", age: 30, position: "HR Manager", company: "Global Inc" },
-          { id: 8, name: "Amitabh Seth", email: "emma@example.com", phone: "+1234567893", birthday: "2025-06-25", age: 30, position: "HR Manager", company: "Global Inc" }
-
-
-
-
+  { id: 5, name: "Smriti Mandhana", email: "emma@example.com", phone: "+1234567893", birthday: "2025-07-03", age: 30, position: "HR Manager", company: "Global Inc" },
+  { id: 6, name: "Harish Dev", email: "emma@example.com", phone: "+1234567893", birthday: "2025-07-02", age: 30, position: "HR Manager", company: "Global Inc" },
+  { id: 7, name: "Rahul Patil", email: "emma@example.com", phone: "+1234567893", birthday: "2025-06-25", age: 30, position: "HR Manager", company: "Global Inc" },
+  { id: 8, name: "Amitabh Seth", email: "emma@example.com", phone: "+1234567893", birthday: "2025-06-25", age: 30, position: "HR Manager", company: "Global Inc" }
 ];
 
 function initializeBirthdays() {
@@ -1075,12 +1072,12 @@ function categorizeAndDisplayBirthdays() {
   const thirtyDaysFromNow = new Date(today);
   thirtyDaysFromNow.setDate(thirtyDaysFromNow.getDate() + 30);
 
-  const thirtyDaysAgo = new Date(today);
-  thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  const threeDaysFromNow = new Date(today);
+  threeDaysFromNow.setDate(threeDaysFromNow.getDate() + 3);
 
   const todayBirthdays = [];
   const upcomingBirthdays = [];
-  const previousBirthdays = [];
+  const next3DaysBirthdays = [];
 
   birthData.forEach(person => {
     const birthday = new Date(person.birthday);
@@ -1090,18 +1087,20 @@ function categorizeAndDisplayBirthdays() {
       todayBirthdays.push(person);
     } else if (birthday > today && birthday <= thirtyDaysFromNow) {
       upcomingBirthdays.push(person);
-    } else if (birthday >= thirtyDaysAgo && birthday < today) {
-      previousBirthdays.push(person);
+    }
+
+    if (birthday > today && birthday <= threeDaysFromNow) {
+      next3DaysBirthdays.push(person);
     }
   });
 
   displayBirthdays('todayBirthdays', todayBirthdays, 'today');
   displayBirthdays('upcomingBirthdays', upcomingBirthdays, 'upcoming');
-  displayBirthdays('previousBirthdays', previousBirthdays, 'previous');
+  displayBirthdays('next3Birthdays', next3DaysBirthdays, 'next3');
 
   document.getElementById('todayCount').textContent = todayBirthdays.length;
   document.getElementById('upcomingCount').textContent = upcomingBirthdays.length;
-  document.getElementById('previousCount').textContent = previousBirthdays.length;
+  document.getElementById('next3Count').textContent = next3DaysBirthdays.length;
 }
 
 function displayBirthdays(containerId, birthdays, type) {
@@ -1111,8 +1110,8 @@ function displayBirthdays(containerId, birthdays, type) {
     container.innerHTML = `
       <div class="text-center text-muted py-5">
         <i class="fas fa-calendar-times fa-3x mb-3"></i>
-        <h5>No Birthdays ${type} </h5>
-        <p>There are no birthdays in this category.</p>
+        <h5>No Birthdays ${type === 'next3' ? 'in next 3 days' : type} </h5>
+        <p>There ${type === 'next3' ? "isn't" : 'are no'} birthdays in this category.</p>
       </div>
     `;
     return;
@@ -1128,17 +1127,17 @@ function displayBirthdays(containerId, birthdays, type) {
       </div>
     `).join('');
 
- container.innerHTML = `
-  <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">${slides}</div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  </div>
-`;
+    container.innerHTML = `
+      <div id="${carouselId}" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">${slides}</div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#${carouselId}" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#${carouselId}" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    `;
   }
 }
 
@@ -1163,10 +1162,10 @@ function createBirthdayCard(person, type, isSlider = false) {
       iconClass = 'upcoming-icon';
       cardClass = 'upcoming-birthday';
       break;
-    case 'previous':
-      daysText = `<span class="badge bg-secondary days-until">${Math.abs(diffDays)} days ago</span>`;
-      iconClass = 'previous-icon';
-      cardClass = 'previous-birthday';
+    case 'next3':
+      daysText = `<span class="badge bg-info text-dark days-until">In ${diffDays} days</span>`;
+      iconClass = 'next3-icon';
+      cardClass = 'next3-birthday';
       break;
   }
 
