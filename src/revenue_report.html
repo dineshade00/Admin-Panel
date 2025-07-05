@@ -220,6 +220,15 @@
 
             <!-- ##############################################################################  -->
              
+             
+<style>
+  @media (max-width: 768px) {
+    #reportForm .mb-3 {
+      flex-direction: column !important;
+    }
+  }
+</style>
+
 <div class="container my-4">
   <!-- Card -->
   <div class="card">
@@ -228,15 +237,17 @@
     </div>
     <div class="card-body">
       <form id="reportForm">
-        <div class="mb-3">
-          <label class="form-label fw-bold">From Date:</label>
-          <input type="date" class="form-control" placeholder="mm/dd/yyyy">
+        <div class="mb-3" style="display: flex; gap: 1rem;">
+          <div style="flex: 1;">
+            <label class="form-label fw-bold">From Date:</label>
+            <input type="date" class="form-control" placeholder="mm/dd/yyyy">
+          </div>
+          <div style="flex: 1;">
+            <label class="form-label fw-bold">To Date:</label>
+            <input type="date" class="form-control" placeholder="mm/dd/yyyy">
+          </div>
         </div>
-        <div class="mb-3">
-          <label class="form-label fw-bold">To Date:</label>
-          <input type="date" class="form-control" placeholder="mm/dd/yyyy">
-        </div>
-        <button type="submit" class="btn text-white w-100" style="background-color: #212529;">
+        <button type="submit" class="btn text-white" style="background-color: #212529; width: auto; padding: 0.5rem 1.5rem;">
           Generate Report
         </button>
       </form>
