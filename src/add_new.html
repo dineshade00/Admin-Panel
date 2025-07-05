@@ -12,10 +12,7 @@
     <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />
     <link rel="stylesheet" href="assets/css/style.css" />
-<!--     <link rel="shortcut icon" href="assets/images/favicon.png" /> -->
-    
-  <!--   <link rel="shortcut icon" href="assets/images/favicon.png" /> -->
-    <link rel="shortcut icon" href="assets/images/olm2.png" />
+    <link rel="shortcut icon" href="assets/images/favicon.png" />
     <link href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -29,15 +26,15 @@
         }
 
         .tab-active {
-            background-color: #212529;
+            background-color: #8f4de3;
             color: white;
-            border: 2px solid #212529;
+            border: 2px solid #8f4de3;
         }
 
         .tab-inactive {
             background-color: white;
-            color: #212529;
-            border: 2px solid #212529;
+            color: #8f4de3;
+            border: 2px solid #8f4de3;
         }
 
         .card-header {
@@ -96,20 +93,6 @@
                 /* sidebar ki width jitni ho utna margin do */
             }
         }
-         @media (min-width: 992px) {
-        #sidebar {
-          position: fixed;
-          top: 70px; /* navbar ke neeche distance adjust karo */
-          left: 0;
-          height: calc(100vh - 70px); /* poori height navbar ke baad */
-          overflow-y: auto;
-          z-index: 999; /* zaroorat pade to */
-        }
-
-        .main-panel {
-          margin-left: 240px; /* sidebar ki width jitni ho utna margin do */
-        }
-      }
     </style>
 </head>
 
@@ -159,7 +142,7 @@
             <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
 
                 <!-- Large logo for desktop -->
-               <a class="navbar-brand brand-logo d-none d-lg-flex align-items-center" href="index.html"
+                <a class="navbar-brand brand-logo d-none d-lg-flex align-items-center" href="index.html"
                     style="gap: 10px; padding-top: 5px; padding-bottom: 5px;">
                     <img src="assets/images/olm2.png" alt="logo" style="
         height: 115px;
@@ -171,8 +154,7 @@
 
                 <!-- Small logo for collapsed / tab / mobile -->
                 <a class="navbar-brand brand-logo-mini d-lg-none" href="index.html">
-                    <img src="assets/images/olm2.png" alt="logo"
-                        style="height:60px; object-fit:contain;" />
+                    <img src="assets/images/olm2.png" alt="logo" style="height:60px; object-fit:contain;" />
                 </a>
 
             </div>
@@ -212,25 +194,25 @@
                 <ul class="nav">
                     <li class="nav-item">
                         <a class="nav-link" href="index.html">
-                            <span class="menu-title" style="color: #212529; font-weight: bold">Dashboard</span>
-                            <i class="mdi mdi-home menu-icon" style="color: #212529"></i>
+                            <span class="menu-title" style="color: #301934; font-weight: bold">Dashboard</span>
+                            <i class="mdi mdi-home menu-icon" style="color: #301934"></i>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false"
                             aria-controls="ui-basic">
-                            <span class="menu-title" style="color: #212529; font-weight: bold">Membership Plans</span>
-                            <i class="menu" style="color: #212529"></i>
-                            <i class="mdi mdi-folder-key menu-icon" style="color: #212529"></i>
+                            <span class="menu-title" style="color: #301934; font-weight: bold">Membership Plans</span>
+                            <i class="menu" style="color: #301934"></i>
+                            <i class="mdi mdi-folder-key menu-icon" style="color: #301934"></i>
                         </a>
                         <div class="collapse" id="ui-basic">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="add_new.html" style="color: #212529"><i
+                                    <a class="nav-link" href="add_new.html" style="color: #301934"><i
                                             class="mdi mdi-plus-box me-2"></i> Add New</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="view_manage.html" style="color: #212529"><i
+                                    <a class="nav-link" href="view_manage.html" style="color: #301934"><i
                                             class="mdi mdi-eye-settings me-2"></i> View and Manage
                                         Plans</a>
                                 </li>
@@ -239,38 +221,38 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="addmember.html"><span class="menu-title"
-                                style="color: #212529; font-weight: bold">Add Member</span><i
-                                class="mdi mdi-contacts menu-icon" style="color: #212529"></i></a>
+                                style="color: #301934; font-weight: bold">Add Member</span><i
+                                class="mdi mdi-contacts menu-icon" style="color: #301934"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="managemember.html"><span class="menu-title"
-                                style="color: #212529; font-weight: bold">Manage Member</span><i
-                                class="mdi mdi-account-group menu-icon" style="color: #212529"></i></a>
+                                style="color: #301934; font-weight: bold">Manage Member</span><i
+                                class="mdi mdi-account-group menu-icon" style="color: #301934"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="reneval.html"><span class="menu-title"
-                                style="color: #212529; font-weight: bold">Renewal</span><i
+                                style="color: #301934; font-weight: bold">Reneval</span><i
                                 class="mdi mdi-account-multiple-check menu-icon" style="color: #301934"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="membership_report.html"><span class="menu-title"
                                 style="color: #301934; font-weight: bold">Membership Report</span><i
-                                class="mdi mdi-account-multiple-check menu-icon" style="color: #212529"></i></a>
+                                class="mdi mdi-account-multiple-check menu-icon" style="color: #301934"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="revenue_report.html"><span class="menu-title"
-                                style="color: #212529; font-weight: bold">Revenue Report</span><i
-                                class="mdi mdi-finance menu-icon" style="color: #212529"></i></a>
+                                style="color: #301934; font-weight: bold">Revenue Report</span><i
+                                class="mdi mdi-finance menu-icon" style="color: #301934"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="settings.html"><span class="menu-title"
-                                style="color: #212529; font-weight: bold">Settings</span><i
-                                class="mdi mdi-cog menu-icon" style="color: #212529"></i></a>
+                                style="color: #301934; font-weight: bold">Settings</span><i
+                                class="mdi mdi-cog menu-icon" style="color: #301934"></i></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="login.html"><span class="menu-title"
-                                style="color: #212529; font-weight: bold">Logout</span><i
-                                class="mdi mdi-logout menu-icon" style="color: #212529"></i></a>
+                                style="color: #301934; font-weight: bold">Logout</span><i
+                                class="mdi mdi-logout menu-icon" style="color: #301934"></i></a>
                     </li>
                 </ul>
             </nav>
@@ -290,8 +272,8 @@
                         </div>
                         <nav aria-label="breadcrumb">
                             <ul class="breadcrumb m-0 d-flex flex-wrap justify-content-center justify-content-md-end">
-                                <li class="breadcrumb-item "><a href="index.html" style="color: #212529;">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page" style="color: #212529;">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">
                                     Add New
                                 </li>
                             </ul>
@@ -315,7 +297,7 @@
                         </div>
                         <!-- Membership Form -->
                         <div class="card">
-                            <div class="card-header text-white" style="background-color:#4b0082">
+                            <div class="card-header text-white" style="background-color:#212529">
                                 <i class="bi bi-card-checklist me-2"></i> Add New Membership
                                 Type Plan
                             </div>
@@ -344,82 +326,67 @@
                                                 required="" type="text" />
                                         </div>
                                     </div>
-                                    <button class="btn text-white w-10 w-md-auto" style="background-color: #212529
+                                    <button class="btn text-white w-20 w-md-auto" style="background-color: #212529
 " type="submit">
-                                        Submit
+                                        Add New Type
                                     </button>
                                 </form>
+
+
+
+
+                                <!-- Membership Table -->
+                                <div class="table-responsive mt-4">
+                                    <table class="table table-bordered" id="membershipTable">
+                                        <thead class="text-white" style="background-color: #212529;">
+                                            <tr>
+                                                <th>Membership Type</th>
+                                                <th>Amount</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Rows will be dynamically added here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
                         </div>
                     </div>
+
                 </div>
                 <!-- Footer -->
                 <footer class="footer py-3 px-4">
-            <!-- Desktop View -->
-            <div
-              class="d-none d-sm-flex flex-column flex-sm-row justify-content-between align-items-end text-center text-sm-start"
-            >
-              <!-- Left Side Text -->
-              <div
-                class="text-black mb-3 mb-sm-0 text-center text-sm-start w-100"
-              >
-                © 2025 Olympus Gym - All rights reserved.
-              </div>
+                    <div
+                        class="d-flex flex-column flex-sm-row justify-content-between align-items-end text-center text-sm-start">
+                        <!-- Left Side Text -->
+                        <div class="text-black mb-3 mb-sm-0 ms-4 text-center text-sm-start w-100">
+                            © 2025 Olympus Gym - All rights reserved.
+                        </div>
 
-              <!-- Right Side: Logo centered above one-line text -->
-              <div
-                class="d-flex flex-column align-items-center align-items-sm-end"
-              >
-                <!-- Logo -->
-                <img
-                  alt="Kavya Infoweb Logo"
-                  src="kavya2.png"
-                  style="
+                        <!-- Right Side: Logo centered above one-line text -->
+                        <div class="d-flex flex-column align-items-center align-items-sm-end">
+                            <!-- Logo -->
+                            <img alt="Kavya Infoweb Logo" src="kavya2.png" style="
                     height: 80px;
                     display: block;
                     margin-left: auto;
                     margin-right: auto;
                     margin-bottom: 6px;
                     border-radius: 7px;
-                  "
-                />
-                <!-- One-line text below logo -->
-                <div
-                  class="text-center text-sm-end text-black"
-                  style="white-space: nowrap"
-                >
-                  Software Developed &amp; Managed By
-                  <a href="https://kavyainfoweb.com/" target="_blank">
-                    Kavya Infoweb Pvt. Ltd.
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <!-- Mobile View -->
-            <div class="d-block d-sm-none text-center">
-              <!-- Logo -->
-              <img
-                src="kavya2.png"
-                alt="Kavya Infoweb Logo"
-                style="height: 80px; margin-bottom: 6px; border-radius: 7px"
-              />
-              <div class="text-black mb-4">
-                © 2025 Olympus Gym - All rights reserved.
-              </div>
-
-              <!-- Footer Text (now fully visible and wrapping if needed) -->
-
-              <!-- Left Text -->
-
-              <div class="text-black px-2 mb-4">
-                Software Developed &amp; Managed By
-                <a href="https://kavyainfoweb.com/" target="_blank">
-                  Kavya Infoweb Pvt. Ltd.
-                </a>
-              </div>
-            </div>
-          </footer>
+                    box-shadow: 2px solid;
+                  " />
+                            <!-- One-line text below logo -->
+                            <div class="text-center text-sm-end text-black" style="white-space: nowrap">
+                                Software Developed &amp; Managed By
+                                <a href="https://kavyainfoweb.com/" target="_blank">
+                                    Kavya Infoweb Pvt. Ltd.
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
     </div>
@@ -443,6 +410,7 @@
         const amountInput = document.getElementById("amount");
         const form = document.getElementById("membershipForm");
         const successMessage = document.getElementById("successMessage");
+        const tableBody = document.querySelector("#membershipTable tbody");
 
         const planPrices = {
             "1 Month Plan": 500,
@@ -473,14 +441,46 @@
 
         form.addEventListener("submit", (e) => {
             e.preventDefault();
-            successMessage.style.display = "block";
+            const type = typeInput.value.trim();
+            const amount = amountInput.value.trim();
 
-            setTimeout(() => {
-                form.reset();
-                successMessage.style.display = "none";
-                history.replaceState(null, "", window.location.pathname);
-            }, 2000);
+            if (type && amount) {
+                addRow(type, amount);
+
+                successMessage.style.display = "block";
+
+                setTimeout(() => {
+                    form.reset();
+                    successMessage.style.display = "none";
+                    history.replaceState(null, "", window.location.pathname);
+                }, 2000);
+            }
         });
+
+        function addRow(type, amount) {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+      <td>${type}</td>
+      <td>${amount}</td>
+      <td>
+        <button class="btn btn-sm btn-info edit-btn me-2" >Edit</button>
+        <button class="btn btn-sm delete-btn" style="color:white;background-color:red">Delete</button>
+      </td>
+    `;
+            tableBody.appendChild(row);
+
+            // Edit functionality
+            row.querySelector(".edit-btn").addEventListener("click", () => {
+                typeInput.value = row.cells[0].textContent;
+                amountInput.value = row.cells[1].textContent;
+                row.remove();
+            });
+
+            // Delete functionality
+            row.querySelector(".delete-btn").addEventListener("click", () => {
+                row.remove();
+            });
+        }
 
         window.addEventListener("DOMContentLoaded", () => {
             const params = new URLSearchParams(window.location.search);
@@ -491,6 +491,7 @@
             if (amount) amountInput.value = decodeURIComponent(amount);
         });
     </script>
+
 
 </body>
 
