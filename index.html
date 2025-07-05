@@ -199,7 +199,7 @@
   </main>
 
   <footer>&copy; 2025 Kavya Infoweb Pvt. Ltd. All rights reserved.</footer>
-  <script>
+ <script>
   document.getElementById("registerForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -216,7 +216,7 @@
 
     if (!emailPattern.test(email)) {
       alert("Please enter a valid email address.");
-      return;
+      return; // wahi page par rukega
     }
 
     if (
@@ -227,10 +227,10 @@
       alert(
         "Password must contain at least 1 uppercase letter, 1 special character, and be at least 8 characters long."
       );
-      return;
+      return; // wahi page par rukega
     }
 
-    // everything ok
+    // sab kuch sahi hai
     alert("Admin Register Successfully");
     window.location.href = "src/login.html";
   });
