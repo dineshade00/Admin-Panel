@@ -377,17 +377,16 @@
       document.getElementById("dueAmount").value = due || "0.00";
 
       // Handle button click
-      document
-        .querySelector("button.btn-primary")
-        .addEventListener("click", function () {
-          const paymentAmount = document.getElementById("paymentAmount").value;
+document.querySelector("button.btn-primary").addEventListener("click", function () {
+  const paymentAmount = document.getElementById("paymentAmount").value;
 
-          if (paymentAmount && parseFloat(paymentAmount) > 0) {
-            alert("Payment successful");
-          } else {
-            alert("Please enter a payment amount");
-          }
-        });
+  if (paymentAmount && parseFloat(paymentAmount) > 0) {
+    // Show the entered payment amount in the alert
+    alert(`Payment of Rs.${paymentAmount} successful!`);
+  } else {
+    alert("Please enter a valid payment amount.");
+  }
+});
 
       function applyUpdates() {
         const updates = JSON.parse(
