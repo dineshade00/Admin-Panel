@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -172,7 +173,7 @@
       <!-- Right panel -->
       <div class="login-right">
         <h4 class="login-title">Admin Login</h4>
-        <form action="index.html">
+        <form>
           <div class="input-group mb-4">
             <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
             <input
@@ -180,6 +181,7 @@
               class="form-control ps-4"
               placeholder="example@domain.com"
               required
+              id="emailInput"
             />
           </div>
           <div class="input-group mb-4">
@@ -190,6 +192,7 @@
               placeholder="Enter password"
               minlength="6"
               required
+              id="passwordInput"
             />
              <span class="input-group-text" id="togglePassword" style="cursor:pointer;">
                <i class="bi bi-eye-fill"></i>
@@ -203,9 +206,7 @@
           </button>
           <div class="text-center">
             Don't have an account?
-            <a href="../index.html" class="fw-semibold text-decoration-none"
-              >Register</a
-            >
+            <a href="../index.html" class="fw-semibold text-decoration-none">Register</a>
           </div>
         </form>
       </div>
@@ -218,24 +219,25 @@
   </footer>
 
   <script>
+  // login validation
   document.querySelector("form").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const enteredEmail = document.querySelector('input[type="email"]').value.trim();
-    const enteredPassword = document.querySelector('input[type="password"]').value.trim();
+    const enteredEmail = document.getElementById("emailInput").value.trim();
+    const enteredPassword = document.getElementById("passwordInput").value.trim();
 
     const storedEmail = localStorage.getItem("registeredEmail");
     const storedPassword = localStorage.getItem("registeredPassword");
 
     if (enteredEmail === storedEmail && enteredPassword === storedPassword) {
       alert("Login successful");
-      window.location.href = "index.html"; // ya jo aapka homepage hai
+      window.location.href = "index.html";
     } else {
       alert("Invalid email or password");
     }
   });
 
-    
+  // password show/hide
   document.getElementById("togglePassword").addEventListener("click", function () {
     const passwordField = document.getElementById("passwordInput");
     const icon = this.querySelector("i");
@@ -249,9 +251,6 @@
       icon.classList.add("bi-eye-fill");
     }
   });
-
-
-</script>
-
+  </script>
 </body>
 </html>
