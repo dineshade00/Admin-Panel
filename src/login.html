@@ -191,6 +191,9 @@
               minlength="6"
               required
             />
+             <span class="input-group-text" id="togglePassword" style="cursor:pointer;">
+               <i class="bi bi-eye-fill"></i>
+             </span>
           </div>
           <button
             type="submit"
@@ -231,6 +234,23 @@
       alert("Invalid email or password");
     }
   });
+
+    
+  document.getElementById("togglePassword").addEventListener("click", function () {
+    const passwordField = document.getElementById("passwordInput");
+    const icon = this.querySelector("i");
+    if (passwordField.type === "password") {
+      passwordField.type = "text";
+      icon.classList.remove("bi-eye-fill");
+      icon.classList.add("bi-eye-slash-fill");
+    } else {
+      passwordField.type = "password";
+      icon.classList.remove("bi-eye-slash-fill");
+      icon.classList.add("bi-eye-fill");
+    }
+  });
+
+
 </script>
 
 </body>
