@@ -376,17 +376,14 @@
       document.getElementById("fullName").value = name || "";
       document.getElementById("dueAmount").value = due || "0.00";
 
+   
     // Handle button click
 document.querySelector("button.btn-primary").addEventListener("click", function () {
   const paymentAmount = document.getElementById("paymentAmount").value;
-  const customerName = document.getElementById("fullName").value; // Get the name
 
   if (paymentAmount && parseFloat(paymentAmount) > 0) {
-    if (fullName) {
-      alert(`Hello ${fullName}, your payment of $${paymentAmount} was successful!`);
-    } else {
-      alert(`Payment of $${paymentAmount} successful!`); // Fallback if name is empty
-    }
+    // Show the entered payment amount in the alert
+    alert(`Payment of Rs.${paymentAmount} successful!`);
   } else {
     alert("Please enter a valid payment amount.");
   }
