@@ -8,7 +8,6 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
   <style>
-    /* —— 全局重置 & 字体 —— */
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
     html,
@@ -24,7 +23,6 @@
       flex-direction: column;
     }
 
-    /* —— 主内容区 —— */
     main {
       flex: 1;
       display: flex;
@@ -44,7 +42,6 @@
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     }
 
-    /* —— 左侧 Panel —— */
     .register-left {
       flex: 1;
       background: linear-gradient(135deg, #5c2d91, #f6b500);
@@ -75,7 +72,6 @@
       opacity: 0.9;
     }
 
-    /* —— 右侧 Panel —— */
     .register-right {
       flex: 1;
       background: #fdfdfd;
@@ -85,7 +81,6 @@
       padding: 60px 40px;
     }
 
-    /* —— 页面主标题 —— */
     .page-heading {
       text-align: center;
       font-size: 2rem;
@@ -106,7 +101,6 @@
       border-radius: 2px;
     }
 
-    /* —— 表单标题 —— */
     .register-title {
       font-size: 1.4rem;
       font-weight: 500;
@@ -115,7 +109,6 @@
       animation: fadeIn 1s 0.5s both;
     }
 
-    /* —— 表单元素 —— */
     .input-group-text {
       background: #343a40;
       color: #fff;
@@ -138,7 +131,7 @@
     }
 
     .btn-gradient {
-      background:dark;
+      background-color: #343a40;
       color: #fff;
       border: none;
       border-radius: 30px;
@@ -164,17 +157,15 @@
       text-decoration: underline;
     }
 
-    /* —— 页脚 —— */
     footer {
       background-color: #fff;
-      color: #666;
+      color: dark;
       text-align: center;
       padding: 16px 0;
       font-size: 0.9rem;
       box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.03);
     }
 
-    /* —— 响应式调整 —— */
     @media (max-width: 992px) {
       .register-container {
         flex-direction: column;
@@ -205,20 +196,38 @@
       }
     }
 
-    /* —— 动画关键帧 —— */
     @keyframes fadeInDown {
-      0% { opacity: 0; transform: translateY(-20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
     }
 
     @keyframes popIn {
-      0% { opacity: 0; transform: scale(0.8); }
-      100% { opacity: 1; transform: scale(1); }
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
   </style>
 </head>
@@ -227,13 +236,11 @@
 
   <main>
     <div class="register-container">
-      <!-- 左侧内容 -->
       <div class="register-left">
         <img src="src/assets/images/olm2.png" alt="Logo" />
         <h2 style="text-align: center;">Digital Gym Management System</h2>
       </div>
 
-      <!-- 右侧表单 -->
       <div class="register-right">
         <h4 class="register-title">Admin Registration</h4>
         <form id="registerForm" action="src/login.html">
@@ -255,7 +262,7 @@
             </label>
           </div>
 
-          <button type="submit" class="btn w-100 btn-gradient mb-3">
+          <button type="submit" class="btn btn-gradient w-100 mb-3">
             Register
           </button>
 
