@@ -174,7 +174,7 @@
 
           <div class="input-group mb-4">
             <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-            <input type="password" class="form-control ps-4" placeholder="Enter password" minlength="6" required />
+            <input type="password" class="form-control ps-4" placeholder="Enter password" minlength="6" id="passwordInput" required />
           </div>
 
           <div class="form-check mb-3 text-start">
@@ -206,6 +206,34 @@
     window.location.href = "src/login.html"; // manually redirect
   });
 </script>
+  
+<script>
+  document.getElementById("registerForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // stop default submit
+
+    const password = document.getElementById("passwordInput").value;
+
+    // Validation rules
+    const uppercasePattern = /[A-Z]/;
+    const specialCharPattern = /[!@#$%^&*(),.?":{}|<>]/;
+    const minLength = 8;
+
+    if (
+      !uppercasePattern.test(password) ||
+      !specialCharPattern.test(password) ||
+      password.length < minLength
+    ) {
+      alert(
+        "Password must contain at least 1 uppercase letter, 1 special character, and be at least 8 characters long."
+      );
+      return; // do not proceed
+    }
+
+    alert("Admin Register Successfully");
+    window.location.href = "src/login.html";
+  });
+</script>
+
 
 </body>
 
