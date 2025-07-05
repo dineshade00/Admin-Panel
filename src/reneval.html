@@ -12,8 +12,7 @@
   <link rel="stylesheet" href="assets/vendors/font-awesome/css/font-awesome.min.css" />
   <link rel="stylesheet" href="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
-<!--   <link rel="shortcut icon" href="assets/images/favicon.png" /> -->
-    <link rel="shortcut icon" href="assets/images/olm2.png" />
+  <link rel="shortcut icon" href="assets/images/olm2.png" />
   <link href="https://cdn.materialdesignicons.com/6.5.95/css/materialdesignicons.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 
@@ -22,20 +21,20 @@
   <link href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css" rel="stylesheet" />
 
   <style>
+    tr.odd td,
+    tr.odd small {
+      color: black !important;
+    }
 
-      tr.odd td,
-      tr.odd small {
-        color: black !important; /* Use !important with caution, consider specificity */
-      }
+    tr.even td,
+    tr.even small {
+      color: black;
+    }
 
-      tr.even td,
-      tr.even small {
-        color: black;
-      }
+    .page-item .page-link {
+      color: white;
+    }
 
-      .page-item .page-link {
-        color: white;
-      }
     select {
       margin: 10px;
     }
@@ -48,7 +47,7 @@
 
     #membersPage {
       font-family: "Segoe UI", sans-serif;
-      
+
     }
 
     #membersPage .card-header {
@@ -57,8 +56,10 @@
       font-size: 1.25rem;
     }
 
-    #membersPage table { /* Added this selector for the table border */
-        border-top: 1px solid rgb(213, 211, 211); /* Example: 2px solid border in the theme color */
+    #membersPage table {
+      /* Added this selector for the table border */
+      border-top: 1px solid rgb(213, 211, 211);
+      /* Example: 2px solid border in the theme color */
     }
 
     #membersPage table.dataTable thead {
@@ -231,23 +232,58 @@
       }
     }
 
-       @media (min-width: 992px) {
-        #sidebar {
-          position: fixed;
-          top: 70px; /* navbar ke neeche distance adjust karo */
-          left: 0;
-          height: calc(100vh - 70px); /* poori height navbar ke baad */
-          overflow-y: auto;
-          z-index: 999; /* zaroorat pade to */
-        }
-
-        .main-panel {
-          margin-left: 240px; /* sidebar ki width jitni ho utna margin do */
-        }
+    @media (min-width: 992px) {
+      #sidebar {
+        position: fixed;
+        top: 70px;
+        /* navbar ke neeche distance adjust karo */
+        left: 0;
+        height: calc(100vh - 70px);
+        /* poori height navbar ke baad */
+        overflow-y: auto;
+        z-index: 999;
+        /* zaroorat pade to */
       }
+
+      .main-panel {
+        margin-left: 240px;
+        /* sidebar ki width jitni ho utna margin do */
+      }
+    }
+
+    /* Custom styles for pagination */
+    #membersPage .dataTables_paginate .pagination .page-item .page-link {
+      background-color: black;
+      /* Set background to black for all pagination links */
+      color: white;
+      /* Set text color to white for all pagination links */
+      border: 1px solid #333;
+      /* Slightly lighter border for separation */
+    }
+
+    #membersPage .dataTables_paginate .pagination .page-item.active .page-link {
+      background-color: #212529;
+      color: white;
+      /* Text color for active page */
+      border-color: #212529;
+    }
+
+    #membersPage .dataTables_paginate .pagination .page-item .page-link:hover {
+      background-color: #333;
+      /* Darker black on hover */
+      color: white;
+      /* Keep text white on hover */
+    }
+
+    #membersPage .dataTables_paginate .pagination .page-item.disabled .page-link {
+      background-color: #555;
+      /* Slightly lighter black for disabled links */
+      color: #bbb;
+      /* Greyer text for disabled links */
+    }
   </style>
 
-   
+
 </head>
 
 <body>
@@ -266,19 +302,14 @@
       " />
         </a>
 
-       <!-- Small logo for collapsed / tab / mobile -->
-<a class="navbar-brand brand-logo-mini d-lg-none" href="index.html">
-  <img
-    src="assets/images/olm2.png"
-    alt="logo"
-    style="
+        <a class="navbar-brand brand-logo-mini d-lg-none" href="index.html">
+          <img src="assets/images/olm2.png" alt="logo" style="
       height: 90px;
       width: auto;
       object-fit: contain;
       display: block;
-    "
-  />
-</a>
+    " />
+        </a>
 
       </div>
 
@@ -293,13 +324,13 @@
 
           </li>
           <li class="nav-item dropdown">
-            </li>
+          </li>
 
           <li class="nav-item dropdown">
-            </li>
+          </li>
 
           <li class="nav-item nav-logout d-none d-lg-block">
-            </li>
+          </li>
           <li class="nav-item d-none d-lg-block full-screen-link">
             <a class="nav-link" href="#">
               <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
@@ -317,7 +348,7 @@
         <ul class="nav">
           <li class="nav-item nav-profile bg-dark">
 
-            </li>
+          </li>
           <li class="nav-item">
             <a class="nav-link" href="index.html">
               <span class="menu-title" style="color:#301934;font-weight:bold">Dashboard</span>
@@ -402,7 +433,17 @@
                 <i class="mdi mdi-account-multiple-check"></i>
               </span> Renewal
             </h3>
-          
+            <nav aria-label="breadcrumb">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item">
+                  <a href="index.html" style="text-decoration: none; color: #212529;">Home</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+
+                  Renewal
+                </li>
+              </ul>
+            </nav>
           </div>
           <div class="container">
             <div class="row text-white" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
@@ -420,7 +461,7 @@
                           <tr>
                             <th>#</th>
                             <th>Photo</th>
-                            <th>Fullname</th>
+                            <th>Full Name</th>
                             <th>Contact</th>
                             <th>Type</th>
                             <th>Expiry</th>
@@ -496,10 +537,9 @@
               </div>
 
 
-
-              </div>
             </div>
           </div>
+        </div>
         <footer class="footer py-3 px-4">
           <div
             class="d-flex flex-column flex-sm-row justify-content-between align-items-end text-center text-sm-start">
@@ -508,7 +548,15 @@
             </div>
 
             <div class="d-flex flex-column align-items-center align-items-sm-end">
-             
+              <img alt="Kavya Infoweb Logo" src="kavya2.png" style="
+                    height: 80px;
+                    display: block;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-bottom: 6px;
+                    border-radius: 7px;
+                    box-shadow: 2px solid;
+                  " />
               <div class="text-center text-sm-end text-black" style="white-space: nowrap">
                 Software Developed &amp; Managed By
                 <a href="https://kavyainfoweb.com/" target="_blank">
@@ -519,7 +567,7 @@
           </div>
         </footer>
 
-        </div>
+      </div>
       <script src="assets/vendors/js/vendor.bundle.base.js"></script>
       <script src="assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
       <script src="assets/js/off-canvas.js"></script>
@@ -528,8 +576,6 @@
       <script src="assets/js/todolist.js"></script>
       <script src="assets/js/jquery.cookie.js"></script>
       <script src="assets/js/dashboard.js"></script>
-
-
 
 
       <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -546,11 +592,33 @@
             pageLength: 10,
             dom: '<"row"<"col-sm-12 col-md-6 d-flex justify-content-start"l><"col-sm-12 col-md-6 d-flex justify-content-end"f>>' + // Length and Filter
               '<"row"<"col-sm-12"tr>>' + // Table
-              '<"row"<"col-sm-12 col-md-5 d-flex justify-content-start"i><"col-sm-12 col-md-7 d-flex justify-content-end"p>>', // Information and Pagination
+              '<"row"<"col-sm-12 col-md-5 d-flex justify-content-start"><"col-sm-12 col-md-7 d-flex justify-content-end"p>>', // Pagination only
+            language: {
+              paginate: {
+                previous: '<',
+                next: '>'
+              },
+              info: ""
+            },
             initComplete: function () {
               applyUpdates();
               updateStatusAndActions();
+              applyPayDueButtonStyle(); // Apply style on initial load
             },
+          });
+
+          // Function to apply Pay Due button style
+          function applyPayDueButtonStyle() {
+            $('#membersPage .paydue-btn').css({
+              'background-color': 'rgb(250, 195, 43)',
+              'font-weight': 'bold',
+              'color': 'white'
+            });
+          }
+
+          // Listen for DataTables draw event to re-apply styles
+          table.on('draw.dt', function () {
+            applyPayDueButtonStyle();
           });
 
           function applyUpdates() {
@@ -607,7 +675,6 @@
                 );
                 actionCell.html(`
                   <button class="btn btn-sm btn-danger paydue-btn"
-                  style=" background-color: rgb(250, 195, 43); font-weight: bold; "
                     data-name="${name}"
                     data-contact="${contact}"
                     data-type="${type}"
@@ -653,8 +720,6 @@
           });
         });
       </script>
-
-
 
 </body>
 
