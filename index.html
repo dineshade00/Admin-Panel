@@ -199,6 +199,14 @@
   </main>
 
   <footer>&copy; 2025 Kavya Infoweb Pvt. Ltd. All rights reserved.</footer>
+  <script>
+  document.getElementById("registerForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // stop default submit
+    alert("Admin Register Successfully");
+    window.location.href = "src/login.html"; // manually redirect
+  });
+</script>
+
 </body>
 
 </html>
