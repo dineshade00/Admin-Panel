@@ -201,22 +201,23 @@
   <footer>&copy; 2025 Kavya Infoweb Pvt. Ltd. All rights reserved.</footer>
   <script>
   document.getElementById("registerForm").addEventListener("submit", function (e) {
-    e.preventDefault(); // stop default submit
-    alert("Admin Register Successfully");
-    window.location.href = "src/login.html"; // manually redirect
-  });
-</script>
-  
-<script>
-  document.getElementById("registerForm").addEventListener("submit", function (e) {
-    e.preventDefault(); // stop default submit
+    e.preventDefault();
 
-    const password = document.getElementById("passwordInput").value;
+    const email = document.querySelector('input[type="email"]').value.trim();
+    const password = document.getElementById("passwordInput").value.trim();
 
-    // Validation rules
+    // email validation (simple)
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    // password validation
     const uppercasePattern = /[A-Z]/;
     const specialCharPattern = /[!@#$%^&*(),.?":{}|<>]/;
     const minLength = 8;
+
+    if (!emailPattern.test(email)) {
+      alert("Please enter a valid email address.");
+      return;
+    }
 
     if (
       !uppercasePattern.test(password) ||
@@ -226,9 +227,10 @@
       alert(
         "Password must contain at least 1 uppercase letter, 1 special character, and be at least 8 characters long."
       );
-      return; // do not proceed
+      return;
     }
 
+    // everything ok
     alert("Admin Register Successfully");
     window.location.href = "src/login.html";
   });
